@@ -1,0 +1,87 @@
+\item {
+        What is \texttt{\%s} is used for in this statement?
+        \begin{minted}[autogobble, bgcolor=bg, fontsize=\scriptsize]{java}
+            System.out.println(String.format("Saya beripk %s, dengan tinggi badan %s", $ipk, tinggi));
+        \end{minted}
+        Are there any other symbols that can be used besides \texttt{\%s}? Mention and explain them!
+
+        The \texttt{\%s} is one of the format specifier. It will be replaced by a variable when it gets executed.
+        There are also other format that can be used for different data types. See the table below:
+
+        \begin{longtabu} to \textwidth {|c|c|l|}
+            \caption{Java Format Specifier}\\
+
+            \hline \multicolumn{1}{|c|}{\textbf{Format}} & \multicolumn{1}{c|}{\textbf{Data Type}} & \multicolumn{1}{c|}{\textbf{Output}} \\ \hline 
+            \endfirsthead
+
+            \texttt{\%a} & float & Hex output of float\\
+            \texttt{\%b} & any type & \texttt{true} if non-null, \texttt{false} if null\\
+            \texttt{\%c} & character & Unicode character\\
+            \texttt{\%d} & integer (byte, short, int, long) & Decimal integer\\
+            \texttt{\%e} & floating point & Decimal number in scientific notation\\
+            \texttt{\%f} & floating point number & Decimal number\\
+            \texttt{\%g} & floating point & Decimal number, possibly in scientific notation\\
+            \texttt{\%h} & any type & Hex String of value from \texttt{hashCode()} method\\
+            \texttt{\%n} & none & Platform-specific line separator\\
+            \texttt{\%o} & integer (byte, short, int, long) & Octal number\\
+            \texttt{\%s} & any type & String value\\
+            \texttt{\%x} & integer (byte, short, int, long) & Hex string\\
+            
+            \hline
+        \end{longtabu}
+    }
+
+ \item {
+        Bulan Department Store is giving a massive discount on the month of
+        independence of the Republic of Indonesia. Susi shopped at Bulan DS in August
+        this year. The discount was only given to shoppers who purchased 1
+        item in each type of sign available (red and blue). A discount of 50\% was given
+        for each blue-marked item, and 30\% discount for each red-marked item.
+        red mark. If Susi purchases 1 item with a red tag with the original price of
+        before the discount is Rp.300,000,-. In addition, Susi also buys 1 item with
+        blue mark with the original price before discount of Rp. 275.000,-.
+        
+        Make a program to help Susi calculate the total money she has to pay!
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{./images/assignment2-code.png}
+            \caption{The code for Assignment No. 2}
+        \end{figure}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{./images/assignment2-output.png}
+            \caption{The result of executing the program on Assignment No. 2}
+        \end{figure}
+    }
+    \pagebreak
+
+
+import java.util.Scanner;
+
+public class Assignment2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        float redDiscount = 0.5F;
+        float blueDiscount = 0.3F;
+        int redPrice = 300000;
+        int bluePrice = 275000;
+
+        System.out.print("How many red-marked products do you want to buy? ");
+        int redQuantity = sc.nextInt();
+        System.out.print("How many blue-marked products do you want to buy? ");
+        int blueQuantity = sc.nextInt();
+
+        float redTotal = redQuantity * calculateDiscountedPrice(redPrice, redDiscount);
+        float blueTotal = blueQuantity * calculateDiscountedPrice(bluePrice, blueDiscount);
+        System.out.printf("%d * %d = %.1f (discount applied)\n", redQuantity, redPrice, redTotal);
+        System.out.printf("%d * %d = %.1f (discount applied)\n", blueQuantity, bluePrice, blueTotal);
+        System.out.println("---------------------------------------- +");
+        System.out.printf("In total you need to pay: %.1f\n", redTotal + blueTotal);
+    }
+
+    private static float calculateDiscountedPrice(int price, float discount) {
+        return price - price * discount;
+    }
+}

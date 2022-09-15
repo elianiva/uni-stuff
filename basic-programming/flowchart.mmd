@@ -1,0 +1,8 @@
+flowchart TB
+    start([Start]) --> preparation1{{"h stands for harry\nl stands for laras\nint harry;\nint laras;"}}
+    preparation1 --> preparation2{{"Determine the equation based on the question\nh - 2 = 6(l - 2)\n h + 18 = 2(l + 18)"}}
+    preparation2 --> calculation1["Determine the age of laras using substitution \n h - 2 = 6l - 12 \n h + 18 = 2l + 36 \n h - 6l = -10 \n h - 2l = 18 \n h = 6l - 10"]
+    calculation1 --> calculation2["Substitute the known h value to the first equation\nh - 2l = 18\n6l - 10 - 2l = 18 \n 4l = 28 \n l = 28/4 \n l = 7"]
+    calculation2 --> calculation3["Determine the age of harry using substitution \n h - 2 = 6l - 12 \n h - 2 = 6(7) - 12 \n h - 2 = 42 - 12 \n h = 42 + 2 - 12 \n h = 32"]
+    calculation3 --> output[/"Harry's age is 32\nLaras' age is 7"/]
+    output --> finish([End])
