@@ -15,7 +15,7 @@
 \fancyhead{}
 \fancyfoot{}
 \fancyfoot[L]{\thepage}
-\fancyfoot[R]{\textit{Basic Programming Practicum - Jobsheet 3}}
+\fancyfoot[R]{\textit{Basic Programming Practicum - Jobsheet 3 Experiment}}
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
 
 \newcommand{\details}[2]{
@@ -29,7 +29,7 @@
     {\bfseries\LARGE
         Basic Programming Practicum\\
         \vskip0.25cm
-        Jobsheet 3
+        Jobsheet 3 Experiment
     }
     \vfill
     \includegraphics[width=6cm]{images/polinema-logo.png}
@@ -59,37 +59,29 @@
     \item { 
         Write the code below inside the \texttt{public static void main(String[] args)}
         
-        \begin{minted}[autogobble, bgcolor=bg, fontsize=\scriptsize]{java}
-            String oneOfMyHobbies = "Playing futsal";
-            boolean isSmart = true;
-            char gender = 'M';
-            byte _currentAge = 20;
-            double $gpa = 3.24, height = 1.78;
-            System.out.println(oneOfMyHobbies);
-            System.out.println("Is smart? " + isSmart);
-            System.out.println("Gender: " + gender);
-            System.out.println("My current age: " + _currentAge);
-            System.out.println(String.format("My GPA is %s and my height is %s meters", $gpa, height));
-        \end{minted}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{./images/variable-code.png}
+            \caption{The code for Experiment 1}
+        \end{figure}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{./images/variable-output.png}
+            \caption{The output for Experiment 1}
+        \end{figure}
     }
 \end{enumerate}
+\pagebreak
 \textbf{Questions}
 \begin{enumerate}
     \item { 
         Change the variable name so that it look better and more correct!
 
-        \begin{minted}[autogobble, bgcolor=bg, fontsize=\scriptsize]{java}
-            String oneOfMyHobbies = "Playing hide and seek";
-            boolean isSmart = true;
-            char gender = 'M';
-            byte currentAge = 20;
-            double gpa = 3.24, height = 1.78;
-            System.out.println(oneOfMyHobbies);
-            System.out.println("Is smart? " + isSmart);
-            System.out.println("Gender: " + gender);
-            System.out.println("My current age: " + currentAge);
-            System.out.println(String.format("My GPA is %s and my height is %s meters", gpa, height));
-        \end{minted}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{./images/variable-code-updated.png}
+            \caption{The code for Experiment 2}
+        \end{figure}
     }
 \end{enumerate}
 
@@ -101,27 +93,9 @@
     \item {
         Write the code below inside the \texttt{public static void main(String[] args)}
         
-        \begin{minted}[autogobble, bgcolor=bg, fontsize=\scriptsize]{java}
-            char bloodGroup = 'A';
-            byte distance = (byte) 130;
-            short theNumberOfResidents = 1025;
-            float temperature = 60.50F;
-            double weight = 0.5467812345;
-            long balance = 150000000;
-            int number = 0x10;
-
-            System.out.println("Blood Group\t\t\t: " + (byte) bloodGroup);
-            System.out.println("Distance\t\t\t: " + distance);
-            System.out.println("The number of residents\t: " + theNumberOfResidents);
-            System.out.println("Temperature\t\t\t: " + temperature);
-            System.out.println("Weight\t\t\t\t: " + (float) weight);
-            System.out.println("Balance\t\t\t\t: " + balance);
-            System.out.println("Number\t\t\t\t: " + number);
-        \end{minted}
-
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.9\textwidth]{./images/datatype-code.png}
+            \includegraphics[width=0.8\textwidth]{./images/datatype-code.png}
             \caption{The code for Experiment 2}
         \end{figure}
     }
@@ -132,7 +106,7 @@
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.9\textwidth]{./images/datatype-output.png}
-            \caption{The result of executing the program on Experiment 2}
+            \caption{The output for Experiment 2}
         \end{figure}
     }
 \end{enumerate}
@@ -176,20 +150,11 @@
     \item {
         Write the code below inside the \texttt{public static void main(String[] args)}
 
-        \begin{minted}[autogobble, bgcolor=bg, fontsize=\scriptsize]{java}
-            int x = 10;
-            System.out.println("x++ = " + x++);
-            System.out.println("Setelah evaluasi, x = " + x);
-            x = 10;
-            System.out.println("++x = " + ++x);
-            System.out.println("Setelah evaluasi, x = " + x);
-            int y = 12;
-            System.out.println(x > y || y == x && y <= x);
-            int z = x ^ y;
-            System.out.println("Hasil x ^ y adalah " + z);
-            z %= 2;
-            System.out.println("Hasil akhir " + z);
-        \end{minted}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{./images/operator-code.png}
+            \caption{The code for Experiment 3}
+        \end{figure}
     }
     \item {
         Execute the program and observe the result
@@ -197,10 +162,11 @@
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.9\textwidth]{./images/operator-output.png}
-            \caption{The result of executing the program on Experiment 3}
+            \caption{The output for Experiment 3}
         \end{figure}
     }
 \end{enumerate}
+\pagebreak
 \textbf{Questions}
 \begin{enumerate}
     \item { 
@@ -210,7 +176,6 @@
         While in \texttt{++x}, called pre-increment, it increments the value and then assign or use the current value.
         The difference between those two is the order of the incrementing process.
     }
-    \pagebreak
     \item {
         What is the result of \texttt{int z = x \^{} y;} do the calculations manually (you can use a calculator)!
 
@@ -221,7 +186,7 @@
               &= 5 / 2 ~(remainder~is~1)\\
               &= 2 / 2 ~(remainder~is~0)\\
               &= 1 / 2 ~(remainder~is~1)\\
-            x &= 1010b\\~\\
+            x &= 1011b\\~\\
             y &= 12 / 2~(remainder~is~0)\\
               &= 6 / 2 ~(remainder~is~0)\\
               &= 3 / 2 ~(remainder~is~1)\\
@@ -310,7 +275,7 @@
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.9\textwidth]{./images/triangle-output.png}
-        \caption{The result of executing the program on Experiment 4}
+        \caption{The result of Experiment 4}
     \end{figure}
 \end{enumerate}
 \pagebreak
@@ -321,71 +286,6 @@
 
         Because we need its precision after doing arithmetic operation involving multiplication or division.
         If we use integer, the number will get rounded and we will lose some precision.
-    }
-\end{enumerate}
-\section{Assignment}
-\textbf{Assignment Duration: 130 minutes}
-
-\begin{enumerate}
-    \item {
-        Pay attention to the following table.
-        \begin{longtabu} to \textwidth {|l|l|l|l|}
-            \hline \multicolumn{1}{|c|}{\textbf{Variable Name}} & \multicolumn{1}{c|}{\textbf{Data Type}} & \multicolumn{1}{c|}{\textbf{Initial Value}} & \multicolumn{1}{c|}{\textbf{Detail}} \\ \hline 
-            \endfirsthead
-
-            campus & Sentence & Polinema & \\
-            grade & Round Number & 1 & \\
-            class & Character & i & initial value = your class \\
-            integer & Integers & 10 & \\
-            number & Floating point & 3.33333 & \\
-            character & Character & C & \\
-
-            \hline
-        \end{longtabu}
-
-        From the information provided on the table, create a program to display like this:
-
-        \begin{minted}[autogobble, bgcolor=lightBg, fontsize=\footnotesize]{text}
-            I am Polinema student, class 1i
-            I'm learning to display values:
-            Integer 10
-            Floating point 3.33
-            Character C
-        \end{minted}
-
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.9\textwidth]{./images/assignment1-code.png}
-            \caption{The code for Assignment No. 1}
-        \end{figure}
-        \pagebreak
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.9\textwidth]{./images/assignment1-output.png}
-            \caption{The result of executing the program on Assignment No. 1}
-        \end{figure}
-    }
-    \pagebreak
-    \item {
-        Observe the following flowchart to convert the temperature
-
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.5\textwidth]{./images/flowchart2.png}
-        \end{figure}
-
-        Implement the flowchart into the program using the Java programming language!
-
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.9\textwidth]{./images/assignment2-code.png}
-            \caption{The code for Assignment No. 3}
-        \end{figure}
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=0.9\textwidth]{./images/assignment2-output.png}
-            \caption{The result of executing the program on Assignment No. 3}
-        \end{figure}
     }
 \end{enumerate}
 

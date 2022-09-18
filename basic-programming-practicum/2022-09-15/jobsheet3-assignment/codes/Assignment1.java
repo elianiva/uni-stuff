@@ -10,7 +10,7 @@ public class Assignment1 {
         System.out.printf("I am %s student, class %d%c\n", campus, grade, _class);
         System.out.printf("I'm learning to display values:\n");
         System.out.printf("Integer %d\n", integer);
-        System.out.printf("Floating point %f\n", number);
+        System.out.printf("Floating point %.2f\n", number);
         System.out.printf("Character %c\n", character);
     }
 }

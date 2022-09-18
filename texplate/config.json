@@ -1,0 +1,19 @@
+{
+    "personal_information": {
+        "name": "Dicha Zelianivan Arkana",
+        "nim": "2241720002",
+        "class": "1i",
+        "department": "Information Technology",
+        "study_program": "D4 Informatics Engineering"
+    },
+    "subjects": [
+        "Information Technology Concepts",
+        "Basic Programming Practicum",
+        "Basic Programming",
+        "English 1",
+        "Mathematic 1",
+        "Critical Thinking and Problem Solving",
+        "Pancasila",
+        "Occupational Health and Safety"
+    ]
+}
