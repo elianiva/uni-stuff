@@ -180,18 +180,37 @@
         From the text above, we can gather up these data:
         \begin{itemize}
             \item Sweet and Savory pancakes
-            \item Savory pancake toppings (eggs, ham, tomatoes)
+            \item Savory pancake toppings (eggs, ham, tomatoes), can be used in any combinations
             \item Sweet pancake topppings (marmalade, lemon or strawberry with ice cream or fresh cream)
         \end{itemize}
 
-        To find the combinations, we can use the permutation formula: $P(n,r)=\frac{n!}{(n-r)!}$ formula.
         The final result would be:
         \begin{itemize}
-            \item Sweet pancake $\rightarrow$ $C(3, 3)=\frac{3!}{(3-3)!}=\frac{6}{1}=6$ combinations
-            \item Savory pancake $\rightarrow$ $C(5, 3)=\frac{5!}{(5-3)!}=\frac{120}{2}=60$ combinations
+            \item {
+                There are 7 savory pancake combinations
+                \begin{itemize}
+                    \item eggs
+                    \item ham
+                    \item tomatoes
+                    \item eggs, ham
+                    \item eggs, tomatoes
+                    \item ham, tomatoes
+                    \item eggs, ham, tomatoes
+                \end{itemize}
+            }
+            \item {
+                There are 5 sweet pancake combinations
+                \begin{itemize}
+                    \item marmalade
+                    \item lemon with ice cream
+                    \item lemon with fresh cream
+                    \item strawberry with ice cream
+                    \item strawberry with fresh cream
+                \end{itemize}
+            }
         \end{itemize}
 
-        All in all, there are 66 combinations for sweet and savory pancake.
+        All in all, there are 12 combinations for sweet and savory pancake.
     }
 \end{enumerate}
 
@@ -206,18 +225,39 @@
         From the text above, these are the informations that we can gather:
         \begin{itemize}
             \item Distance from Jakarta to Ontario is exactly 14000km
-            \item It takes 22 hours for a plane to depart from Jakarta to Ontario
-            \item It takes 17 hours for a plane to depart from Ontario to Jakarta
+            \item {
+                It takes 22 hours for a plane to depart from Jakarta to Ontario.\\
+                Which means it flies opposite to the wind direction, we need to reduce its speed with the wind speed.
+            }
+            \item {
+                It takes 17 hours for a plane to depart from Ontario to Jakarta.\\
+                Which means it flies opposite to the wind direction, we need to reduce its speed with the wind speed.
+            }
         \end{itemize}
 
-        To find an average speed, we need to sum the distance and the time it took to depart. We can write it as follows:
-        \begin{align}
-            total~distance &= 14000 + 14000 = 28000km\\
-            total~hours    &= 22 + 17 = 39~hours\\
-            average        &= \frac{total~distance}{total~hours}\\
-                           &= \frac{28000}{39} = 718km/h
-        \end{align}
+        Let $x=plane~speed$ and $y=wind~speed$. We can calculate as such:
+        \begin{align*}
+            17(x+y) &= 14000 \\
+            22(x-y) &= 14000 \\~\\
+            17x + 17y &= 14000 \\
+            22x - 22y &= 14000 \\~\\
+            374x + 374y &= 308000 \\
+            374x - 374y &= 238000 \\~\\
+            748x &= 546000 \\~\\
+            x &= \frac{546000}{748} = 730~(rounded) \\~\\
+        \end{align*}
+        \begin{align*}
+            17(x+y) &= 14000 \\~\\
+            17x + 17y &= 14000 \\~\\
+            17(730) + 17y &= 14000 \\~\\
+            12410 + 17y &= 14000 \\~\\
+            17y &= 14000 - 12410 \\~\\
+            17y &= 1590 \\~\\
+              y &= \frac{1590}{17} = 93.5~(rounded) \\~\\
+        \end{align*}
+        From the calculation above, we can conclude that the wind speed is 93.5 km/h
     }
+    \pagebreak
     \item {
         Yasmin has been saving for a long time to buy a gift for her sister's birthday. Every time he has coins with a
         face value of 5 cents and 20 cents, he puts them into his piggy bank. Today he broke his piggy bank and counted
@@ -337,10 +377,12 @@
         To determine which cardboard fold is suitable, we can imagine how each cardboard folds will form.
         \begin{enumerate}[label=\Alph*.]
             \item Unsuitable, because the left and right part will overlap with each other
-            \item Unsuitable, because there is a part that will overlap with the bottom layer
-            \item Unsuitable, because the left and right part will overlap with each other
             \item Suitable, there will be no overlap and it will form a cube with 2 corners cut off
+            \item Unsuitable, because the left and right part will overlap with each other
+            \item Unsuitable, there will be no overlap but it will form a cube with only 1 corner cut off
         \end{enumerate}
+
+        So, the most suitable answer is the \textbf{B} cardboard
     }
     \pagebreak
     \item {
