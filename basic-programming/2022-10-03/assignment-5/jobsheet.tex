@@ -192,19 +192,20 @@ choose a waste bin when throwing garbage based on the type!
 \end{figure}
 
 \begin{center}
-    \begin{tikzpicture}[scale=0.85, every node/.style={scale=0.85}]
-        \node (start) [terminator, align=center, minimum width=2.5cm] {Start};
-        \node (prep) [preparation, below of = start, yshift = -5mm] {\texttt{int typeOfWaste, colour;}};
+    \begin{tikzpicture}[scale=0.75, every node/.style={scale=0.75}]
+        \node (start) [terminator, align=center, minimum width=2.5cm, minimum height=2.5em] {Start};
+        \node (prep) [preparation, below of = start, yshift = -5mm] {\texttt{String typeOfWaste, colour;}};
         \node (input-1) [data, below of = prep, yshift = -5mm] {input \texttt{typeOfWaste} value};
         \node (process) [process, below of = input-1, yshift = -5mm] {\texttt{switch(typeOfWaste)}};
         \node (branch-1) [decision, below of = process, yshift = -1cm] {\texttt{case "organic"}};
         \node (branch-2) [decision, right of = branch-1, xshift = 4.5cm] {\texttt{case "anorganic"}};
         \node (branch-3) [decision, right of = branch-2, xshift = 3.75cm] {\texttt{case "B3"}};
+        \node (invalid) [data, right of = branch-3, xshift = 1cm, yshift = -5.25cm] {Output "invalid waste type"};
         \node (organic) [process, below of = branch-1, yshift = -1.25cm] {\texttt{colour = "green"}};
         \node (anorganic) [process, below of = branch-2, yshift = -1.25cm] {\texttt{colour = "yellow"}};
         \node (b3) [process, below of = branch-3, yshift = -1.25cm] {\texttt{colour = "red"}};
         \node (output) [data, below of = organic, yshift = -0.5cm] {Output \texttt{colour}};
-        \node (end) [terminator, below of = output, align=center, minimum width=2.5cm, yshift = -0.5cm] {End};
+        \node (end) [terminator, below of = output, align=center, minimum width=2.5cm, minimum height=2.5em, yshift = -0.5cm] {End};
         \draw [connector] (start) -- (prep);
         \draw [connector] (prep) -- (input-1);
         \draw [connector] (input-1) -- (process);
@@ -214,10 +215,12 @@ choose a waste bin when throwing garbage based on the type!
         \draw [connector] (branch-1) -- node[left=3mm] {yes} (organic);
         \draw [connector] (branch-2) -- node[left=3mm] {yes} (anorganic);
         \draw [connector] (branch-3) -- node[left=3mm] {yes} (b3);
+        \draw [connector] (branch-3.east) -| node[above=2mm] {no} (invalid.north);
         \draw [connector] (organic) -- (output);
         \draw [connector] (anorganic.south) |- (output.east);
         \draw [connector] (b3.south) |- (output.east);
         \draw [connector] (output) -- (end);
+        \draw [connector] (invalid) -- (end);
     \end{tikzpicture}
 \end{center}
 
