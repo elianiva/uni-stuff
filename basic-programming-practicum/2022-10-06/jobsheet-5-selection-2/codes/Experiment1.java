@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Experiment1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int value = sc.nextInt();
+
+        System.out.println("Enter a value (0 - 100): ");
+        value = sc.nextInt();
+
+        if (value >= 0 && value <= 100) {
+            if (value >= 90 && value <= 100) {
+                System.out.println("Grade A, EXCELLENT!");
+            } else if (value >= 80 && value <= 89) {
+                System.out.println("Grade B, keep up your achievements!");
+            } else if (value >= 60 && value <= 79) {
+                System.out.println("Grade C, increase your achievements!");
+            } else if (value >= 50 && value <= 59) {
+                System.out.println("Grade D, improve your study!");
+            } else {
+                System.out.println("Grade E, you don't pass!");
+            }
+        } else {
+            System.out.println("The value you entered is invalid");
+        }
+
+        sc.close();
+    }
+}

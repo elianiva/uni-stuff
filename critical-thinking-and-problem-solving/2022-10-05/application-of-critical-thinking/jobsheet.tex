@@ -1,0 +1,214 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext,longtable,tabu,tabularx,enumitem}
+\usepackage[table]{xcolor}
+
+%% Variables definition
+\newcommand{\vSubject}{Critical Thinking and Problem Solving}
+\newcommand{\vSubtitle}{Application of Critical Thinking}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{1i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\newcommand{\y}{\cellcolor{yellow!75}}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section*{Task 1}
+The robot beaver can multitask. Each task requires 1, 2, 3, or more hours of work. In one hour, the robot can only do one
+task. At the end of each hour, he checks if there is a new task:
+\begin{enumerate}
+    \item If yes, then the robot must start working on the new task.
+    \item If not, the robot continues to do the task that has not been done for the longest time.
+\end{enumerate}
+
+The following is an example of a work schedule for the robot in a day.
+
+\begin{itemize}
+    \item At 8:00, there is a task that takes 7 hours
+    \item At 10:00, comes the task that takes 3 hours
+    \item At 12:00 o'clock, comes the task that takes 5 hours
+\end{itemize}
+
+In the table, the yellow color indicates the task is in progress, the white color indicates the task is pending.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics*[width=\textwidth]{./images/robot-table.png}
+\end{figure}
+
+If the robot accepts the following four tasks:
+
+\begin{itemize}
+    \item Task-1: at 8:00 p.m. takes 5 hours
+    \item Task-2: at 11:00 takes 3 hours
+    \item Task-3: at 14:00 takes 5 hours
+    \item Task-4: at 17:00 takes 2 hours
+\end{itemize}
+
+\pagebreak
+
+At what time will each task be completed. Robot can do only one task at once time.
+
+\begin{table}[h]
+    \caption{Robot Schedule}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Task} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{13} & \textbf{14} & \textbf{15} & \textbf{16} & \textbf{17} & \textbf{18} & \textbf{19} & \textbf{20} & \textbf{21} & \textbf{22} \\
+        \hline
+        Task 1 & \y & \y & \y &   & \y &   &   & \y &   &   &   &   &   &   &   \\
+        \hline
+        Task 2 &   &   &   & \y &   & \y &   &   & \y &   &   &   &   &   &   \\
+        \hline
+        Task 3 &   &   &   &   &   &   & \y &   &   &   & \y &   & \y & \y & \y \\
+        \hline
+        Task 4 &   &   &   &   &   &   &   &   &   & \y &   & \y &   &   &   \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section*{Task 2}
+
+During their 6-day vacation, Laravel and Zend have a plan to go to Grandma's village. Incidentally, there were three
+farmers A, B, and C who needed help in cultivating their respective fields. They offered Laravel and Zend a fee if they
+would help them. Each of these farmers makes a different offer:
+\begin{itemize}
+    \item Farmer A offers 10 thousand rupiah for each (Laravel and Zend) every day.
+    \item {
+        Farmer B will only give Zend ten thousand rupiah on the first day then each subsequent increase by 10 thousand to 20
+        thousand, 30 thousand, and so on, while he will give Laravel on the first day 100 thousand rupiah and then decrease 10
+        thousand rupiah every following day to 90 thousand, 80 thousand, and so on.
+    }
+    \item {
+        Farmer C is not interested in Zend's help, so he will only give 1 thousand rupiah on the first day and will not give
+        anything on the next day. As for Laravel, he will give a thousand rupiah on the first day, then every next day double
+        from the previous. So, Laravel will get a thousand rupiah, 2 thousand rupiah, 4 thousand rupiah, 8 thousand rupiah and
+        so on. They intend to spend every day of their holiday in grandmother's village helping the farmer, and they both have
+        promised to work for the same farmer. Regarding wages, they have also secretly agreed to share equally what they get.
+    }
+\end{itemize}
+\pagebreak
+For which farmers do they work so that they can get the most fee?
+
+\setcounter{table}{1}
+\begin{table}[h]
+    \caption{Farmer's Fee}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Farmer} & \textbf{Day 1} & \textbf{Day 2} & \textbf{Day 3} & \textbf{Day 4} & \textbf{Day 5} & \textbf{Day 6} & \textbf{Total} \\
+        \hline
+        Laravel - Farmer 1 & 10k & 10k & 10k & 10k & 10k & 10k & 60k \\ \hline
+        Zend - Farmer 1    & 10k & 10k & 10k & 10k & 10k & 10k & 60k \\ \hline
+        Laravel - Farmer 2 & 100k & 90k & 80k & 70k & 60k & 60k & 450k \\ \hline
+        Zend - Farmer 2    & 10k & 20k & 30k & 40k & 50k & 60k & 210k \\ \hline
+        Laravel - Farmer 3 & 1k & 2k & 4k & 8k & 16k & 32k & 63k \\ \hline
+        Zend - Farmer 3    & 1k & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+    \end{tabularx}
+\end{table}
+
+Total:
+\begin{itemize}
+    \item Farmer 1 = 60k + 60k = 120k
+    \item Farmer 2 = 450k + 210k = 660k
+    \item Farmer 3 = 63k + 1k = 64k
+\end{itemize}
+
+Laravel and Zend can get the most profit if they work for Farmer 2
+
+\section*{Task 3}
+The famous blue colored diamond has been stolen from the museum. The thief success to exchange the diamond for cheap
+green imitation jewellery. The diamond exhibition today was attended by 200 visitors. The visitors entered the exhibition
+room one by one. The Java inspector should be able to catch the thief by interrogating some of the visitors. Inspector Java
+has a list of the names of the 200 visitors who entered the exhibition hall today. The Java inspector will ask everyone the
+same question: Was the diamond green or blue when you saw it? Every visitor will answer honestly; except the thief, who
+will answer the color of the diamond is green. The Java inspector is very smart and will use a strategy where the number
+of people to be asked question will be minimal.
+
+\pagebreak
+
+Which of the following statements can the Java Inspector deliver without lying? Explain
+
+\begin{enumerate}[label=\alph*)]
+    \item This task is a difficult one; I need to ask at least 200 people, but the most likely is 199 people.
+    \item I can't promise anything. If I am unlucky, then I will question every visitor.
+    \item It's not enough to just ask 10 people (unless I'm lucky) but I believe I can get my job done by asking less than 200 people.
+    \item I can guarantee that I can find the thief by simply asking less than 10 people
+\end{enumerate}
+
+\textbf{Explanation:} The answer is \textbf{C}. Assuming the visitors enter the room one by one and we have the time series data, we can ask every visitor starting with the first visitor who enters the room.
+Every visitors will answer that the diamond is blue until the diamond is replaced.
+We can infer that the first visitor who answers green is the thief because he is the one who replaced it first.
+This way, we won't have to ask 200 people.
+
+\end{document}
+
