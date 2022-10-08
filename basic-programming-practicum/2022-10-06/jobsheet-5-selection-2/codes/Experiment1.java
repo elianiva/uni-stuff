@@ -3,12 +3,14 @@ import java.util.Scanner;
 public class Experiment1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int value = sc.nextInt();
+        int value;
 
-        System.out.println("Enter a value (0 - 100): ");
+        System.out.print("Enter a value (0 - 100): ");
         value = sc.nextInt();
 
-        if (value >= 0 && value <= 100) {
+        if (value < 0) {
+            System.out.println("Value you entered is less than 0");
+        } else if (value >= 0 || value <= 100) {
             if (value >= 90 && value <= 100) {
                 System.out.println("Grade A, EXCELLENT!");
             } else if (value >= 80 && value <= 89) {
@@ -21,7 +23,7 @@ public class Experiment1 {
                 System.out.println("Grade E, you don't pass!");
             }
         } else {
-            System.out.println("The value you entered is invalid");
+            System.out.println("The value you entered is more than 100");
         }
 
         sc.close();
