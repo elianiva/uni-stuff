@@ -177,15 +177,15 @@ Create a flowchart from the following problems using for, while, and do-while!
             \node (start) [terminator, align=center, minimum width=2.5cm] {Start};
             \node (prep) [preparation, below of = start, yshift = -1cm, align=center, chamfered rectangle sep=1.25em] {\texttt{int result = 2;}};
             \node (cond) [decision, below of = prep, yshift = -2cm] {\texttt{result < 256}};
-            \node (add) [process, right of = cond, xshift = 4cm, align=center] {\texttt{result *= 2;}};
             \node (print) [data, below of = cond, yshift = -1cm] {\texttt{System.out.println(result)}};
-            \node (end) [terminator, align=center, minimum width=2.5cm, below of = print, yshift = -2mm] {End};
+            \node (add) [process, below of = print, yshift = -5mm, align=center] {\texttt{result *= 2;}};
+            \node (end) [terminator, align=center, minimum width=2.5cm, right of = cond, xshift = 3cm] {End};
             \draw [connector] (start) -- (prep);
             \draw [connector] (prep) -- (cond);
-            \draw [connector] (cond) -- node[above=1mm] {true} (add);
-            \draw [connector] (cond) -- node[right=1mm] {false} (print);
-            \draw [connector] (add.north) |- ($(cond.north)-(0,-5mm)$);
-            \draw [connector] (print) -- (end);
+            \draw [connector] (cond) -- node[right=1mm] {true} (print);
+            \draw [connector] (add.west) -| ($(cond.west)-(3cm,0)$) -- (cond.west);
+            \draw [connector] (print) -- (add);
+            \draw [connector] (cond) -- node[above=1mm] {false} (end);
         \end{tikzpicture}
     }
 \end{enumerate}
