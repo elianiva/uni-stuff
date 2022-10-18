@@ -139,12 +139,13 @@ Create a flowchart from the following problems using for, while, and do-while!
         \begin{tikzpicture}
             \centering
             \node (start) [terminator, align=center, minimum width=2.5cm] {Start};
-            \node (prep) [preparation, below of = start, yshift = -1cm, align=center, chamfered rectangle sep=1.25em] {\texttt{int i = 0, X, Y, isFinished = 0;}};
+            \node (prep) [preparation, below of = start, yshift = -1cm, align=center, chamfered rectangle sep=1.25em] {\texttt{int i = 0, result, X, Y, isFinished = 0;}};
             \node (inputX) [data, below of = prep, yshift = -7.5mm] {Input \texttt{X} value};
-            \node (inputY) [data, below of = inputX, yshift = -4mm] {Input \texttt{Y} value};
+            \node (assign) [process, below of = inputX, yshift = -5mm] {Assign \texttt{X} to \texttt{result}};
+            \node (inputY) [data, below of = assign, yshift = -4mm] {Input \texttt{Y} value};
             \node (cond-pow) [decision, below of = inputY, yshift = -1.5cm] {\texttt{i <= Y}};
             \node (pow) [process, right of = cond-pow, xshift = 2.5cm, align=center] {
-                \texttt{X *= X;}\\
+                \texttt{result *= X;}\\
                 \texttt{i++;}
             };
             \node (print) [data, below of = cond-pow, yshift = -1cm] {\texttt{System.out.println(X)}};
@@ -154,7 +155,8 @@ Create a flowchart from the following problems using for, while, and do-while!
             \node (end) [terminator, align=center, minimum width=2.5cm, below of = cond, yshift = -1cm] {End};
             \draw [connector] (start) -- (prep);
             \draw [connector] (prep) -- (inputX);
-            \draw [connector] (inputX) -- (inputY);
+            \draw [connector] (inputX) -- (assign);
+            \draw [connector] (assign) -- (inputY);
             \draw [connector] (inputY) -- (cond-pow);
             \draw [connector] (cond-pow) -- node[right=1mm] {false} (print);
             \draw [connector] (cond-pow) -- node[below=1mm] {true} (pow);
