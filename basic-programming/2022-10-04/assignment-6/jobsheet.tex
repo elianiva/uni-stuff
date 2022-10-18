@@ -184,8 +184,7 @@ Make a flowchart for the ATM system!
             \texttt{destination.equals("BCA")}
         };
         \node (transfer-invalid-destination) [data, right of = transfer-check-destination, xshift = 3.25cm, yshift = -4.5cm] {Output "invalid destination"};
-        \node (transfer-destination-account) [data, below of = transfer-check-destination, yshift = -5cm] {Input \texttt{destination} value};
-        \node (transfer-money) [data, below of = transfer-destination-account, yshift = -5mm] {Input \texttt{moneyAmount} value};
+        \node (transfer-money) [data, below of = transfer-check-destination, yshift = -6cm] {Input \texttt{moneyAmount} value};
         \node (transfer-process) [process, below of = transfer-money, yshift = -5mm] {Transfer \texttt{moneyAmount} to \texttt{destination}};
         \node (change-pin-old) [data, below of = change-pin, yshift = -1.5cm] {Input \texttt{oldPin}};
         \node (change-pin-new) [data, below of = change-pin-old, yshift = -5mm] {Input \texttt{newPin}};
@@ -208,10 +207,9 @@ Make a flowchart for the ATM system!
         \draw [connector] (withdrawal-process) |- (end);
         \draw [connector] (transfer) -- node[left=2mm] {yes} (transfer-input);
         \draw [connector] (transfer-input) |- (transfer-check-destination.north);
-        \draw [connector] (transfer-check-destination) -- node[left=2mm] {yes} (transfer-destination-account);
+        \draw [connector] (transfer-check-destination) -- node[left=2mm] {yes} (transfer-money);
         \draw [connector] (transfer-check-destination.east) -- node[left=2mm] {no} (transfer-invalid-destination.north);
         \draw [connector] (transfer-invalid-destination.south) |- (end.east);
-        \draw [connector] (transfer-destination-account) -- (transfer-money);
         \draw [connector] (transfer-money) -- (transfer-process);
         \draw [connector] (transfer-process) |- (end);
         \draw [connector] (change-pin) -- node[left=2mm] {yes} (change-pin-old);
