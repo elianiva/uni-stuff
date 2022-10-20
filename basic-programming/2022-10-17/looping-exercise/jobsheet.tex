@@ -143,12 +143,12 @@ Create a flowchart from the following problems using for, while, and do-while!
             \node (inputX) [data, below of = prep, yshift = -7.5mm] {Input \texttt{X} value};
             \node (assign) [process, below of = inputX, yshift = -5mm] {Assign \texttt{X} to \texttt{result}};
             \node (inputY) [data, below of = assign, yshift = -4mm] {Input \texttt{Y} value};
-            \node (cond-pow) [decision, below of = inputY, yshift = -1.5cm] {\texttt{i <= Y}};
+            \node (cond-pow) [decision, below of = inputY, yshift = -1.5cm] {\texttt{i < Y}};
             \node (pow) [process, right of = cond-pow, xshift = 2.5cm, align=center] {
                 \texttt{result *= X;}\\
                 \texttt{i++;}
             };
-            \node (print) [data, below of = cond-pow, yshift = -1cm] {\texttt{System.out.println(X)}};
+            \node (print) [data, below of = cond-pow, yshift = -1cm] {\texttt{System.out.println(result)}};
             \node (printQuestion) [data, below of = print, yshift = -5mm] {Print "Try again? (1 = yes, 0 = no)"};
             \node (inputAnswer) [data, below of = printQuestion, yshift = -5mm] {Input \texttt{isFinished} value};
             \node (cond) [decision, below of = inputAnswer, yshift = -1cm] {isFinished == 1};
