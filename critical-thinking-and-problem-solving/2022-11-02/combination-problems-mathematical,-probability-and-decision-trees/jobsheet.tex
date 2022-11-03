@@ -1,0 +1,107 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Critical Thinking and Problem Solving}
+\newcommand{\vSubtitle}{Combination Problems Mathematical, Probability and Decision Trees}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{1i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section*{Exercise}
+\subsubsection*{Combination Problems Mathematical, Probability and Decision Trees}
+There are two ways I go to work, both involve a two part journey.
+\begin{itemize}
+    \item I can cycle to the bus stop; it usually takes 5 minutes, or 15 minutes if the railroad crossing is closed on the road, which happens on 10\% of occasions.
+    \item A bus takes an average of 5 minutes to arrive. I took the first bus, which may have been a slow bus that took 30 minutes or a fast bus that took 15 minutes. Chances of I get a slow bus is 20\%
+    \item Or, I could drive to the Park and Ride parking lot
+    \item Driving normally takes 15 minutes, but about half the time there is a traffic jam and it taks 20 minutes.
+    \item When I get to the Park and Ride, sometimes I get the bus right away, but there's a 60\% chance I'll have to wait 10 minutes for the next bus.
+    \item The bus took 10 minutes to take me to work.
+\end{itemize}
+
+\subsubsection*{Questions}
+\begin{enumerate}
+    \item What is my shortest time to start to work?
+    \item On average, what is my best option for going to work and how much time do I need?
+    \item What is the probability that the first trip option takes 40 minutes or more?
+\end{enumerate}
+
+\subsubsection*{Answer}
+First up, let's try to simplify the statements by grouping them together.
+
+\end{document}
+
