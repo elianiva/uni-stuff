@@ -62,9 +62,9 @@ public class AssignmentTwo {
                 System.out.printf("The MIN value is: %d\n", minValue);
                 break;
             case 2:
-                System.out.printf("The MAX value is: %d\n", minValue);
-                System.out.printf("The MAX value amount is: %d\n", minValueAmount);
-                System.out.printf("The MAX value position is: \n%s\n", minValuePosition);
+                System.out.printf("The MIN value is: %d\n", minValue);
+                System.out.printf("The MIN value amount is: %d\n", minValueAmount);
+                System.out.printf("The MIN value position is: \n%s\n", minValuePosition);
                 break;
             case 3:
                 System.out.println(isBigNumberFound ? "FOUND" : "NOT FOUND");
