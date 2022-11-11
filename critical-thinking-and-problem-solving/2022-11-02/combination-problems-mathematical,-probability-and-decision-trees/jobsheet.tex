@@ -1,5 +1,5 @@
 \documentclass[12pt,titlepage]{article}
-\usepackage[margin=1.25in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx,amsmath,blindtext}
 
 %% Variables definition
@@ -14,7 +14,7 @@
 %% [START] Tikz related stuff
 \usepackage{tikz}
 \usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
-\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2.5em]
 \tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
 \tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
 \tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
@@ -124,9 +124,113 @@ There are two ways I go to work, both involve a two part journey.
     \pagebreak
     \item {
         On average, what is my best option for going to work and how much time do I need?
+
+        \begin{tikzpicture}[every path/.style={->},every child/.style={sibling distance=2.5cm},every node/.style={scale=0.75}]
+            \node[terminator] {Ways to Travel}
+                child {node[process,xshift=-3.75cm] {Cycle}
+                    child {node[process,xshift=-1.5cm] {5 min (90\%)}
+                        child {node[process] {5 min (wait)}
+                            child {node[process] {30 min (20\%)}}
+                            child {node[process] {15 min (50\%)}}}}
+                    child {node[process,xshift=1.5cm] {15 min (10\%)}
+                        child {node[process] {5 min (wait)}
+                            child {node[process] {30 min (20\%)}}
+                            child {node[process] {15 min (80\%)}}}}}
+                child {node[process,xshift=3.75cm] {Drive}
+                    child {node[process] {15 min (50\%)}
+                        child {node[process] {0 min (40\%)}
+                            child {node[process] {10 min}}}
+                        child {node[process] {10 min (60\%)}
+                            child {node[process] {10 min}}}}
+                    child {node[process,xshift=1cm] {20 min (50\%)}
+                        child {node[process,yshift=-1cm,xshift=1cm] {0 min (40\%)}
+                            child {node[process] {10 min}}}
+                        child {node[process] {10 min (60\%)}
+                            child {node[process] {10 min}}}}};
+        \end{tikzpicture}
+
+        To find the most efficient option, we need to try each path and then multiply the number of minutes with the number of the percentages.
+        We can then list them as such:
+        \begin{itemize}
+            \item {
+                \textbf{Cycle}
+                \begin{enumerate}
+                    \item {
+                        First Path
+                        \begin{itemize}
+                            \item $90\% \times 5 = 4.5~minutes$
+                            \item $5~minutes$
+                            \item $20\% \times 30 = 6~minutes$
+                            \item \textbf{Total:} 15.5~minutes
+                        \end{itemize}
+                    }
+                    \item {
+                        Second Path
+                        \begin{itemize}
+                            \item $90\% \times 5 = 4.5~minutes$
+                            \item $5~minutes$
+                            \item $50\% \times 15 = 7.5~minutes$
+                            \item \textbf{Total:} 17~minutes
+                        \end{itemize}
+                    }
+                \end{enumerate}
+            }
+            \item {
+                \textbf{Drive}
+                \begin{enumerate}
+                    \item {
+                        First Path
+                        \begin{itemize}
+                            \item $50\% \times 15 = 7.5~minutes$
+                            \item $40\% \times 0 = 0$
+                            \item 10 minutes
+                            \item \textbf{Total:} 17.5 minutes
+                        \end{itemize}
+                    }
+                    \item {
+                        Second Path
+                        \begin{itemize}
+                            \item $50\% \times 15 = 7.5~minutes$
+                            \item $60\% \times 10 = 6~minutes$
+                            \item 10 minutes
+                            \item \textbf{Total:} 23.5 minutes
+                        \end{itemize}
+                    }
+                    \pagebreak
+                    \item {
+                        Third Path
+                        \begin{itemize}
+                            \item $50\% \times 20 = 10~minutes$
+                            \item $40\% \times 0 = 0~minutes$
+                            \item 10 minutes
+                            \item \textbf{Total:} 20 minutes
+                        \end{itemize}
+                        }
+                        \item {
+                            Fourth Path
+                        \begin{itemize}
+                            \item $50\% \times 20 = 10~minutes$
+                            \item $60\% \times 10 = 6~minutes$
+                            \item 10 minutes
+                            \item \textbf{Total:} 26 minutes
+                        \end{itemize}
+                    }
+                \end{enumerate}
+            }
+        \end{itemize}
+        From the list above, we can conclude that using the bicycle is the fastest and it took 15.5 minutes.
     }
     \item {
         What is the probability that the first trip option takes 40 minutes or more?
+
+        To calculate this, we can look at the branches where the total time is 40 minutes or more and add the probabilities.
+        There are:
+        \begin{itemize}
+            \item 18\% (for 40 minutes)
+            \item 2\% (for 50 minutes)
+            \item \textbf{Total:} 20\%.
+        \end{itemize} 
+        In conclusion, the probability of the first trip option taking 40 minutes or more is 20\%
     }
 \end{enumerate}
 
