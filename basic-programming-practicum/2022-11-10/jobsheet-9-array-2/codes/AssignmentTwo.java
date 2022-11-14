@@ -44,31 +44,40 @@ public class AssignmentTwo {
         }
 
         int chosenMenu;
+
         while (true) {
-            System.out.println("Menu:");
-            System.out.println("1. Display MIN Value");
-            System.out.println("2. Display MIN Value & Amount");
-            System.out.println("3. Array conditions");
-            System.out.print("Choose which menu to open (1-3): ");
-            chosenMenu = input.nextInt();
-            if (chosenMenu > 1 && chosenMenu < 3) {
+            while (true) {
+                System.out.println("Menu:");
+                System.out.println("1. Display MIN Value");
+                System.out.println("2. Display MIN Value & Amount");
+                System.out.println("3. Array conditions");
+                System.out.print("Choose which menu to open (1-3): ");
+                chosenMenu = input.nextInt();
+                if (chosenMenu >= 1 && chosenMenu <= 3) {
+                    break;
+                }
+                System.out.println("Please insert the menu number correctly!");
+            }
+
+            switch (chosenMenu) {
+                case 1:
+                    System.out.printf("The MIN value is: %d\n", minValue);
+                    break;
+                case 2:
+                    System.out.printf("The MIN value is: %d\n", minValue);
+                    System.out.printf("The MIN value amount is: %d\n", minValueAmount);
+                    System.out.printf("The MIN value position is: \n%s\n", minValuePosition);
+                    break;
+                case 3:
+                    System.out.println(isBigNumberFound ? "FOUND" : "NOT FOUND");
+                    break;
+            }
+
+            System.out.print("Do you want to choose another menu? (y/n): ");
+            boolean repeatMenu = input.next().equalsIgnoreCase("y");
+            if (!repeatMenu) {
                 break;
             }
-            System.out.println("Please insert the menu number correctly!");
-        }
-
-        switch (chosenMenu) {
-            case 1:
-                System.out.printf("The MIN value is: %d\n", minValue);
-                break;
-            case 2:
-                System.out.printf("The MIN value is: %d\n", minValue);
-                System.out.printf("The MIN value amount is: %d\n", minValueAmount);
-                System.out.printf("The MIN value position is: \n%s\n", minValuePosition);
-                break;
-            case 3:
-                System.out.println(isBigNumberFound ? "FOUND" : "NOT FOUND");
-                break;
         }
 
         input.close();

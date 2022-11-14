@@ -470,9 +470,7 @@
                         System.out.println("3. Array conditions");
                         System.out.print("Choose which menu to open (1-3): ");
                         chosenMenu = input.nextInt();
-                        if (chosenMenu > 1 && chosenMenu < 3) {
-                            break;
-                        }
+                        if (chosenMenu >= 1 && chosenMenu <= 3) break;
                         System.out.println("Please insert the menu number correctly!");
                     }
 
@@ -501,7 +499,7 @@
         \large{\textbf{Output}}
         \begin{figure}[h]
             \centering
-            \fbox{\includegraphics[width=.65\textwidth]{./images/assignment-two-output.png}}
+            \fbox{\includegraphics[width=.7\textwidth]{./images/assignment-two-output.png}}
             \caption{Assignment 2 output}
         \end{figure}
     }
