@@ -1,0 +1,16 @@
+flowchart TD
+    %% @config(./config.json)
+    handleRemoveRuleStart([handleRemoveRule])
+    removeRulePrompt[/prompt for rule id/]
+    removeRuleExists{rule exists?}
+    removeRuleWarning[/print warning rule doesn't exist/]
+    removeRule[remove selected rule from rules array]
+    removeRuleSuccess[/print success message/]
+    handleRemoveRuleEnd([return true])
+    handleRemoveRuleStart-->removeRulePrompt
+    removeRulePrompt-->removeRuleExists
+    removeRuleExists--no-->removeRuleWarning
+    removeRuleWarning-->removeRulePrompt
+    removeRuleExists--yes-->removeRule
+    removeRule-->removeRuleSuccess
+    removeRuleSuccess-->handleRemoveRuleEnd

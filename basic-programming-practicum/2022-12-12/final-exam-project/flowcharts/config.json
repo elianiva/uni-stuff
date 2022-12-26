@@ -1,0 +1,14 @@
+{
+    "theme": "base",
+    "themeVariables": {
+        "background": "#ffffff",
+        "primaryColor": "#ffffff",
+        "primaryBorderColor": "#242424"
+    },
+    "flowchart": {
+        "nodeSpacing": 0,
+        "rankSpacing": 0,
+        "curve": "basis"
+    },
+    "fontFamily": "Segoe UI"
+}

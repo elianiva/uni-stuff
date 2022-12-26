@@ -117,8 +117,15 @@
             }
         \end{minted}
     }
+    \pagebreak
     \item {
         Compile and run the program
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{./images/greeting-one.png}
+            \caption{Experiment 1 code and output}
+        \end{figure}
     }
 \end{enumerate}
 
@@ -167,6 +174,12 @@
     }
     \item {
         Compile and run the program
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{./images/greeting-two.png}
+            \caption{Experiment 2 code and output}
+        \end{figure}
     }
 \end{enumerate}
 
@@ -204,7 +217,15 @@
             }
         \end{minted}
     }
-    \item Compile and run the program
+    \item {
+        Compile and run the program
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{./images/square.png}
+            \caption{Experiment 3 code and output}
+        \end{figure}
+    }
 \end{enumerate}
 
 \subsection{Experiment 4}
@@ -266,6 +287,12 @@
     }
     \item {
         Compile and run the program.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.75\textwidth]{./images/arithmetic-operation.png}
+            \caption{Experiment 4 code and output}
+        \end{figure}
     }
 \end{enumerate}
 
@@ -303,6 +330,12 @@
     }
     \item {
         Compile and run the program
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{./images/multi-parameter.png}
+            \caption{Experiment 5 code and output}
+        \end{figure}
     }
 \end{enumerate}
 
@@ -377,12 +410,33 @@
     }
     \item {
         Compile and run the two programs (class \texttt{Geometry1} and \texttt{Geometry2})
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.7\textwidth]{./images/geometry-one.png}
+            \caption{Experiment 6 \texttt{Geometry1} code and output}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.7\textwidth]{./images/geometry-two.png}
+            \caption{Experiment 6 \texttt{Geometry2} code and output}
+        \end{figure}
     }
+    \pagebreak
     \item {
         Describe the flow of the program for calculating the area of a rectangle and volume of blocks
         in class Geometry2
 
-        // TODO
+        \begin{itemize}
+            \item The length, width, and height is asked from the user using Scanner
+            \item After inputting those values, it calculates the area using the method \\ \texttt{calculateArea} that has been declared before
+            \item Inside the \texttt{calculateArea}, the width and height is multiplied
+            \item When the area has been calculated, it outputs the value
+            \item Next, the volume is calculated using the \texttt{calculateVolume} method that has been declared before
+            \item Inside the \texttt{calculateVolume} method, it finds the area using \\ \texttt{calculateArea} method and multiply it with the height
+            \item It outputs the volume after it being calculated
+        \end{itemize}
     }
 \end{enumerate}
 
@@ -397,7 +451,14 @@
     \item {
         In Experiment 4, add a function that is used to ensure that the \texttt{value1} and \texttt{value2}
         are at least 0, then call that function in the \texttt{main}!
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{./images/arithmetic-operation-validation.png}
+            \caption{Question 2 code and output}
+        \end{figure}
     }
+    \pagebreak
     \item {
         Explain why the parameter entries in Experiment 5 are written with \texttt{int... a}!
 
@@ -449,8 +510,6 @@
     }
 \end{enumerate}
 
-\pagebreak
-
 \section{Assignment}
 \begin{enumerate}
     \item {
@@ -465,6 +524,7 @@
             \caption{Assignment 1 code and output}
         \end{figure}
     }
+    \pagebreak
     \item {
         Create a class called \texttt{Circle} in which there is a function to calculate the circumference
         of a circle and the area of a circle.
@@ -475,7 +535,6 @@
             \caption{Assignment 2 code and output}
         \end{figure}
     }
-    \pagebreak
     \item {
         Create a program to fill array \texttt{B} with the data type int (10 students' test scores),
         where the input and filling process into the array is carried out in a function. Next, create
@@ -484,7 +543,7 @@
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=\textwidth]{./images/assignment-three.png}
+            \includegraphics[width=.8\textwidth]{./images/assignment-three.png}
             \caption{Assignment 3 code and output}
         \end{figure}
     }

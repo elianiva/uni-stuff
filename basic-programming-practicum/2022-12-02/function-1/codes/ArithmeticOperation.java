@@ -15,10 +15,6 @@ public class ArithmeticOperation {
         return X;
     }
 
-    static boolean validate(int value1, int value2) {
-        return value1 >= 0 && value2 >= 0;
-    }
-
     public static void main(String[] args) {
         int value1, value2;
         Scanner input = new Scanner(System.in);
@@ -26,10 +22,6 @@ public class ArithmeticOperation {
         value1 = input.nextInt();
         System.out.print("Input value 2: ");
         value2 = input.nextInt();
-        if (!validate(value1, value2)) {
-            System.out.println("value 1 and value 2 must be at least 0!");
-            return;
-        }
         int result = substraction(value1, value2);
         System.out.println("The result is " + result);
     }

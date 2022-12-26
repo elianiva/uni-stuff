@@ -1,0 +1,14 @@
+flowchart TD
+    %% @config(./config.json)
+    mainMenuStart([showMainMenu])
+    mainMenuTitle[/output title and menu/]
+    input[/ask which menu to pick/]
+    routeMainMenu[[routeMainMenu]]
+    shouldMainMenuRepeat{shouldContinue?}
+    mainMenuReturn([return false])
+    mainMenuStart-->mainMenuTitle
+    mainMenuTitle-->input
+    input-->routeMainMenu
+    routeMainMenu-->shouldMainMenuRepeat
+    shouldMainMenuRepeat--yes-->mainMenuTitle
+    shouldMainMenuRepeat--no-->mainMenuReturn

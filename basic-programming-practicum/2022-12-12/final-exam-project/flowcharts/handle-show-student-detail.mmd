@@ -1,0 +1,14 @@
+flowchart TD
+    %% @config(./config.json)
+    handleShowDetailStart([handleShow])
+    showDetailPrompt[/prompt for nim/]
+    showDetailExists{student exists?}
+    showDetailWarning[/print warning student doesn't exist/]
+    showDetail[show student detail from students array]
+    handleShowDetailEnd([return true])
+    handleShowDetailStart-->showDetailPrompt
+    showDetailPrompt-->showDetailExists
+    showDetailExists--no-->showDetailWarning
+    showDetailWarning-->showDetailPrompt
+    showDetailExists--yes-->showDetail
+    showDetail-->handleShowDetailEnd

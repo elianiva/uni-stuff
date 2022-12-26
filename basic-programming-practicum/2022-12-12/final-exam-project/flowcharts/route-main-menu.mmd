@@ -1,0 +1,22 @@
+flowchart LR
+    %% @config(./config.json)
+    routeStart([routeMainMenu])
+    mainMenu1{menu == 1}
+    handleShowStudent[[handleShowStudent]]
+    mainMenu2{menu == 2}
+    handleShowRules[[handleShowRules]]
+    mainMenu3{menu == 3}
+    exit[[exit]]
+    invalid[[invalidMenu]]
+    routeEnd([return result of last function call])
+    routeStart-->mainMenu1
+    mainMenu1--yes-->handleShowStudent
+    mainMenu1--no-->mainMenu2
+    mainMenu2--yes-->handleShowRules
+    mainMenu2--no-->mainMenu3
+    mainMenu3--yes-->exit
+    mainMenu3--no-->invalid
+    handleShowStudent -->routeEnd
+    handleShowRules-->routeEnd
+    exit-->routeEnd
+    invalid-->routeEnd

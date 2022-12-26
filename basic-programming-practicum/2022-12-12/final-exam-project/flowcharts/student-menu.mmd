@@ -1,0 +1,14 @@
+flowchart TD
+    %% @config(./config.json)
+    studentMenuStart([handleShowStudents])
+    showStudentMenu[/show list of student related menu/]
+    promptStudent[/ask which menu to pick/]
+    routeStudentMenu[[routeStudentMenu]]
+    routeStudentCondition{shouldContinue?}
+    studentMenuEnd([return true])
+    studentMenuStart-->showStudentMenu
+    showStudentMenu-->promptStudent
+    promptStudent-->routeStudentMenu
+    routeStudentMenu-->routeStudentCondition
+    routeStudentCondition--yes-->showStudentMenu
+    routeStudentCondition--no-->studentMenuEnd

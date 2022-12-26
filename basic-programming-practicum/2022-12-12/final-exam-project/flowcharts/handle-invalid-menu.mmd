@@ -1,0 +1,7 @@
+flowchart TD
+    %% @config(./config.json)
+    handleInvalidMenuStart([handleInvalidMenu])
+    handleInvalidMenuWarning[/print warning that the chosen menu is invalid/]
+    handleInvalidMenuEnd([return true])
+    handleInvalidMenuStart-->handleInvalidMenuWarning
+    handleInvalidMenuWarning-->handleInvalidMenuEnd

@@ -1,0 +1,11 @@
+flowchart TD
+%% @config(./config.json)
+    start([START])
+    prepare{{prepare data and Scanner}}
+    login[[login]]
+    mainMenu[[showMainMenu]]
+    finish([END])
+    start-->prepare
+    prepare-->login
+    login-->mainMenu
+    mainMenu-->finish

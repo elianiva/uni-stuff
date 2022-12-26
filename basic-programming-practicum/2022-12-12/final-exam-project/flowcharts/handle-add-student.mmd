@@ -1,0 +1,16 @@
+flowchart TD
+    %% @config(./config.json)
+    handleAddStudentStart([handleAddStudent])
+    addStudentPrompt[/prompt for student data/]
+    addStudentExists{student already exists?}
+    addStudentWarning[/print warning student already exists/]
+    addStudentAppend[add new student data to students array]
+    addStudentSuccess[/print success message/]
+    handleAddStudentEnd([return true])
+    handleAddStudentStart-->addStudentPrompt
+    addStudentPrompt-->addStudentExists
+    addStudentExists--yes-->addStudentWarning
+    addStudentWarning-->addStudentPrompt
+    addStudentExists--no-->addStudentAppend
+    addStudentAppend-->addStudentSuccess
+    addStudentSuccess-->handleAddStudentEnd

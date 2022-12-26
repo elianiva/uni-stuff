@@ -1,0 +1,16 @@
+flowchart TD
+    %% @config(./config.json)
+    handleResetStudentStart([handleResetStudent])
+    resetStudentPrompt[/prompt for nim/]
+    resetStudentExists{student exists?}
+    resetStudentWarning[/print warning student doesn't exist/]
+    resetStudent[reset student's accumulated violated rules]
+    resetStudentSuccess[/print success message/]
+    handleResetStudentEnd([return true])
+    handleResetStudentStart-->resetStudentPrompt
+    resetStudentPrompt-->resetStudentExists
+    resetStudentExists--no-->resetStudentWarning
+    resetStudentWarning-->resetStudentPrompt
+    resetStudentExists--yes-->resetStudent
+    resetStudent-->resetStudentSuccess
+    resetStudentSuccess-->handleResetStudentEnd

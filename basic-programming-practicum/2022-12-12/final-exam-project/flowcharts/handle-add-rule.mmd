@@ -1,0 +1,16 @@
+flowchart TD
+    %% @config(./config.json)
+    handleAddRuleStart([handleAddRule])
+    addRulePrompt[/prompt for rule data/]
+    addRuleExists{rule already exists?}
+    addRuleWarning[/print warning rule already exists/]
+    addRuleAppend[add new rule data to rules array]
+    addRuleSuccess[/print success message/]
+    handleAddRuleEnd([return true])
+    handleAddRuleStart-->addRulePrompt
+    addRulePrompt-->addRuleExists
+    addRuleExists--yes-->addRuleWarning
+    addRuleWarning-->addRulePrompt
+    addRuleExists--no-->addRuleAppend
+    addRuleAppend-->addRuleSuccess
+    addRuleSuccess-->handleAddRuleEnd

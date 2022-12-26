@@ -1,0 +1,47 @@
+flowchart LR
+    %% @config(./config.json)
+    studentRouteStart([routeStudentMenu])
+    studentRouteMenu1{menu == 1}
+    studentRouteMenu1Choice[[handleShowStudentDetail]]
+    studentRouteMenu2{menu == 2}
+    studentRouteMenu2Choice[[handleAddViolatedRuleToStudent]]
+    studentRouteMenu3{menu == 3}
+    studentRouteMenu3Choice[[handleAddStudent]]
+    studentRouteMenu4{menu == 4}
+    studentRouteMenu4Choice[[handleEditStudent]]
+    studentRouteMenu5{menu == 5}
+    studentRouteMenu5Choice[[handleRemoveStudent]]
+    studentRouteMenu6{menu == 6}
+    studentRouteMenu6Choice[[handleResetStudent]]
+    studentRouteMenu7{menu == 7}
+    studentRouteMenu7Choice[[back]]
+    studentRouteMenu8{menu == 8}
+    studentRouteMenu8Choice[[exit]]
+    studentRouteMenuFallback[[invalidMenu]]
+    studentRouteEnd([return true])
+    studentRouteStart-->studentRouteMenu1
+    studentRouteMenu1--yes-->studentRouteMenu1Choice
+    studentRouteMenu2--yes-->studentRouteMenu2Choice
+    studentRouteMenu3--yes-->studentRouteMenu3Choice
+    studentRouteMenu4--yes-->studentRouteMenu4Choice
+    studentRouteMenu5--yes-->studentRouteMenu5Choice
+    studentRouteMenu6--yes-->studentRouteMenu6Choice
+    studentRouteMenu7--yes-->studentRouteMenu7Choice
+    studentRouteMenu8--yes-->studentRouteMenu8Choice
+    studentRouteMenu1--no-->studentRouteMenu2
+    studentRouteMenu2--no-->studentRouteMenu3
+    studentRouteMenu3--no-->studentRouteMenu4
+    studentRouteMenu4--no-->studentRouteMenu5
+    studentRouteMenu5--no-->studentRouteMenu6
+    studentRouteMenu6--no-->studentRouteMenu7
+    studentRouteMenu7--no-->studentRouteMenu8
+    studentRouteMenu8--no-->studentRouteMenuFallback
+    studentRouteMenu1Choice-->studentRouteEnd
+    studentRouteMenu2Choice-->studentRouteEnd
+    studentRouteMenu3Choice-->studentRouteEnd
+    studentRouteMenu4Choice-->studentRouteEnd
+    studentRouteMenu5Choice-->studentRouteEnd
+    studentRouteMenu6Choice-->studentRouteEnd
+    studentRouteMenu7Choice-->studentRouteEnd
+    studentRouteMenu8Choice-->studentRouteEnd
+    studentRouteMenuFallback-->studentRouteEnd

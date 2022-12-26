@@ -1,0 +1,13 @@
+flowchart TD
+    %% @config(./config.json)
+    ruleMenuStart([handleShowRules])
+    showRuleMenu[/show list of rule related menu/]
+    promptRule[/ask which menu to pick/]
+    routeRuleMenu[[routeRuleMenu]]
+    routeRuleMenu{shouldContinue?}
+    ruleMenuEnd([return true])
+    ruleMenuStart-->showRuleMenu
+    showRuleMenu-->promptRule
+    promptRule-->routeRuleMenu
+    routeRuleMenu--yes-->showRuleMenu
+    routeRuleMenu--no-->ruleMenuEnd

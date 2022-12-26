@@ -1,0 +1,18 @@
+flowchart TD
+    %% @config(./config.json)
+    handleEditRuleStart([handleEditRule])
+    editRulePrompt[/prompt for rule id/]
+    editRuleExists{rule exists?}
+    editRuleWarning[/print warning rule doesn't exist/]
+    editRuleInput[/prompt for new rule data/]
+    editRuleOverride[override rule data that has the same id from the array]
+    editRuleSuccess[/print success message/]
+    handleEditRuleEnd([return true])
+    handleEditRuleStart-->editRulePrompt
+    editRulePrompt-->editRuleExists
+    editRuleExists--no-->editRuleWarning
+    editRuleWarning-->editRulePrompt
+    editRuleExists--yes-->editRuleInput
+    editRuleInput-->editRuleOverride
+    editRuleOverride-->editRuleSuccess
+    editRuleSuccess-->handleEditRuleEnd

@@ -1,0 +1,7 @@
+flowchart TD
+    %% @config(./config.json)
+    exitStart([exit])
+    exitProcess["System.exit(0)"]
+    exitEnd([return false])
+    exitStart-->exitProcess
+    exitProcess-->exitEnd

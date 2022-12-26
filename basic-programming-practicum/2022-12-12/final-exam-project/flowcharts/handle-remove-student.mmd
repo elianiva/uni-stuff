@@ -1,0 +1,16 @@
+flowchart TD
+    %% @config(./config.json)
+    handleRemoveStudentStart([handleRemoveStudent])
+    removeStudentPrompt[/prompt for nim/]
+    removeStudentExists{student exists?}
+    removeStudentWarning[/print warning student doesn't exist/]
+    removeStudent[remove selected student from students array]
+    removeStudentSuccess[/print success message/]
+    handleRemoveStudentEnd([return true])
+    handleRemoveStudentStart-->removeStudentPrompt
+    removeStudentPrompt-->removeStudentExists
+    removeStudentExists--no-->removeStudentWarning
+    removeStudentWarning-->removeStudentPrompt
+    removeStudentExists--yes-->removeStudent
+    removeStudent-->removeStudentSuccess
+    removeStudentSuccess-->handleRemoveStudentEnd

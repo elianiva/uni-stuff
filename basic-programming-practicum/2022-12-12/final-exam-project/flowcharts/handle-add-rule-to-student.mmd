@@ -1,0 +1,40 @@
+flowchart TD
+    %% @config(./config.json)
+    handleAddRuleToStudentStart([handleAddViolatedRuleToStudent])
+    addRuleToStudentPrompt[/prompt for student nim/]
+    addRuleToStudentExists{student exists?}
+    addRuleToStudentWarning[/print warning student doesn't exist/]
+    addRuleToStudentPrompt2[/prompt for rule id/]
+    addRuleToStudentExists2{rule exists?}
+    addRuleToStudentWarning2[/print warning rule doesn't exist/]
+    addRuleToStudentCheckCurrent{current violated rules \n are more than three}
+    addRuleToStudentWarning3[/print warning student needs to be reset/]
+    addRuleToStudentShouldUpgrade{current violated \n rule is lower \n than the selected rule}
+    addRuleToStudentShouldUpgrade2{last 3 violated \n rules are the same}
+    addRuleToStudentUpgrade[add rule and upgraded punishment]
+    addRuleToStudentAppend[add rule and punishment]
+    addRuleToStudentIncrement[increment student's violation count]
+    addRuleToStudentUpdate[apply the changes to the student]
+    addRuleToStudentSuccess[/print success message/]
+    handleAddRuleToStudentEnd([return true])
+    handleAddRuleToStudentStart-->addRuleToStudentPrompt
+    addRuleToStudentPrompt-->addRuleToStudentExists
+    addRuleToStudentExists--no-->addRuleToStudentWarning
+    addRuleToStudentWarning-->addRuleToStudentPrompt
+    addRuleToStudentExists--yes-->addRuleToStudentPrompt2
+    addRuleToStudentPrompt2-->addRuleToStudentExists2
+    addRuleToStudentExists2--no-->addRuleToStudentWarning2
+    addRuleToStudentWarning2-->addRuleToStudentPrompt2
+    addRuleToStudentExists2--yes-->addRuleToStudentCheckCurrent
+    addRuleToStudentCheckCurrent--yes-->addRuleToStudentWarning3
+    addRuleToStudentWarning3-->handleAddRuleToStudentEnd
+    addRuleToStudentCheckCurrent--no-->addRuleToStudentShouldUpgrade
+    addRuleToStudentShouldUpgrade--yes-->addRuleToStudentShouldUpgrade2
+    addRuleToStudentShouldUpgrade--no-->addRuleToStudentAppend
+    addRuleToStudentShouldUpgrade2--yes-->addRuleToStudentUpgrade
+    addRuleToStudentShouldUpgrade2--no-->addRuleToStudentAppend
+    addRuleToStudentUpgrade-->addRuleToStudentIncrement
+    addRuleToStudentAppend-->addRuleToStudentIncrement
+    addRuleToStudentIncrement-->addRuleToStudentUpdate
+    addRuleToStudentUpdate-->addRuleToStudentSuccess
+    addRuleToStudentSuccess-->handleAddRuleToStudentEnd 

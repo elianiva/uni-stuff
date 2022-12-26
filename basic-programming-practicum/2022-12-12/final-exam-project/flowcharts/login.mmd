@@ -1,0 +1,10 @@
+flowchart TD
+%% @config(./config.json)
+    loginStart([login])
+    loginInput[/input username and password/]
+    loginSuccess{"username.equals(#quot;admin#quot;) \n && \n password.equals(#quot;admin123#quot;)"}
+    loginEnd([return])
+    loginStart-->loginInput
+    loginInput-->loginSuccess
+    loginSuccess--no-->loginInput
+    loginSuccess--yes-->loginEnd

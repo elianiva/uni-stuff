@@ -1,0 +1,32 @@
+flowchart LR
+    %% @config(./config.json)
+    ruleRouteStart([routeRuleMenu])
+    ruleMenu1{menu == 1}
+    handleAddRule[[handleAddRule]]
+    ruleMenu2{menu == 2}
+    handleEditRule[[handleEditRule]]
+    ruleMenu3{menu == 3}
+    handleRemoveRule[[handleRemoveRule]]
+    ruleMenu4{menu == 4}
+    ruleBack[[back]]
+    ruleMenu5{menu == 5}
+    ruleExit[[exit]]
+    ruleInvalid[[invalidMenu]]
+    ruleRouteEnd([return result of last function call])
+    ruleRouteStart-->ruleMenu1
+    ruleMenu1--yes-->handleAddRule
+    ruleMenu1--no-->ruleMenu2
+    ruleMenu2--yes-->handleEditRule
+    ruleMenu2--no-->ruleMenu3
+    ruleMenu3--yes-->handleRemoveRule
+    ruleMenu3--no-->ruleMenu4
+    ruleMenu4--yes-->ruleBack
+    ruleMenu4--no-->ruleMenu5
+    ruleMenu5--yes-->ruleExit
+    ruleMenu5--no-->ruleInvalid
+    ruleBack-->ruleRouteEnd
+    ruleExit-->ruleRouteEnd
+    handleAddRule-->ruleRouteEnd
+    handleEditRule-->ruleRouteEnd
+    handleRemoveRule-->ruleRouteEnd
+    ruleInvalid-->ruleRouteEnd

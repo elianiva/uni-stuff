@@ -1,0 +1,18 @@
+flowchart TD
+    %% @config(./config.json)
+    handleEditStudentStart([handleEditStudent])
+    editStudentPrompt[/prompt for nim/]
+    editStudentExists{student exists?}
+    editStudentWarning[/print warning student doesn't exist/]
+    editStudentInput[/prompt for new student data/]
+    editStudentOverride[override student data that has the same nim from the array]
+    editStudentSuccess[/print success message/]
+    handleEditStudentEnd([return true])
+    handleEditStudentStart-->editStudentPrompt
+    editStudentPrompt-->editStudentExists
+    editStudentExists--no-->editStudentWarning
+    editStudentWarning-->editStudentPrompt
+    editStudentExists--yes-->editStudentInput
+    editStudentInput-->editStudentOverride
+    editStudentOverride-->editStudentSuccess
+    editStudentSuccess-->handleEditStudentEnd
