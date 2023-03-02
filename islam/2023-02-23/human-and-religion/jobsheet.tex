@@ -1,0 +1,121 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Islam}
+\newcommand{\vSubtitle}{Human and Religion}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{1i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Task}
+\begin{enumerate}
+    \item {
+        Why do humans need religion?
+
+        \begin{itemize}
+            \item Religion is used as natural needs for humans and it mentions as human freedom. 
+            \item It also used as a medicine for nervousness.
+            \item Religion also used to get happiness from Allah’s pleasure
+        \end{itemize}
+    }
+    \item {
+        Symptoms of mental ilness?
+
+        \begin{itemize}
+            \item Got depressed
+            \item Starts to questioning about life
+            \item Questioning about Allah’s existance
+            \item Gets angry easily
+            \item Starting to forget things
+            \item Worried about everything
+            \item Frustrated with life
+            \item etc.
+        \end{itemize}
+    }
+    \item {
+        What is the relationship between Islam and modernity ?
+
+        \begin{itemize}
+            \item Islam is growing as the future approach, modernity is a Sunatullah that must be going through.
+            \item Islam function as in modernity is as to instruct us and placing our foundation of faith.
+            \item It also give us motivation to always pray, Providing inspiration, motivation, and stimulation so that all human potential is activated
+        \end{itemize}
+    }
+\end{enumerate}
+
+\end{document}
+
