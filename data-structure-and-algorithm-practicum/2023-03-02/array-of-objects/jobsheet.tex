@@ -240,6 +240,7 @@ Compile the code and see the result if it matches with the following image.
         Yes, we can have multiple constructors in a single class as long as they have different signatures.
         It's called "overloading"
     }
+    \newpage
     \item {
         Create a Triangle class
 
@@ -255,11 +256,300 @@ Compile the code and see the result if it matches with the following image.
             public class Triangle {
                 public int base;
                 public int height;
+
+                public Triangle(int a, int t) {
+                    this.base = a;
+                    this.height = t;
+                }
+
+                public double calculateArea() {
+                    return (double)(base/2)*height;
+                }
+
+                public double calculatePerimeter() {
+                    double side = Math.sqrt(Math.pow(base, 2) + Math.pow(height, 2));
+                    return side + base + height;
+                }
             }
         \end{minted}
     }
-\end{enumerate}
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+                public class TriangleMain {
+                    public static void main(String[] args) {
+                        Triangle[] triangles = new Triangle[4];
 
+                        triangles[0] = new Triangle(10, 4);
+                        triangles[1] = new Triangle(20, 10);
+                        triangles[2] = new Triangle(15, 6);
+                        triangles[3] = new Triangle(25, 10);
+                    }
+                }
+        \end{minted}
+    }
+    \newpage
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class TriangleMain {
+                public static void main(String[] args) {
+                    Triangle[] triangles = new Triangle[4];
+
+                    triangles[0] = new Triangle(10, 4);
+                    triangles[1] = new Triangle(20, 10);
+                    triangles[2] = new Triangle(15, 6);
+                    triangles[3] = new Triangle(25, 10);
+
+                    for (int i = 0; i < triangles.length; i++) {
+                        Triangle triangle = triangles[i];
+                        System.out.printf(
+                                "%d. Area: %.2f | Perimeter: %.2f\n",
+                                i + 1,
+                                triangle.calculateArea(),
+                                triangle.calculatePerimeter());
+                    }
+                }
+            }
+        \end{minted}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=13cm]{./images/triangles-output.png}
+        \end{figure}
+    }
+\end{enumerate}
+\newpage
+
+\subsection{Practice}
+\begin{enumerate}
+    \item {
+        \textbf{Cube.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Cube {
+                public int vertice;
+
+                public double calculateVolume() {
+                    return Math.pow(vertice, 3);
+                }
+
+                public double calculateSurfaceArea() {
+                    return vertice * vertice * 12;
+                }
+            }
+        \end{minted}
+
+        \newpage
+
+        \textbf{CubeMain.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            import java.util.Scanner;
+
+            public class CubeMain {
+                public static void main(String[] args) {
+                    Scanner input = new Scanner(System.in);
+
+                    System.out.print("Insert the limit: ");
+                    int limit = input.nextInt();
+                    Cube[] cubes = new Cube[limit];
+
+                    for (int i = 0; i < cubes.length; i++) {
+                        cubes[i] = new Cube();
+                        System.out.printf("%d. Insert the vertice length: ", i + 1);
+                        cubes[i].vertice = input.nextInt();
+                    }
+
+                    for (int i = 0; i < cubes.length; i++) {
+                        System.out.printf(
+                                "%d. Surface Area: %.2f | Volume: %.2f\n",
+                                i + 1,
+                                cubes[i].calculateSurfaceArea(),
+                                cubes[i].calculateVolume()
+                        );
+                    }
+                }
+            }
+        \end{minted}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=13cm]{./images/3d-shapes.png}
+        \end{figure}
+    }
+    \newpage
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            import java.util.Scanner;
+
+            public class LandMain {
+                public static void main(String[] args) {
+                    Scanner input = new Scanner(System.in);
+
+                    System.out.print("How many lands? ");
+                    int limit = input.nextInt();
+
+                    Land[] lands = new Land[limit];
+                    for (int i = 0; i < lands.length; i++) {
+                        lands[i] = new Land();
+                        System.out.printf("Land %d\n", i + 1);
+                        System.out.print("Length: ");
+                        lands[i].length = input.nextInt();
+                        System.out.print("Width: ");
+                        lands[i].width = input.nextInt();
+                    }
+
+                    for (int i = 0; i < lands.length; i++) {
+                        System.out.printf(
+                            "Land Area %d: %.2f\n", 
+                            i + 1, lands[i].calculateArea()
+                        );
+                    }
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            import java.util.Scanner;
+
+            public class LandMain {
+                static void printWidestArea(Land[] lands) {
+                    int widestIndex = 0;
+                    for (int i = 1; i < lands.length; i++) {
+                        if (lands[i].calculateArea() > lands[widestIndex].calculateArea()) {
+                            widestIndex = i;
+                        }
+                    }
+                    System.out.printf("The widest land is Land %d", widestIndex);
+                }
+                
+                public static void main(String[] args) {
+                    Scanner input = new Scanner(System.in);
+
+                    System.out.print("How many lands? ");
+                    int limit = input.nextInt();
+
+                    Land[] lands = new Land[limit];
+                    for (int i = 0; i < lands.length; i++) {
+                        lands[i] = new Land();
+                        System.out.printf("Land %d\n", i + 1);
+                        System.out.print("Length: ");
+                        lands[i].length = input.nextInt();
+                        System.out.print("Width: ");
+                        lands[i].width = input.nextInt();
+                    }
+
+                    for (int i = 0; i < lands.length; i++) {
+                        System.out.printf("Land Area %d: %.2f\n", i + 1, lands[i].calculateArea());
+                    }
+
+                    System.out.println();
+                    printWidestArea(lands);
+                }
+            }
+
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Student {
+                public String name;
+                public String nim;
+                public char gender;
+                public double ipk;
+            }
+        \end{minted}
+
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            import java.util.Scanner;
+
+            public class StudentMain {
+                static void printAverageScore(Student[] students) {
+                    double total = 0;
+                    for (Student student : students) {
+                        total += student.ipk;
+                    }
+                    System.out.printf("Average IPK of all students : %.2f", total / students.length);
+                }
+
+                public static void main(String[] args) {
+                    Scanner input = new Scanner(System.in);
+
+                    System.out.println("Insert the limit: ");
+                    int limit = input.nextInt();
+                    Student[] students = new Student[limit];
+
+                    for (int i = 0; i < students.length; i++) {
+                        System.out.print("Insert name: ");
+                        students[i].name = input.next();
+                        System.out.print("Insert nim: ");
+                        students[i].nim = input.next();
+                        System.out.print("Insert gender: ");
+                        students[i].gender = input.next().charAt(0);
+                        System.out.print("Insert ipk: ");
+                        students[i].ipk = input.nextDouble();
+                    }
+
+                    for (int i = 0; i < students.length; i++) {
+                        System.out.printf(
+                                "Student %d\nname : %s\nnim : %s\ngender : %c\nIPK score : %.2f\n\n",
+                                i + 1,
+                                students[i].name,
+                                students[i].nim,
+                                students[i].gender,
+                                students[i].ipk
+                        );
+                    }
+                }
+            }
+
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            import java.util.Scanner;
+
+            public class StudentMain {
+                static void printAverageScore(Student[] students) {
+                    double total = 0;
+                    for (Student student : students) {
+                        total += student.ipk;
+                    }
+                    System.out.printf("Average IPK of all students : %.2f", total / students.length);
+                }
+
+                public static void main(String[] args) {
+                    Scanner input = new Scanner(System.in);
+
+                    System.out.println("Insert the limit: ");
+                    int limit = input.nextInt();
+                    Student[] students = new Student[limit];
+
+                    for (int i = 0; i < students.length; i++) {
+                        System.out.print("Insert name: ");
+                        students[i].name = input.next();
+                        System.out.print("Insert nim: ");
+                        students[i].nim = input.next();
+                        System.out.print("Insert gender: ");
+                        students[i].gender = input.next().charAt(0);
+                        System.out.print("Insert ipk: ");
+                        students[i].ipk = input.nextDouble();
+                    }
+
+                    for (int i = 0; i < students.length; i++) {
+                        System.out.printf(
+                                "Student %d\nname : %s\nnim : %s\ngender : %c\nIPK score : %.2f\n\n",
+                                i + 1,
+                                students[i].name,
+                                students[i].nim,
+                                students[i].gender,
+                                students[i].ipk
+                        );
+                    }
+                }
+            }
+
+        \end{minted}
+    }
+\end{enumerate}
 
 \end{document}
 
