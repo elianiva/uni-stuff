@@ -280,7 +280,136 @@
             \item Total price
         \end{itemize}
 
-        
+        \textbf{Code}
+
+        \begin{itemize}
+            \item {
+                \texttt{Receipt.java}
+
+                \begin{minted}[autogobble,fontsize=\small]{java}
+                    public class Receipt {
+                        String transactionId;
+                        String date;
+                        int quantity;
+                        int totalPrice;
+
+                        public Receipt(String transactionId, String date, int quantity, int totalPrice) {
+                            this.transactionId = transactionId;
+                            this.date = date;
+                            this.quantity = quantity;
+                            this.totalPrice = totalPrice;
+                        }
+                    }
+                \end{minted}
+            }
+            \item {
+                \texttt{ReceiptStack.java}
+
+                \begin{minted}[autogobble,fontsize=\small]{java}
+                    public class ReceiptStack {
+                        int size;
+                        int top;
+                        Receipt[] data;
+
+                        public ReceiptStack(int size) {
+                            this.size = size;
+                            data = new Receipt[size];
+                            top = -1;
+                        }
+
+                        public boolean isEmpty() {
+                            return top == -1;
+                        }
+
+                        public boolean isFull() {
+                            return top == (size - 1);
+                        }
+
+                        public void push(Receipt book) {
+                            if (isFull()) {
+                                System.out.println("Stack is full");
+                                return;
+                            }
+
+                            top++;
+                            data[top] = book;
+                        }
+
+                        public void pop() {
+                            if (isEmpty()) {
+                                System.out.println("Stack is empty");
+                                return;
+                            }
+
+                            Receipt x = data[top];
+                            top--;
+                            System.out.println("Remove data: " + x.transactionId + " " + x.date + " " + x.quantity + " " + x.totalPrice);
+                        }
+
+                        public void peek() {
+                            System.out.println("Top element: " + data[top]);
+                        }
+
+                        public void print() {
+                            System.out.println("Stack content: ");
+                            for (int i = top; i > -1; i--) {
+                                System.out.println(data[i].transactionId + " " + data[i].date + " " + data[i].quantity + " " + data[i].totalPrice);
+                            }
+                            System.out.println();
+                        }
+
+                        public void clear() {
+                            if (isEmpty()) {
+                                System.out.println("Failed! Stack is empty");
+                                return;
+                            }
+
+                            top = -1;
+                            System.out.println("Stack is now empty");
+                        }
+                    }
+                \end{minted}
+            }            
+            \item {
+                \texttt{ReceiptMain.java}
+
+                \begin{minted}[autogobble,fontsize=\small]{java}
+                    public class ReceiptMain {
+                        public static void main(String[] args) {
+                            ReceiptStack receiptStack = new ReceiptStack(10);
+
+                            // adding 8 receipts
+                            receiptStack.push(new Receipt("T001", "01-02-2022", 1, 2000));
+                            receiptStack.push(new Receipt("T002", "05-02-2022", 2, 12000));
+                            receiptStack.push(new Receipt("T003", "07-03-2022", 3, 9000));
+                            receiptStack.push(new Receipt("T004", "09-04-2022", 7, 8000));
+                            receiptStack.push(new Receipt("T005", "11-04-2022", 5, 4500));
+                            receiptStack.push(new Receipt("T006", "12-05-2022", 4, 15000));
+                            receiptStack.push(new Receipt("T007", "14-05-2022", 6, 7000));
+                            receiptStack.push(new Receipt("T008", "24-07-2022", 9, 8200));
+
+                            // display items
+                            receiptStack.print();
+
+                            // pop 5 receipts
+                            for (int i = 0; i < 5; i++) {
+                                receiptStack.pop();
+                            }
+                            System.out.println();
+
+                            // display receipts
+                            receiptStack.print();
+                        }
+                    }
+                \end{minted}
+            }
+        \end{itemize}
+        \pagebreak
+        \textbf{Output}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.6\textwidth]{./images/assignment-output.png}
+        \end{figure}
     }
 \end{enumerate}
 
