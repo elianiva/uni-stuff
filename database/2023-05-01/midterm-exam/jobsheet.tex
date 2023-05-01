@@ -103,7 +103,7 @@
 
         \pagebreak
 
-        \Large{\textbf{Query Steps}}
+        \large{\textbf{Query Steps}}
         \begin{itemize}
             \item {
                 Create the database and use it as the default schema.
@@ -205,7 +205,67 @@
     }
 \end{enumerate}
 
+\pagebreak
+
 \section{Application}
+\begin{enumerate}[label=\Alph*.]
+    \item {
+        \large{\textbf{DDL Query}}
+
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            CREATE TABLE EMPLOYEE
+            (
+                Id      INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                Fname   VARCHAR(255) NOT NULL,
+                Lname   VARCHAR(255) NOT NULL,
+                Ssn     CHAR(9)      NOT NULL,
+                BDate   DATETIME     NOT NULL,
+                Address VARCHAR(255) NOT NULL,
+                Salary  INT          NOT NULL,
+                Dno     INT          NOT NULL
+            );
+
+            CREATE TABLE PROJECT
+            (
+                Id        INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                Pname     VARCHAR(255) NOT NULL,
+                Plocation VARCHAR(255) NOT NULL,
+                Pnumber   INT          NOT NULL,
+                Dnum      INT          NOT NULL
+            );
+
+            CREATE TABLE DEPENDENT
+            (
+                Id             INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                Essn           CHAR(9)      NOT NULL,
+                Dependent_name VARCHAR(255) NOT NULL,
+                Relationship   ENUM ('Daughter', 'Spouse', 'Son')
+            );
+
+            CREATE TABLE DEPARTMENT
+            (
+                Id             INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                Dname          VARCHAR(255) NOT NULL,
+                Dnumber        INT          NOT NULL,
+                Mgr_ssn        CHAR(9)      NOT NULL,
+                Mgr_start_date DATETIME     NOT NULL
+            );
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \large{\textbf{Query Result}}
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\textwidth]{./images/db_tables.png}
+            \caption{The result of the DDL queries above}
+        \end{figure}
+    }
+\end{enumerate}
+
+\subsection{Questions}
+
 \begin{enumerate}[label=\Alph*.]
     \item {
         Create the SQL command to satisfy the following queries. Write at the space provided.
@@ -217,13 +277,24 @@
                 \begin{minted}[autogobble,fontsize=\small]{sql}
                 SELECT * FROM EMPLOYEE WHERE Fname='John' AND Lname='Smith';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.7\textwidth]{./images/output_1.png}
+                \end{figure}
             }
+            \pagebreak
             \item {
                 What department started on 5 April, 1998?
 
                 \begin{minted}[autogobble,fontsize=\small]{sql}
                 SELECT Dname FROM DEPARTMENT WHERE Mgr_start_date='1988-04-05';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.7\textwidth]{./images/output_2.png}
+                \end{figure}
             }   
             \item {
                 Where does James Borg lives?
@@ -231,6 +302,11 @@
                 \begin{minted}[autogobble,fontsize=\small]{sql}
                 SELECT Address FROM EMPLOYEE WHERE Fname='James' AND Lname='Borg';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.7\textwidth]{./images/output_3.png}
+                \end{figure}
             }
             \item {
                 Who are the spouses of the employees?
@@ -238,6 +314,11 @@
                 \begin{minted}[autogobble,fontsize=\small]{sql}
                 SELECT Dependent_name FROM DEPENDENT WHERE Relationship='Spouse';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.7\textwidth]{./images/output_4.png}
+                \end{figure}
             }
             \item {
                 What is the project located at Sugarland?
@@ -245,9 +326,15 @@
                 \begin{minted}[autogobble,fontsize=\small]{sql}
                 SELECT Pname FROM PROJECT WHERE Plocation='Sugarland';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.7\textwidth]{./images/output_5.png}
+                \end{figure}
             }
         \end{enumerate}
     }
+    \pagebreak
     \item {
         Create the SQL command to satisfy the following queries connecting different tables.
         \begin{enumerate}[label={\arabic*.}]
@@ -263,6 +350,11 @@
                 ON DEPARTMENT.Mgr_ssn=EMPLOYEE.Ssn
                 WHERE Dname='Research';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.8\textwidth]{./images/output_6.png}
+                \end{figure}
             }
             \item {
                 Who are the employees that work on project newbenefits?
@@ -274,7 +366,13 @@
                 JOIN EMPLOYEE ON PROJECT.Dnum=EMPLOYEE.Dno
                 WHERE Pname='Newbenefits';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.8\textwidth]{./images/output_7.png}
+                \end{figure}
             }
+            \pagebreak
             \item {
                 Who are dependents of Franklin Wong?
 
@@ -286,34 +384,50 @@
                 ON EMPLOYEE.Ssn=DEPENDENT.Essn
                 WHERE Fname='Franklin' AND Lname='Wong';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.8\textwidth]{./images/output_8.png}
+                \end{figure}
             }
             \item {
                 Who are the dependents of employees who're assigned to project 'Computerization'?
 
                 \begin{minted}[autogobble,fontsize=\small]{sql}
-                    SELECT
-                        Dependent_name
-                    FROM DEPENDENT
-                    JOIN EMPLOYEE
-                    ON DEPENDENT.Essn=EMPLOYEE.Ssn
-                    JOIN PROJECT
-                    ON PROJECT.Dnum=EMPLOYEE.Dno
-                    WHERE Pname='Computerization';
+                SELECT
+                    Dependent_name
+                FROM DEPENDENT
+                JOIN EMPLOYEE
+                ON DEPENDENT.Essn=EMPLOYEE.Ssn
+                JOIN PROJECT
+                ON PROJECT.Dnum=EMPLOYEE.Dno
+                WHERE Pname='Computerization';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.8\textwidth]{./images/output_9.png}
+                \end{figure}
             }
+            \pagebreak
             \item {
                 In what department do employees belong, who's dependent are their sons?
 
                 \begin{minted}[autogobble,fontsize=\small]{sql}
-                    SELECT
-                        Dname
-                    FROM DEPARTMENT
-                    JOIN EMPLOYEE
-                    ON DEPARTMENT.Dnumber=EMPLOYEE.Dno
-                    JOIN DEPENDENT
-                    ON DEPENDENT.Essn=EMPLOYEE.Ssn
-                    WHERE Relationship='Son';
+                SELECT
+                    Dname
+                FROM DEPARTMENT
+                JOIN EMPLOYEE
+                ON DEPARTMENT.Dnumber=EMPLOYEE.Dno
+                JOIN DEPENDENT
+                ON DEPENDENT.Essn=EMPLOYEE.Ssn
+                WHERE Relationship='Son';
                 \end{minted}
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[width=.8\textwidth]{./images/output_10.png}
+                \end{figure}
             }
         \end{enumerate}
     }
