@@ -103,6 +103,14 @@
         then we should back to the beginning of the array, otherwise we'll get an array index out of bound exception
     }
     \item {
+        Observe \texttt{enqueue()} method, which line of code indicates that the new data will be stored in last position
+        of the queue?
+
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            Q[rear] = data;
+        \end{minted}
+    }
+    \item {
         Observe \texttt{dequeue()} method, which line of code indicates that the data is removed in the first
         position of the queue?
 
@@ -182,8 +190,6 @@
     }
     \item {
         Show the program code used for displaying the data retrieved / removed from the queue!
-
-        \pagebreak
 
         It's in the second branch of the switch case as shown below:
 
@@ -317,8 +323,6 @@
             \item {
                 \texttt{printStudents()} method is used for displaying a student data in specified position in a queue
             }
-
-            \pagebreak
 
             \large{\textbf{Code}}
             \begin{itemize}
