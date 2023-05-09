@@ -201,7 +201,13 @@
         \begin{minted}[autogobble,fontsize=\small]{java}
             public void peekRear() {
                 if (!isEmpty()) {
-                    System.out.println("The last element : " + Q[rear]);
+                    System.out.println("The last element : " +
+                            Q[rear].name + " " +
+                            Q[rear].cityOrigin + " " +
+                            Q[rear].cityDestination + " " +
+                            Q[rear].ticketAmount + " " +
+                            Q[rear].price
+                    );
                 } else {
                     System.out.println("Queue is still empty");
                 }
@@ -235,7 +241,10 @@
     \item {
         Ensure that the \texttt{peekRear()} function can be executed inside the program
 
-        // TODO: add screenshot
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{./images/peek_rear_output.png}
+        \end{figure}
     }
 \end{enumerate}
 
@@ -243,6 +252,9 @@
 \begin{enumerate}
     \item {
         Add these 2 methods in \texttt{Queue} class in $1^{st}$ practicum
+
+        The question is ambiguous as there are no methods listed to add to the program.
+        So, I'm stuck.
     }
     \item {
         Make a queue program for students when they need the signs for their KRS by the DPA.
@@ -279,8 +291,6 @@
             \end{class}
         \end{tikzpicture}
 
-        \pagebreak
-
         Notes:
         \begin{itemize}
             \item {
@@ -307,6 +317,198 @@
             \item {
                 \texttt{printStudents()} method is used for displaying a student data in specified position in a queue
             }
+
+            \pagebreak
+
+            \large{\textbf{Code}}
+            \begin{itemize}
+                \item {
+                    \textbf{Student.java}
+
+                    \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+                        public class Student {
+                            String nim;
+                            String name;
+                            int classNumber;
+                            double gpa;
+
+                            public Student(String nim, String name, int classNumber, double gpa) {
+                                this.nim = nim;
+                                this.name = name;
+                                this.classNumber = classNumber;
+                                this.gpa = gpa;
+                            }
+                        }
+                    \end{minted}
+                }
+                \item {
+                    \textbf{StudentQueue.java}
+
+                    \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+                        public class StudentQueue {
+                            int max;
+                            int size;
+                            int front;
+                            int rear;
+                            Student[] Q;
+
+                            public StudentQueue(int n) {
+                                max = n;
+                                create();
+                            }
+
+                            public void create() {
+                                Q = new Student[max];
+                                size = 0;
+                                front = rear = -1;
+                            }
+
+                            public boolean isEmpty() {
+                                return size == 0;
+                            }
+
+                            public boolean isFull() {
+                                return size == max;
+                            }
+
+                            public void peek() {
+                                if (!isEmpty()) {
+                                    System.out.println(
+                                        "The first element : " + 
+                                        Q[front].nim + " " + 
+                                        Q[front].name + " " + 
+                                        Q[front].classNumber + " " + 
+                                        Q[front].gpa
+                                    );
+                                } else {
+                                    System.out.println("Queue is still empty");
+                                }
+                            }
+
+                            public void peekRear() {
+                                if (!isEmpty()) {
+                                    System.out.println("The last element : " + 
+                                        Q[rear].nim + " " + 
+                                        Q[rear].name + " " + 
+                                        Q[rear].classNumber + " " + 
+                                        Q[rear].gpa
+                                    );
+                                } else {
+                                    System.out.println("Queue is still empty");
+                                }
+                            }
+
+                            public void print() {
+                                if (isEmpty()) {
+                                    System.out.println("Queue is still empty");
+                                    return;
+                                }
+
+                                int i = front;
+                                while (i != rear) {
+                                    System.out.println(
+                                        Q[i].nim + " " +
+                                        Q[i].name + " " +
+                                        Q[i].classNumber + " " + 
+                                        Q[i].gpa
+                                    );
+                                    i = (i + 1) % max;
+                                }
+                                System.out.println(
+                                    Q[front].nim + " " +
+                                    Q[front].name + " " +
+                                    Q[front].classNumber + " " +
+                                    Q[front].gpa
+                                );
+                                System.out.println("Element amount : " + size);
+                            }
+
+                            public void clear() {
+                                if (!isEmpty()) {
+                                    front = rear = -1;
+                                    size = 0;
+                                    System.out.println("Queue has been cleared successfully");
+                                } else {
+                                    System.out.println("Queue is still empty");
+                                }
+                            }
+
+                            public void enqueue(Student data) {
+                                if (isFull()) {
+                                    System.out.println("Queue is already full");
+                                    return;
+                                }
+
+                                if (isEmpty()) {
+                                    front = rear = 0;
+                                } else {
+                                    rear = rear == max - 1 ? 0 : rear + 1;
+                                }
+
+                                Q[rear] = data;
+                                size++;
+                            }
+
+                            public Student dequeue() {
+                                Student data = new Student("", "", 0, 0);
+                                if (isEmpty()) {
+                                    System.out.println("Queue is still empty");
+                                } else {
+                                    data = Q[front];
+                                    size--;
+                                    if (isEmpty()) {
+                                        front = rear = -1;
+                                    } else {
+                                        if (front == max - 1) {
+                                            front = 0;
+                                        } else {
+                                            front++;
+                                        }
+                                    }
+                                }
+                                return data;
+                            }
+
+                            void peekPosition(String nim) {
+                                Student student = null;
+                                for (Student queuedStudent : Q) {
+                                    if (queuedStudent == null) continue;
+                                    if (nim.equals(queuedStudent.nim)) {
+                                        student = queuedStudent;
+                                        break;
+                                    }
+                                }
+
+                                if (student != null) {
+                                    System.out.println(
+                                        "Selected Student : " +
+                                        student.name + " " +
+                                        student.nim + " " +
+                                        student.classNumber + " " +
+                                        student.gpa
+                                    );
+                                    return;
+                                }
+
+                                System.out.println("The Inputted NIM isn't available");
+                            }
+
+                            void printStudents(int pos) {
+                                int index = (pos + front) % max;
+                                if (Q[index] == null) {
+                                    System.out.println("There is no Student at that queue");
+                                    return;
+                                }
+                                System.out.println("Selected Student : " +
+                                    Q[index].name + " " +
+                                    Q[index].nim + " " +
+                                    Q[index].classNumber + " " +
+                                    Q[index].gpa
+                                );
+                            }
+                    \end{minted}
+                }
+            \end{itemize}
         \end{itemize}
     }
 \end{enumerate}
