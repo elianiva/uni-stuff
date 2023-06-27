@@ -65,10 +65,13 @@
     \vfill
     {
         \textbf{Group Members}\\
-        Dicha Zelianivan Arkana - 2241720002\\
-        Davis Maulana Hermanto - 2241720255\\
-        Muhammad Baihaqi Aulia Asy'ari - 2241720145\\
-        Yanuar Thaif Chalil Candra - 2241720004\\
+        \vspace{1cm}
+        \begin{tabular}{l l l}
+            Dicha Zelianivan Arkana & \textbf{2241720002} & Database Schema \\
+            Davis Maulana Hermanto & \textbf{2241720255} & Populating the Data\\
+            Muhammad Baihaqi Aulia Asy'ari & \textbf{2241720145} & Queries\\
+            Yanuar Thaif Chalil Candra & \textbf{2241720004} & Entity Relationship Diagram\\
+        \end{tabular}
     }
 \end{titlepage}
 
@@ -105,31 +108,31 @@ This table is used to store the data for the admin who will manage the room tena
 They are the ones who are responsible to review then approve or decline requests.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `admins`
-(
-    `id`           INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name`         VARCHAR(255) NOT NULL,
-    `phone_number` VARCHAR(255) NOT NULL,
-    `email`        VARCHAR(255) NOT NULL,
-    `password`     VARCHAR(255) NOT NULL -- hashed with argon2 algorithm
-);
-\end{minted}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{./images/admins-table.png}
-    \caption{Admins table with data}
-\end{figure}
+    CREATE TABLE `admins`
+    (
+        `id`           INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name`         VARCHAR(255) NOT NULL,
+        `phone_number` VARCHAR(255) NOT NULL,
+        `email`        VARCHAR(255) NOT NULL,
+        `password`     VARCHAR(255) NOT NULL -- hashed with argon2 algorithm
+        );
+    \end{minted}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{./images/admins-table.png}
+        \caption{Admins table with data}
+    \end{figure}
 
 \subsection{Majors Table}
 This table is used to store the data for the majors of the university.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `majors`
+    CREATE TABLE `majors`
 (
     `id`   INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL
-);
+    );
 \end{minted}
 
 \begin{figure}[h]
@@ -143,18 +146,18 @@ This table is used to store the study programs that are available in the univers
 Each study program will have a major attached to them.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `study_programs`
-(
-    `id`       INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name`     VARCHAR(255) NOT NULL,
-    `major_id` INT(11)      NOT NULL
-);
-\end{minted}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=.6\textwidth]{./images/study-programs-table.png}
-    \caption{Study Programs table with data}
+    CREATE TABLE `study_programs`
+    (
+        `id`       INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name`     VARCHAR(255) NOT NULL,
+        `major_id` INT(11)      NOT NULL
+        );
+    \end{minted}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.6\textwidth]{./images/study-programs-table.png}
+        \caption{Study Programs table with data}
 \end{figure}
 
 \subsection{Students Table}
@@ -162,19 +165,19 @@ This table is used to store the data of the students. Each student stored in the
 and an organisation.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `students`
-(
-    `id`               INT(11)         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `nim`              VARCHAR(255)    NOT NULL,
-    `name`             VARCHAR(255)    NOT NULL,
-    `age`              INT(11)         NOT NULL,
-    `sex`              ENUM ('M', 'F') NOT NULL,
-    `address`          VARCHAR(255)    NOT NULL,
-    `email`            VARCHAR(255)    NOT NULL,
-    `phone_number`     VARCHAR(255)    NOT NULL,
-    `study_program_id` INT(11)         NOT NULL
-);
-\end{minted}
+    CREATE TABLE `students`
+    (
+        `id`               INT(11)         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `nim`              VARCHAR(255)    NOT NULL,
+        `name`             VARCHAR(255)    NOT NULL,
+        `age`              INT(11)         NOT NULL,
+        `sex`              ENUM ('M', 'F') NOT NULL,
+        `address`          VARCHAR(255)    NOT NULL,
+        `email`            VARCHAR(255)    NOT NULL,
+        `phone_number`     VARCHAR(255)    NOT NULL,
+        `study_program_id` INT(11)         NOT NULL
+        );
+    \end{minted}
 
 \begin{figure}[h]
     \centering
@@ -189,17 +192,17 @@ This table is used to store the data for the student's organisation.
 Only an organisation can submit a request to borrow a room.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `organisations`
-(
-    `id`          INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name`        VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255)
-);
-\end{minted}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{./images/organisations-table.png}
+    CREATE TABLE `organisations`
+    (
+        `id`          INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name`        VARCHAR(255) NOT NULL,
+        `description` VARCHAR(255)
+        );
+    \end{minted}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{./images/organisations-table.png}
     \caption{Organisations table with data}
 \end{figure}
 
@@ -208,11 +211,11 @@ This table act as a pivot table that connects the many to many relationship betw
 Many to many is used because a single student can join multiple organisations and a single organisations can have multiple student members.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `students_organisations`
-(
-    `id`              INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `student_id`      INT(11) NOT NULL,
-    `organisation_id` INT(11) NOT NULL
+    CREATE TABLE `students_organisations`
+    (
+        `id`              INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `student_id`      INT(11) NOT NULL,
+        `organisation_id` INT(11) NOT NULL
 );
 \end{minted}
 
@@ -224,64 +227,64 @@ CREATE TABLE `students_organisations`
 
 \subsection{Buildings Table}
 \begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `buildings`
-(
-    `id`          INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name`        VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255)
-);
-\end{minted}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{./images/buildings-table.png}
-    \caption{Buildings table with data}
-\end{figure}
-
-\pagebreak
-
-\subsection{Rooms Table}
-\begin{minted}[autogobble,fontsize=\small]{sql}
-CREATE TABLE `rooms`
-(
-    `id`          INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `code`        VARCHAR(255) NOT NULL,
-    `name`        VARCHAR(255) NOT NULL,
-    `seats`       INT(11)      NOT NULL,
-    `floor`       INT(11)      NOT NULL,
-    `building_id` INT(11)      NOT NULL
-);
-\end{minted}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{./images/rooms-table.png}
-    \caption{Rooms table with data}
-\end{figure}
-
-\subsection{Borrowed Rooms Table}
-This table is used to store all of the borrowed rooms. 
-A student can represent an organisation and request a room which will then get reviewed and approved or rejected by the admin.
-
-\begin{minted}[autogobble,fontsize=\footnotesize]{sql}
-CREATE TABLE `borrowed_rooms`
-(
-    `id`              INT(11)                                 NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `student_id`      INT(11)                                 NOT NULL,
-    `organisation_id` INT(11)                                 NOT NULL,
-    `room_id`         INT(11)                                 NOT NULL,
-    `start_date`      DATETIME                                NOT NULL,
-    `end_date`        DATETIME                                NOT NULL,
-    `reason`          VARCHAR(255)                            NOT NULL,
-    `status`          ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL,
-    `approved_by`     INT(11)                                 NULL,
-    `requested_at`    DATETIME                                NOT NULL
-);
-\end{minted}
-
-\pagebreak
-
-\begin{figure}[h]
+    CREATE TABLE `buildings`
+    (
+        `id`          INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name`        VARCHAR(255) NOT NULL,
+        `description` VARCHAR(255)
+        );
+    \end{minted}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{./images/buildings-table.png}
+        \caption{Buildings table with data}
+    \end{figure}
+    
+    \pagebreak
+    
+    \subsection{Rooms Table}
+    \begin{minted}[autogobble,fontsize=\small]{sql}
+        CREATE TABLE `rooms`
+        (
+            `id`          INT(11)      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `code`        VARCHAR(255) NOT NULL,
+            `name`        VARCHAR(255) NOT NULL,
+            `seats`       INT(11)      NOT NULL,
+            `floor`       INT(11)      NOT NULL,
+            `building_id` INT(11)      NOT NULL
+            );
+        \end{minted}
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\textwidth]{./images/rooms-table.png}
+            \caption{Rooms table with data}
+        \end{figure}
+        
+        \subsection{Borrowed Rooms Table}
+        This table is used to store all of the borrowed rooms. 
+        A student can represent an organisation and request a room which will then get reviewed and approved or rejected by the admin.
+        
+        \begin{minted}[autogobble,fontsize=\footnotesize]{sql}
+            CREATE TABLE `borrowed_rooms`
+            (
+                `id`              INT(11)                                 NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                `student_id`      INT(11)                                 NOT NULL,
+                `organisation_id` INT(11)                                 NOT NULL,
+                `room_id`         INT(11)                                 NOT NULL,
+                `start_date`      DATETIME                                NOT NULL,
+                `end_date`        DATETIME                                NOT NULL,
+                `reason`          VARCHAR(255)                            NOT NULL,
+                `status`          ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL,
+                `approved_by`     INT(11)                                 NULL,
+                `requested_at`    DATETIME                                NOT NULL
+                );
+            \end{minted}
+            
+            \pagebreak
+            
+            \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{./images/borrowed-rooms-table.png}
     \caption{Borrowed Rooms table with data}
@@ -293,7 +296,7 @@ to add a foreign key to the respective tables. This process is done last to make
 since both table need to be exists before we can attach the constraint.
 
 \begin{minted}[autogobble,fontsize=\small]{sql}
-ALTER TABLE `students`
+    ALTER TABLE `students`
     ADD FOREIGN KEY (`study_program_id`) REFERENCES `study_programs` (`id`);
 ALTER TABLE `study_programs`
     ADD FOREIGN KEY (`major_id`) REFERENCES `majors` (`id`);
