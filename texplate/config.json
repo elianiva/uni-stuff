@@ -7,11 +7,10 @@
         "study_program": "D4 Informatics Engineering"
     },
     "subjects": [
-        "Data Structure and Algorithm",
-        "Data Structure and Algorithm Practicum",
         "Advanced Database",
         "Antarmuka Pengguna",
         "Matematika 3",
-        "Artificial Intelligence"
+        "Artificial Intelligence",
+        "Object Oriented Programming"
     ]
 }
