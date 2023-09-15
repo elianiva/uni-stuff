@@ -2,7 +2,7 @@
     "personal_information": {
         "name": "Dicha Zelianivan Arkana",
         "nim": "2241720002",
-        "class": "1i",
+        "class": "2i",
         "department": "Information Technology",
         "study_program": "D4 Informatics Engineering"
     },
@@ -11,6 +11,7 @@
         "Antarmuka Pengguna",
         "Matematika 3",
         "Artificial Intelligence",
-        "Object Oriented Programming"
+        "Object Oriented Programming",
+        "Information System Management"
     ]
 }

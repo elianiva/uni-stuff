@@ -1,0 +1,193 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Information System Management}
+\newcommand{\vSubtitle}{Basic Concept of Information Technology}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\tableofcontents
+
+\pagebreak
+
+\section{Basic Concept of Information Technology}
+\subsection{Definition of Information Technology}
+\textbf{Information Technology} has several definitions from the experts, but in short it can
+be defined as a set of tools or technology that is used to process and distribute information.
+
+\subsection{Understanding Information Technology Concepts}
+\textbf{Information Technology} is a sub-system or part of a larger system called \textbf{Information System}.
+More often than not, the term \textit{Technology} and \textit{Information System} are overlapping, but
+the term \textit{Information Technology} is more focused on the technology itself rather than the larger system.
+
+\subsection{Grouping of Information Technology}
+\textbf{Information Technology} can be grouped into 5 categories:
+\begin{enumerate}
+    \item {
+        \textbf{Input}
+
+        Technology related to the input of data into the system, such as \textit{keyboard} and \textit{mouse}.
+    }
+    \item {
+        \textbf{Processing}
+
+        Technology related to the processing of data, such as \textit{CPU} and \textit{GPU}. This is where most
+        of the processing happens. The data that has been inputted will be processed here.
+    }
+    \item {
+        \textbf{Storage}
+
+        Technology related to the storage of data. This is divided into 2 categories:
+        \begin{enumerate}
+            \item {
+                \textbf{Internal Storage / Main Storage}
+
+                Technology related to the storage of data that is currently being processed, such as \textit{RAM}, \textit{ROM}, etc.
+                It's usually faster than \textit{External Storage}. It needs constant electricity to operate since it's a
+                volatile storage.
+            }
+            \item {
+                \textbf{External Storage / Secondary Storage}
+
+                Technology related to the storage of data that is not currently being processed, such as \textit{HDD} and \textit{SSD}.
+                It's usually slower than \textit{Internal Storage} and has a larger capacity. It also doesn't need constant electricity,
+                meaning that it's not volatile.
+            }
+        \end{enumerate}
+    }
+    \item {
+        \textbf{Output}
+
+        Technology related to the output of data from the system, such as \textit{monitor} and \textit{printer}.
+        The data that has been processed will be displayed or printed.
+    }
+    \item {
+        \textbf{Software}
+
+        Software is a set of instructions that is used to control the hardware. There are usually
+        software for a specific task, such as \textit{Microsoft Word} for word processing, \textit{Microsoft Excel}
+        for spreadsheet, etc.
+
+        This is one of the most important part of the system because it acts as a bridge to connect the user
+        to the hardware.
+    }
+\end{enumerate}
+
+\subsection{Information Technology System Components}
+\textbf{Information Technology System} consists of multiple components, both that can be seen and can't be seen.
+The components that can be seen are called \textbf{Hardware}, while the components that can't be seen are called
+\textbf{Software}. The network can also be considered as one of its component, but it's not always present.
+The main component that controls the entire system is the user which can also be called as the \textbf{Brainware}.
+
+\subsection{Information Technology Roles}
+\textbf{Information Technology} has many roles in our life. It can be used to help us in our daily life, such as
+\textit{online shopping}, \textit{online transportation}, \textit{online food delivery}, etc. It can also be used
+to help us in our work, such as \textit{Microsoft Word} for word processing, \textit{Microsoft Excel} for spreadsheet,
+etc.
+
+In conclusion, Information Technology plays an important role in our daily life almost in every aspect.
+We've been integrating it into our life so much that we can't live without it. It's also constantly evolving
+to help us in our daily life.
+
+\section{Information Technology Development}
+\subsection{Information Technology Understanding}
+As of now, Information Technology has been understood by many people as a daily necessity.
+It's no longer a luxury item that only a few people can afford.
+
+\subsection{Evolution of Technology}
+Technology has been evolving rapidly since the beginning of time. It's constantly evolving to get better and better.
+At this day and age, the economy revolve around information and technology.
+
+\subsection{Advancement of Information Technology}
+Information Technology has been advancing rapidly since it's first discovered. Even now it's still advancing
+rapidly to provide us with better technology. For example, we no longer need to shop at the store to buy something,
+we can just buy it online and it will be delivered to our house. We no longer need pen and paper to write something,
+we can just use our phone or computer.
+
+Globalisation plays a big role in the advancement of Information Technology.
+It makes it easier for us to exchange information with other people around the world.
+This come with its own risk, such as \textit{fake news}, \textit{hoax}, etc.
+
+\subsection{Application of Information Technology}
+Humans are social creatures, we need to interact with other people to survive.
+Our basic necessity consists of food, water, and shelter. But now, we also need
+information to survive. Information Technology helps us to get information from 
+other people around the world.
+
+\end{document}
+
