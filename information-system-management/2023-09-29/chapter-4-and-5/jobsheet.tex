@@ -1,0 +1,181 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath}
+
+%% Variables definition
+\newcommand{\vSubject}{Information System Management}
+\newcommand{\vSubtitle}{Chapter 4 and 5}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Facts, Data, and Information}
+\subsection{Definitions}
+\begin{itemize}
+    \item \textbf{Fact}: a statement about something that can be verified as being true or false.
+    \item \textbf{Data}: a collection of facts organized in such a way that they have additional value beyond the value of the facts themselves.
+    \item \textbf{Information}: data that has been organized and processed so that it is meaningful to the person who receives it.
+    \item \textbf{Concepts}: ideas, opinions, and knowledge.
+    \item \textbf{Principle}: a rule or law that is used as the basis for making judgments or decisions.
+    \item \textbf{Law}: a specific principle that is universally accepted as true and that can be used as a basis for reasoning or conduct.
+    \item \textbf{Theory}: a system of ideas that explains many related observations and is supported by a large body of evidence acquired through scientific investigation.
+\end{itemize}
+
+\subsection{Data Classification}
+\subsubsection{Characteristics}
+Data can be classified as two types based on its characteristics:
+\begin{itemize}
+    \item \textbf{Quantitative data}: data that can be measured and expressed numerically.
+    \item \textbf{Qualitative data}: data that is descriptive and often based on observation, interviews, or the experiences of people.
+\end{itemize}
+
+\subsubsection{Source}
+Data can be classified as two types based on its source:
+\begin{itemize}
+    \item \textbf{Primary data}: data that is collected directly from the source.
+    \item \textbf{Secondary data}: data that is collected from a source that has already collected and formatted the data.
+\end{itemize}
+
+\subsection{Information}
+\subsubsection{Information Characteristics}
+There are eleven characteristics of information according to Nicholas (Ishak, 2006: 94):
+\begin{enumerate}
+    \item Subject
+    \item Function
+    \item Nature
+    \item Intellectual Level
+    \item View Point
+    \item Quantity
+    \item Quality
+    \item Date
+    \item Speed of Delivery
+    \item Place or Origin
+    \item Processing and Packaging
+\end{enumerate}
+
+\subsubsection{Types of Information}
+There are three types of information:
+\begin{itemize}
+    \item \textbf{Scorekeeping Information}: accumulation of data to answer questions
+    \item \textbf{Attention-directing Information}: data that is used to direct the attention of the decision maker to a problem or opportunity
+    \item \textbf{Problem-solving Information}: data that is used to solve a problem
+\end{itemize}
+
+\subsubsection{Characteristics}
+There are four characteristics of information:
+\begin{itemize}
+    \item Information must be pertinent
+    \item Information must be accurate
+    \item Information must be timely
+    \item Information must be relevant
+\end{itemize}
+
+\section{Concepts of Information System Management}
+\subsection{Definitions}
+\begin{itemize}
+    \item \textbf{Information System Management}: a system that was made to provide information that supports in the management activity in an organisation
+\end{itemize}
+
+\subsection{Parts of Information System Management}
+\begin{itemize}
+    \item Accounting Information System
+    \item Marketing Information System
+    \item Inventory Management Information System
+    \item Personnal Information System
+    \item Distribution Information System
+    \item Purchasing Information System
+    \item Treasury Information System
+    \item Credit Analysis Information System
+\end{itemize}
+
+\subsection{Information System Management Functions}
+\begin{itemize}
+    \item Improving operational efficiency
+    \item Introducing innovation in the business process
+    \item Creating a strategic source of information
+\end{itemize}
+
+\subsection{Information System Management Components}
+According to its functions, Information System Management consists of five components:
+\begin{itemize}
+    \item Administration and Operational System
+    \item Reporting System
+    \item Database System
+    \item Searching System
+    \item Data Management System
+\end{itemize}
+
+\end{document}
+
