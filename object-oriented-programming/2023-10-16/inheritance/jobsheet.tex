@@ -1,0 +1,260 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,minted}
+
+%% Variables definition
+\newcommand{\vSubject}{Object Oriented Programming}
+\newcommand{\vSubtitle}{Inheritance}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        The superclass from the case study above is \texttt{Karyawan} and the subclasses are \texttt{Manager} and \texttt{Staff}
+    }
+    \item {
+        We use the keyword \texttt{extend} to inherit a class.
+    }
+    \item {
+        The attributes of the \texttt{Manager} class are:
+        \begin{itemize}
+            \item name: String (inherited)
+            \item alamat: String (inherited)
+            \item age: int (inherited)
+            \item gender: String (inherited)
+            \item salary: int (inherited)
+            \item allowance: int
+        \end{itemize}
+    }
+    \item {
+        The identifier \texttt{super} is used to refer to the parent class. So, \texttt{super.salary} is used to access the \texttt{salary} attribute from the parent class
+        which is the \texttt{Karyawan} class.
+    }
+    \item {
+        It's a hierarchal inheritance because it only inherit from a single class.
+    }
+\end{enumerate}
+
+\section{Task}
+\begin{itemize}
+    \item {
+        \textbf{Computer.java}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            public class Computer {
+                public String brand;
+                public int processorSpeed;
+                public int ramSize;
+                public String processorType;
+
+                public Computer(String brand, int processorSpeed, int ramSize, String processorType) {
+                    this.brand = brand;
+                    this.processorSpeed = processorSpeed;
+                    this.ramSize = ramSize;
+                    this.processorType = processorType;
+                }
+
+                public void showData() {
+                    System.out.println("Brand: " + brand);
+                    System.out.println("Processor Speed: " + processorSpeed);
+                    System.out.println("RAM Size: " + ramSize);
+                    System.out.println("Processor Type: " + processorType);
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Laptop.java}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            public class Laptop extends Computer {
+                public String batteryType;
+
+                public Laptop(String brand, int processorSpeed, int ramSize, String processorType, 
+                              String batteryType) {
+                    super(brand, processorSpeed, ramSize, processorType);
+                    this.batteryType = batteryType;
+                }
+
+                public void showLaptop() {
+                    super.showData();
+                    System.out.println("Battery Type: " + batteryType);
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Mac.java}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            public class Mac extends Laptop {
+                public String security;
+
+                public Mac(String brand, int processorSpeed, int ramSize, String processorType, 
+                           String batteryType, String security) {
+                    super(brand, processorSpeed, ramSize, processorType, batteryType);
+                    this.security = security;
+                }
+
+                public void showMac() {
+                    super.showLaptop();
+                    System.out.println("Security: " + security);
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Windows.java}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            public class Windows extends Laptop {
+                public String feature;
+
+                public Windows(String brand, int processorSpeed, int ramSize, String processorType,
+                               String batteryType, String feature) {
+                    super(brand, processorSpeed, ramSize, processorType, batteryType);
+                    this.feature = feature;
+                }
+
+                public void showWindows() {
+                    super.showLaptop();
+                    System.out.println("Feature: " + feature);
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Pc.java}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            public class Pc extends Computer {
+                public int monitorSize;
+
+                public Pc(String brand, int processorSpeed, int ramSize, String processorType, 
+                          int monitorSize) {
+                    super(brand, processorSpeed, ramSize, processorType);
+                    this.monitorSize = monitorSize;
+                }
+
+                public void showPc() {
+                    super.showData();
+                    System.out.println("Monitor Size: " + monitorSize);
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{InheritanceTaskMain.java}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            public class InheritanceTaskMain {
+                public static void main(String[] args) {
+                    Mac mac = new Mac("Apple", 2, 4, "Intel", "Lithium", "Fingerprint");
+                    Pc pc = new Pc("Dell", 2, 4, "Intel", 15);
+                    Windows windows = new Windows("Microsoft", 2, 4, "Intel", "Lithium", "Touchscreen");
+
+                    mac.showMac();
+                    System.out.println("---");
+                    windows.showWindows();
+                    System.out.println("---");
+                    pc.showPc();
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Output}
+        \begin{minted}[autogobble,fontsize=\footnotesize]{html}
+            Brand: Apple
+            Processor Speed: 2
+            RAM Size: 4
+            Processor Type: Intel
+            Battery Type: Lithium
+            Security: Fingerprint
+            ---
+            Brand: Microsoft
+            Processor Speed: 2
+            RAM Size: 4
+            Processor Type: Intel
+            Battery Type: Lithium
+            Feature: Touchscreen
+            ---
+            Brand: Dell
+            Processor Speed: 2
+            RAM Size: 4
+            Processor Type: Intel
+            Monitor Size: 15
+        \end{minted}
+    }
+\end{itemize}
+
+\end{document}
+
