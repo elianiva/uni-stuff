@@ -1,0 +1,324 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,minted}
+
+%% Variables definition
+\newcommand{\vSubject}{Object Oriented Programming}
+\newcommand{\vSubtitle}{Inheritance}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        \textbf{ClassA.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class ClassA {
+                public int X;
+                public int Y;
+
+                public void getNilai(){
+                    System.out.println("nilai x : " + X);
+                    System.out.println("nilai y : " + Y);
+                }
+            }
+        \end{minted}
+        \textbf{ClassB.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class ClassB extends ClassA {
+                public int z;
+
+                public void getNilaiZ(){
+                    System.out.println("nilai z : " + z);
+                }
+
+                public void getJumlah(){
+                    System.out.println("jumlah : " + (X + Y + z));
+                }
+            }
+        \end{minted}
+        \textbf{Percobaan1.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Percobaan1 {
+                public static void main(String[] args) {
+                    ClassB hitung = new ClassB();
+                    hitung.X = 20;
+                    hitung.Y = 30;
+                    hitung.z = 5;
+                    hitung.getNilai();
+                    hitung.getNilaiZ();
+                    hitung.getJumlah();
+                }
+            }
+        \end{minted}
+        \pagebreak
+        \textbf{Output}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            nilai x : 20
+            nilai y : 30
+            nilai z : 5
+            jumlah : 55
+        \end{minted}
+    }
+    \item {
+        It was throwing an error because the \texttt{ClassB} wasn't inheriting the \texttt{ClassA}.
+    }
+\end{enumerate}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        \textbf{ClassA.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class ClassA {
+                protected int X;
+                protected int Y;
+
+                public void setX(int x) {
+                    X = x;
+                }
+
+                public void setY(int y) {
+                    Y = y;
+                }
+
+                public void getNilai(){
+                    System.out.println("nilai x : " + X);
+                    System.out.println("nilai y : " + Y);
+                }
+            }
+        \end{minted}
+        \textbf{ClassB.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class ClassB extends ClassA {
+                private int z;
+
+                public void setZ(int z) {
+                    this.z = z;
+                }
+
+                public void getNilaiZ(){
+                    System.out.println("nilai z : " + z);
+                }
+
+                public void getJumlah(){
+                    System.out.println("jumlah : " + (X + Y + z));
+                }
+            }
+        \end{minted}
+        \textbf{Percobaan2.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Percobaan2 {
+                public static void main(String[] args) {
+                    ClassB hitung = new ClassB();
+                    hitung.setX(20);
+                    hitung.setY(30);
+                    hitung.setZ(5);
+                    hitung.getNilai();
+                    hitung.getNilaiZ();
+                    hitung.getJumlah();
+                }
+            }
+        \end{minted}
+        \textbf{Output}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            nilai x : 20
+            nilai y : 30
+            nilai z : 5
+            jumlah : 55
+        \end{minted}
+    }
+    \item {
+        Because the access modifier was \texttt{private}, it can't be accessed by the child class.
+        We need to change it to \texttt{protected} so that it can be accessed by the child class.
+    }
+\end{enumerate}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        \texttt{ClassA} is the superclass of both \texttt{ClassB} and \texttt{ClassC} while \texttt{ClassB} is the superclass
+        of \texttt{ClassC}.
+        \texttt{ClassC} is the subclass of both \texttt{ClassB} and \texttt{ClassA} while \texttt{ClassB} is the subclass
+        of \texttt{ClassA}.
+    }
+    \item {
+        The constructor will be called from the superclass to the subclass. The \texttt{super()} invocation
+        must be done in the first line of the constructor. Which is why it throws an error when
+        we put it in the last line of the constructor.
+    }
+    \item {
+        It calls the parent class or the superclass constructor.
+    }
+\end{enumerate}
+
+\pagebreak
+
+\section{Task}
+\begin{itemize}
+    \item {
+        \textbf{Employee.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Employee {
+                private String nip;
+                private String name;
+                private String address;
+
+                public Employee(String nip, String name, String address) {
+                    this.nip = nip;
+                    this.name = name;
+                    this.address = address;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public int getSalary() {
+                    return 0;
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Lecturer.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Lecturer extends Employee {
+                private int creditsCount;
+                private int creditValue;
+
+                public Lecturer(String nip, String name, String address) {
+                    super(nip, name, address);
+                }
+
+                public void setCreditsCount(int creditsCount) {
+                    this.creditsCount = creditsCount;
+                }
+
+                public void setCreditValue(int creditValue) {
+                    this.creditValue = creditValue;
+                }
+
+                @Override
+                public int getSalary() {
+                    return creditsCount * creditValue;
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Payroll.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Payroll {
+                private final List<Employee> employees = new ArrayList<>();
+
+                public void addEmployee(Employee employee) {
+                    employees.add(employee);
+                }
+
+                public void printPayroll() {
+                    for (Employee employee : employees) {
+                        System.out.println(employee.getName() + " " + employee.getSalary());
+                    }
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{TaskMain.java}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class TaskMain {
+                public static void main(String[] args) {
+                    Payroll payroll = new Payroll();
+                    Lecturer lecturer = new Lecturer("12345678", "Manusia Bernapas", "Mosque Street");
+                    lecturer.setCreditsCount(10);
+                    lecturer.setCreditValue(100000);
+                    payroll.addEmployee(lecturer);
+                    payroll.printPayroll();
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \textbf{Output}
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            Manusia Bernapas 1000000
+        \end{minted}
+    }
+\end{itemize}
+
+\end{document}
+
