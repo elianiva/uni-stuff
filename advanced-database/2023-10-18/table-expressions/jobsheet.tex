@@ -1,0 +1,447 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,minted}
+
+%% Variables definition
+\newcommand{\vSubject}{Advanced Database}
+\newcommand{\vSubtitle}{Table Expressions}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Practicum}
+\begin{enumerate}
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                productid,
+                productname,
+                supplierid,
+                unitprice,
+                discontinued
+            FROM
+                Production.Products
+            WHERE
+                categoryid = 1;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            CREATE VIEW
+                Production.ProductsBeverages
+            AS SELECT
+                productid,
+                productname,
+                supplierid,
+                unitprice,
+                discontinued
+            FROM
+                Production.Products
+            WHERE
+                categoryid = 1;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                productid,
+                productname
+            FROM
+                Production.ProductsBeverages
+            WHERE
+                supplierid = 1;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        Muncul pesan error seperti dibawah ini
+        \begin{minted}[autogobble,fontsize=\footnotesize]{sql}
+            The ORDER BY clause is invalid in views, inline functions, derived tables, subqueries, and common table expressions, 
+            unless TOP, OFFSET or FOR XML is also specified.
+        \end{minted}
+        Hal ini dikarenakan kita tidak dapaet menggunakan klausa \texttt{ORDER BY} tanpa
+        menggunakan klausa \texttt{TOP}, \texttt{OFFSET}, atau \texttt{FOR XML}.
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            ALTER VIEW
+                Production.ProductsBeverages
+            AS SELECT TOP(100) PERCENT
+                productid,
+                productname,
+                supplierid,
+                unitprice,
+                discontinued
+            FROM Production.Products
+            WHERE categoryid = 1
+            ORDER BY productname;
+        \end{minted}
+    }
+    \item {
+        Tidak, data tidak akan urut apabila kita tidak menggunakan klausa \texttt{ORDER BY}
+    }
+    \item {
+        Muncul pesan error
+        \begin{minted}[autogobble,fontsize=\footnotesize]{sql}
+            Create View or Function failed because no column name was specified for column 6.
+        \end{minted}
+        Hal ini dikarenakan pada penggunaan klausa \texttt{CASE} kita tidak memberikan \textit{alias} pada hasilnya.
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            ALTER VIEW Production.ProductsBeverages AS
+            SELECT
+                productid,
+                productname,
+                supplierid,
+                unitprice,
+                discontinued,
+                CASE
+                    WHEN unitprice > 100. THEN N'high'
+                    ELSE N'normal'
+                END AS pricetype
+            FROM Production.Products
+            WHERE categoryid = 1;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                p.productid, p.productname
+            FROM
+                (
+                    SELECT
+                        productid, productname, supplierid, unitprice, discontinued,
+                        CASE
+                            WHEN unitprice > 100. THEN N'high'
+                            ELSE N'normal'
+                        END AS pricetype
+                    FROM Production.Products
+                    WHERE categoryid = 1
+                ) AS p
+            WHERE p.pricetype = N'high';
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                c.custid,
+                SUM(c.totalsalesamountperorder) AS totalsalesamount,
+                AVG(c.totalsalesamountperorder) AS avgsalesamount
+            FROM
+                (
+                    SELECT
+                        o.custid,
+                        o.orderid,
+                        SUM(d.unitprice * d.qty) AS totalsalesamountperorder
+                    FROM
+                        Sales.Orders AS o
+                    INNER JOIN
+                        Sales.OrderDetails d ON d.orderid = o.orderid
+                    GROUP BY
+                        o.custid, o.orderid
+                ) AS c
+            GROUP BY c.custid;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                cy.orderyear,
+                cy.totalsalesamount AS curtotalsales,
+                py.totalsalesamount AS prevtotalsales,
+                ((cy.totalsalesamount - py.totalsalesamount) 
+                    / py.totalsalesamount 
+                    * 100.) AS percentgrowth
+            FROM
+                (
+                    SELECT
+                        YEAR(orderdate) AS orderyear,
+                        SUM(val) AS totalsalesamount
+                    FROM Sales.OrderValues
+                    GROUP BY YEAR(orderdate)
+                ) AS cy
+            LEFT OUTER JOIN
+                (
+                    SELECT
+                        YEAR(orderdate) AS orderyear,
+                        SUM(val) AS totalsalesamount
+                    FROM Sales.OrderValues
+                    GROUP BY YEAR(orderdate)
+                ) AS py
+                ON cy.orderyear = py.orderyear + 1
+            ORDER BY cy.orderyear;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            WITH ProductsBeverages AS
+                (
+                    SELECT
+                        productid,
+                        productname,
+                        supplierid,
+                        unitprice,
+                        discontinued,
+                        CASE
+                            WHEN unitprice > 100. THEN N'high'
+                            ELSE N'normal'
+                        END AS pricetype
+                    FROM Production.Products
+                    WHERE categoryid = 1
+                )
+            SELECT
+                productid,
+                productname
+            FROM ProductsBeverages
+            WHERE pricetype = N'high';
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            WITH c2008 (custid, salesamt2008) AS
+                (
+                    SELECT
+                        custid,
+                        SUM(val)
+                    FROM Sales.OrderValues
+                    WHERE YEAR(orderdate) = 2008
+                    GROUP BY custid
+                )
+            SELECT
+                c.custid,
+                c.contactname,
+                c2008.salesamt2008
+            FROM Sales.Customers AS c
+            LEFT OUTER JOIN
+                c2008 ON c.custid = c2008.custid;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            WITH 
+                c2008 (custid, salesamt2008) AS
+                    (
+                        SELECT
+                        custid, SUM(val)
+                        FROM Sales.OrderValues
+                        WHERE YEAR(orderdate) = 2008
+                        GROUP BY custid
+                    ),
+                c2007 (custid, salesamt2007) AS
+                    (
+                        SELECT
+                        custid, SUM(val)
+                        FROM Sales.OrderValues
+                        WHERE YEAR(orderdate) = 2007
+                        GROUP BY custid
+                    )
+            SELECT
+                c.custid, 
+                c.contactname,
+                c2008.salesamt2008,
+                c2007.salesamt2007,
+                COALESCE(
+                    (c2008.salesamt2008 - c2007.salesamt2007) / c2007.salesamt2007 * 100.,
+                    0
+                )
+            AS percentgrowth
+            FROM Sales.Customers AS c
+            LEFT OUTER JOIN
+                c2008 ON c.custid = c2008.custid
+            LEFT OUTER JOIN
+                c2007 ON c.custid = c2007.custid
+            ORDER BY percentgrowth DESC;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                custid,
+                SUM(val) AS totalsalesamount
+            FROM 
+                Sales.OrderValues
+            WHERE
+                YEAR(orderdate) = 2007
+            GROUP BY
+                custid;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            CREATE FUNCTION dbo.fnGetSalesByCustomer
+                (@orderyear AS INT) RETURNS TABLE
+            AS RETURN
+            SELECT
+                custid,
+                SUM(val) AS totalsalesamount
+            FROM 
+                Sales.OrderValues
+            WHERE
+                YEAR(orderdate) = 2007
+            GROUP BY
+                custid;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            CREATE FUNCTION dbo.fnGetSalesByCustomer
+                (@orderyear AS INT) RETURNS TABLE
+            AS RETURN
+            SELECT
+                custid,
+                SUM(val) AS totalsalesamount
+            FROM
+                Sales.OrderValues
+            WHERE
+                YEAR(orderdate) = @orderyear
+            GROUP BY
+                custid;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                custid, 
+                totalsalesamount
+            FROM
+                dbo.fnGetSalesByCustomer(2007);
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT TOP(3)
+                d.productid,
+                MAX(p.productname) AS productname,
+                SUM(d.qty * d.unitprice) AS totalsalesamount
+            FROM Sales.Orders AS o
+            INNER JOIN Sales.OrderDetails AS d ON d.orderid = o.orderid
+            INNER JOIN Production.Products AS p ON p.productid = d.productid
+            WHERE custid = 1
+            GROUP BY d.productid
+            ORDER BY totalsalesamount DESC;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT TOP(3)
+                d.productid,
+                MAX(p.productname) AS productname,
+                SUM(d.qty * d.unitprice) AS totalsalesamount
+            FROM 
+                Sales.Orders AS o
+            INNER JOIN
+                Sales.OrderDetails AS d ON d.orderid = o.orderid
+            INNER JOIN
+                Production.Products AS p ON p.productid = d.productid
+            WHERE custid = 1
+            GROUP BY d.productid
+            ORDER BY totalsalesamount DESC;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            CREATE FUNCTION dbo.fnGetTop3ProductsForCustomer
+                (@custid AS INT) RETURNS TABLE
+            AS RETURN
+            SELECT TOP(3)
+                d.productid,
+                MAX(p.productname) AS productname,
+                SUM(d.qty * d.unitprice) AS totalsalesamount
+            FROM
+                Sales.Orders AS o
+            INNER JOIN
+                Sales.OrderDetails AS d ON d.orderid = o.orderid
+            INNER JOIN
+                Production.Products AS p ON p.productid = d.productid
+            WHERE custid = @custid
+            GROUP BY d.productid
+            ORDER BY totalsalesamount DESC;
+
+
+            SELECT
+                p.productid,
+                p.productname,
+                p.totalsalesamount
+            FROM 
+                dbo.fnGetTop3ProductsForCustomer(1) AS p;
+        \end{minted}
+    }
+\end{enumerate}
+
+\end{document}
+
