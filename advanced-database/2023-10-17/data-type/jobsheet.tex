@@ -1,0 +1,277 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,minted}
+
+%% Variables definition
+\newcommand{\vSubject}{Advanced Database}
+\newcommand{\vSubtitle}{Data Type}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Practicum}
+\begin{enumerate}
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                GETDATE() AS currentdatetime,
+                FORMAT(GETDATE(), 'HH:mm:ss') AS currentdate,
+                YEAR(GETDATE()) AS currentyear,
+                MONTH(GETDATE()) AS currentmonth,
+                DAY(GETDATE()) AS currentday,
+                DATEPART(WEEK, GETDATE()) AS currentweeknumber,
+                DATENAME(MONTH, GETDATE()) AS currentmonthname;
+        \end{minted}
+    }
+    \item {
+        Tidak, karena tidak diperbolehkan adanya duplikat dalam penamaan alias
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT CAST('1945-08-17' AS DATE) AS somedate;
+            SELECT CONVERT(DATE, '1945-08-17', 23) AS somedate;
+            SELECT DATEFROMPARTS(1945, 8, 17) AS somedate;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                DATEADD(MONTH, 3, GETDATE()) AS threemonths,
+                DATEDIFF(DAY, GETDATE(), DATEADD(MONTH, 3, GETDATE())) AS diffdays,
+                DATEDIFF(WEEK, '1945-08-17', '2018-10-01') AS diffweeks,
+                DATEADD(DAY, 1 - DAY(GETDATE()), GETDATE()) AS firstday;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT isitdate,
+                CASE
+                    WHEN ISDATE(isitdate) = 1 THEN CONVERT(date, isitdate)
+                    ELSE NULL
+                END AS converteddate
+            FROM Sales.Somedates;
+        \end{minted}
+    }
+    \item {
+        \texttt{SYSDATETIME} mengembalikan nilai bertipe \texttt{DATETIME2(7)}
+        \\ sedangkan \texttt{CURRENT\_TIMESTAMP} mengembalikan hasil bertipe \texttt{DATETIME}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT DISTINCT custid
+            FROM Sales.Orders
+            WHERE YEAR(orderdate) = 2008 AND MONTH(orderdate) = 2;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\footnotesize]{sql}
+            SELECT 
+                GETDATE() AS currentdate,
+                DATEADD(month, DATEDIFF(month, 0, GETDATE()), 0) AS firstofmonth,
+                DATEADD(day, -1, DATEADD(month, DATEDIFF(month, 0, GETDATE()) + 1, 0)) AS endofmonth;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                orderid,
+                custid,
+                orderdate
+            FROM 
+                Sales.Orders
+            WHERE
+                orderdate >= DATEADD(day, -5, DATEADD(month, DATEDIFF(month, 0, GETDATE()), 0))
+                AND orderdate < DATEADD(month, DATEDIFF(month, 0, GETDATE()) + 1, 0);
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                orderid,
+                custid,
+                orderdate
+            FROM 
+                Sales.Orders
+            WHERE
+                DAY(orderdate) > DAY(EOMONTH(orderdate, 0)) - 5
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT DISTINCT
+                od.productid
+            FROM
+                Sales.Orders o
+            JOIN
+                Sales.OrderDetails od ON o.orderid = od.orderid
+            WHERE
+                YEAR(orderdate) = 2007
+                AND DATEPART(month, orderdate) <= 10
+            ORDER BY od.productid;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                CONCAT(contactname, ' (city: ', city, ')') AS contactwithcity
+            FROM
+                Sales.Customers;
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                CONCAT(
+                    contactname,
+                    ' (city: ',
+                    city, 
+                    ', region: ',
+                    normalisedregion,
+                    ')'
+                ) AS contactwithcity
+            FROM
+                (
+                    SELECT
+                        normalisedregion = CASE
+                            WHEN region IS NULL THEN ''
+                            ELSE region
+                        END,
+                        city,
+                        contactname
+                    FROM
+                        Sales.Customers
+                ) AS c;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                contactname,
+                contacttitle
+            FROM
+                Sales.Customers
+            WHERE
+                ASCII(LEFT(contactname, 1)) >= 65
+                AND ASCII(LEFT(contactname, 1)) <= 71
+            ORDER BY
+                contactname;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                contactname,
+                LEFT(contactname, CHARINDEX(', ', contactname) - 1) AS lastname
+            FROM
+                Sales.Customers;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                REPLACE(contactname, ', ', ' ') as newcontactname,
+                RIGHT(contactname, CHARINDEX(' ', REVERSE(contactname))) as firstname
+            FROM
+                Sales.Customers;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                custid,
+                CONCAT('C', FORMAT(custid, '00000')) as newcustid
+            FROM
+                Sales.Customers;
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{sql}
+            SELECT
+                contactname,
+                LEN(contactname) - LEN(
+                    REPLACE(contactname COLLATE SQL_Latin1_General_Cp1_CI_AI, 'a', '')
+                ) as numberofa
+            FROM
+                Sales.Customers
+            ORDER BY
+                numberofa DESC;
+        \end{minted}
+    }
+\end{enumerate}
+
+\end{document}
+
