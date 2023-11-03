@@ -1,0 +1,198 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,tabularx}
+
+%% Variables definition
+\newcommand{\vSubject}{Artificial Intelligence}
+\newcommand{\vSubtitle}{Midterm Exam}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Midterm Exam}
+
+\large{\textbf{Case Study}}\\
+You are a real estate businessman. You have several units of houses, land, and shophouses spread across Malang City, and property acquisition plans are seen
+as future prospects. As a businessman your goal is to get good sales, and good profits.
+
+To achieve that goal, you have several strategies that are divided into the following categories:
+\begin{enumerate}
+    \item Determine the best selling price for each unit
+    \item Determine the target marketing on social media
+    \item Choose the right location for the property unit to be acquired
+    \item Determine the specifications for the house
+    \item Choose the priority of the unit owned, between a house, land, or shophouse
+\end{enumerate}
+Your job is to choose one of the five stategies above.
+
+\large{\textbf{Questions}}\\
+\begin{enumerate}
+    \item {
+        From one of the strategies you choose, define a clear problem with machine learning as the solution approach
+
+        We can choose the first strategy, which is to determine the best price of each unit. We can do this using machine learning
+        by doing a regression analysis. We can use the data of the price of the unit and the specifications of the unit to determine
+        the best price of the unit.
+    }
+    \item {
+        Develop a data ingestion strategy, determine what data will be processed, where it will come from
+
+        The data that will be processed is the price of the unit and the specifications of the unit. The data could come from multiple sources,
+        such as the previous sales data, or the data from the competitors.
+    }
+    \item {
+        Make a sample data, at least 20 items
+
+        \footnotesize
+        \begin{tabularx}{\columnwidth}{|X|X|X|X|X|X|X|}
+            \hline
+            \textbf{No} & \textbf{Price} & \textbf{House} & \textbf{Land} & \textbf{Bedroom} & \textbf{Bathroom} & \textbf{Garage}\\
+            \hline
+            1 & 3800000000 & 220 & 220 & 3 & 3 & 0\\
+            \hline
+            2 & 4600000000 & 180 & 137 & 4 & 3 & 2\\
+            \hline
+            3  & 3000000000 & 267 & 250 & 4 & 4 & 4\\
+            \hline
+            4 & 430000000 & 40 & 25 & 2 & 2 & 0 \\
+            \hline
+            5 & 9000000000 & 400 & 355 & 6 & 5 & 3 \\
+            \hline
+            6 & 4970000000 & 300 & 154 & 5 & 3 & 3 \\
+            \hline
+            7 & 2600000000 & 120 & 150 & 3 & 2 & 1 \\
+            \hline
+            8 & 10500000000 & 350 & 247 & 4 & 4 & 0 \\
+            \hline
+            9 & 3250000000 & 125 & 90 & 3 & 3 & 0 \\
+            \hline
+            10 & 4500000000 & 250 & 96 & 5 & 4 & 1 \\
+            \hline
+            11 & 3600000000 & 154 & 110 & 3 & 3 & 3 \\
+            \hline
+            12 & 9500000000 & 450 & 240 & 4 & 4 & 1 \\
+            \hline
+            13 & 10500000000 & 218 & 118 & 3 & 3 & 2 \\
+            \hline
+            14 & 12500000000 & 200 & 979 & 4 & 2 & 6 \\
+            \hline
+            15 & 4600000000 & 180 & 137 & 5 & 4 & 2 \\
+            \hline
+            16 & 3000000000 & 126 & 144 & 4 & 2 & 2 \\
+            \hline
+            17 & 6000000000 & 400 & 150 & 5 & 4 & 1 \\
+            \hline
+            18 & 7500000000 & 150 & 253 & 5 & 2 & 2 \\
+            \hline
+            19 & 18000000000 & 200 & 251 & 5 & 3 & 3 \\
+            \hline
+            20 & 9700000000 & 450 & 248 & 5 & 5 & 4 \\
+            \hline
+        \end{tabularx}
+    }
+    \item {
+        What kind of machine learning model / method will be used?
+
+        The model that we can use to work with this type of data or case study is the
+        \textbf{Linear Regression} model. We can use this model to predict the price of the unit
+        based on the specifications of the unit.
+    }
+    \item {
+        Explain whether the method is supervised or unsupervised!
+
+        The method being used is supervised learning, because we have the data of the previous sales
+        that we can use to train the model. We can use the data to train the model to predict the best price
+        of the house.
+    }
+    \item {
+        Explain why do you choose this model!
+
+        The model was chosen because it is the most suitable model to work with and it's also one of the simplest
+        method. The model is also easy to understand and implement.
+    }
+    \pagebreak
+    \item {
+        Explain the machine learning method that will be used!
+
+        The machine learning method that will be used is the \textbf{Linear Regression} method.
+        Linear regression is a linear approach to modeling the relationship between a scalar response
+        or dependent variables and one or more explanatory variables or independent variables.
+        The case study that we have is a regression problem, because we want to predict the price of the unit
+        based on the specifications of the unit.
+    }
+\end{enumerate}
+
+\end{document}
+
