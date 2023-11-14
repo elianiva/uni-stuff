@@ -1,0 +1,164 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Matematika 3}
+\newcommand{\vSubtitle}{Vector Dot Product}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Exercise}
+Jika $a = 5i + 4j + 2k, b = 4i - 5j + 3k, \text{dan}~c = 2i - j - 2k$
+\begin{enumerate}
+    \item {
+        Nilai $a.b$ dan cosinus arah dari hasil kali vektor $a \times b$
+
+        \begin{align*}
+            a.b &= \left[\begin{matrix}
+                i  &  j &  k \\
+                5i & 4j & 2k \\
+                4i & -5j & 3k \\
+            \end{matrix}\right]\\
+            a.b &= (5i \times 4i) + (4j \times -5j) + (2k \times 3k) \\
+            a.b &= 20i^2 - 20j^2 + 6k^2 \\
+            a.b &= 20(1) - 20(1) + 6(1) \\
+            a.b &= 6 \\
+        \end{align*}
+
+        \begin{align*}
+            |a| &= \sqrt{5^2 + 4^2 + 2^2} \\
+            |a| &= \sqrt{25 + 16 + 4} \\
+            |a| &= \sqrt{45} \\
+            |a| &= 3\sqrt{5} \\
+        \end{align*}
+
+        \begin{align*}
+            |b| &= \sqrt{4^2 + (-5)^2 + 3^2} \\
+            |b| &= \sqrt{16 + 25 + 9} \\
+            |b| &= \sqrt{50} \\
+            |b| &= 5\sqrt{2} \\
+        \end{align*}
+
+        \begin{align*}
+            cos\theta &= \frac{5}{3\sqrt{5}} . \frac{4}{5\sqrt{2}} + \frac{4}{3\sqrt{5}} . \frac{-5}{5\sqrt{2}} + \frac{2}{3\sqrt{5}} . \frac{3}{5\sqrt{2}} \\
+            &= \frac{20}{15\sqrt{10}} + \frac{-20}{15\sqrt{10}} + \frac{6}{15\sqrt{10}} \\
+            &= \frac{20 - 20 + 6}{15\sqrt{10}} \\
+            &= \frac{6}{15\sqrt{10}} \\
+            &= \frac{2}{5\sqrt{10}} \\
+            &= \frac{2}{5\sqrt{10}} \times \frac{\sqrt{10}}{\sqrt{10}} \\
+            &= \frac{2\sqrt{10}}{50} \\
+            &= \frac{\sqrt{10}}{25} \\
+            \\
+            \theta &= cos^{-1}(\frac{\sqrt{10}}{25}) \\
+            &= cos^{-1}(0.1265) \\
+            &= 82.76^{\circ} \\
+        \end{align*}
+    }
+    \pagebreak
+    \item {
+        Ukuran dan cosinus dari hasil kali vektor $a \times b$ dan juga sudut dimana hasil kali vektor membentuk sudut dengan vektor c
+
+        \begin{align*}
+            a \times b &= \left[\begin{matrix}
+                i  &  j &  k \\
+                5i & 4j & 2k \\
+                4i & -5j & 3k \\
+            \end{matrix}\right]\\
+            a \times b &= (4j \times 3k - 2k \times -5j)i - (5i \times 3k - 2k \times 4i)j + (5i \times -5j - 4j \times 4i)k \\
+            a \times b &= (12 + 10)i - (15 - 8)j + (-25 - 16)k\\
+            a \times b &= 22i - 7j - 41k\\
+            cos\theta &= \frac{a \times b . c}{|a \times b| . |c|}\\
+            &= \frac{(22i - 7j - 41k).(2i - j - 2k)}{\sqrt{22^2 + 7^2 + (-41)^2}.\sqrt{2^2 + (-1)^2 + (-2)^2}}\\
+            &= \frac{44 + 7 + 82}{\sqrt{22^2 + 7^2 + (-41)^2}.\sqrt{2^2 + (-1)^2 + (-2)^2}}\\
+            &= \frac{133}{\sqrt{22^2 + 7^2 + (-41)^2}.\sqrt{2^2 + (-1)^2 + (-2)^2}}\\
+            &= \frac{133}{\sqrt{484 + 49 + 1681}.\sqrt{4 + 1 + 4}}\\
+            &= \frac{133}{\sqrt{2214}.\sqrt{9}}\\
+            &= \frac{133}{3\sqrt{246}.3}\\
+            &= \frac{133}{9\sqrt{246}}\\
+            &= 0.9421\\
+            \\
+            \theta &= cos^{-1}(0.9421)\\
+            &= 19.57^{\circ}\\
+        \end{align*}
+    }
+\end{enumerate}
+
+Corrector: Yanuar Thaif Chalil Candra\\
+Value: 100
+
+\end{document}
+
