@@ -1,0 +1,238 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,minted}
+
+%% Variables definition
+\newcommand{\vSubject}{Object Oriented Programming}
+\newcommand{\vSubtitle}{Overloading and Overriding}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Practice}
+\begin{enumerate}
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class MyMultiplication {
+                void multiplication(int a, int b) {
+                    System.out.println(a * b);
+                }
+
+                void multiplication(int a, int b, int c) {
+                    System.out.println(a * b * c);
+                }
+
+                public static void main(String[] args) {
+                    MyMultiplication obj = new MyMultiplication();
+                    obj.multiplication(25, 43);
+                    obj.multiplication(34, 23, 56);
+                }])
+            }
+        \end{minted}
+
+        From the source code above, which one is the overloading?
+
+        The overloading can be seen at the second method where we declare a method with the same name but with different number of parameters.
+    }
+    \item {
+        If there are any overloading, how many different parameters are there?
+
+        There are two different parameters. The first method having two parameters and the second method having three parameters.
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class MyMultiplication {
+                void multiplication(int a, int b) {
+                    System.out.println(a * b);
+                }
+
+                void multiplication(float a, float b) {
+                    System.out.println(a * b);
+                }
+
+                public static void main(String[] args) {
+                    MyMultiplication obj = new MyMultiplication();
+                    obj.multiplication(25, 43);
+                    obj.multiplication(34.56, 23.7);
+                }
+            }
+        \end{minted}
+
+        From the source code above, which one is the overloading?
+
+        The overloading can be seen at the second method where we declare a method with the same name but with different data type of parameters.
+    }
+    \item {
+        If there are any overloading, how many different parameters are there?
+
+        There are two different parameters. The first method having two integer parameters and the second method having two float parameters.
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            class Fish {
+                public void swim() {
+                    System.out.println("Fish can swim");
+                }
+            }
+
+            class Piranha extends Fish {
+                public void swim() {
+                    System.out.println("Piranha can eat meat");
+                }
+            }
+
+            public class Main {
+                public static void main(String[] args) {
+                    Fish fish = new Fish();
+                    Piranha piranha = new Piranha();
+                    fish.swim();
+                    piranha.swim();
+                }
+            }
+        \end{minted}
+
+        From the source code above, which one is the overriding?
+
+        We override on the child class which is the \texttt{Piranha} class.
+    }
+    \item {
+        Explain if the above souce code contains overriding!
+
+        The above source code contains overriding because we override the \texttt{swim} method from the parent class which is the \texttt{Fish} class
+        gets overriden by the child class which is the \texttt{Piranha} class.
+    }
+\end{enumerate}
+
+\pagebreak
+
+\section{Task}
+\begin{enumerate}
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Triangle {
+                int angle;
+
+                public Triangle(int angle) {
+                    this.angle = angle;
+                }
+
+                public int angleTotal(int angle) {
+                    return 180 - angle;
+                }
+
+                public int angleTotal(int angleA, int angleB) {
+                    return 180 - (angleA + angleB);
+                }
+
+                public int parameter(int sideA, int sideB, int sideC) {
+                    return sideA + sideB + sideC;
+                }
+
+                public double parameter(int sideA, int sideB) {
+                    int sideC = (int) Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2));
+                    return sideA + sideB + sideC;
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            public class Human {
+                public void breath() {
+                    System.out.println("Human can breath");
+                }
+
+                public void eat() {
+                    System.out.println("Human can eat");
+                }
+            }
+
+            public class Student extends Human {
+                public void sleep() {
+                    System.out.println("Student can sleep");
+                }
+            }
+
+            public class Lecturer extends Human {
+                public void workOvertime() {
+                    System.out.println("Lecturer can work overtime");
+                }
+            }
+        \end{minted}
+    }
+\end{enumerate}
+
+\end{document}
+
