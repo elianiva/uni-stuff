@@ -1,0 +1,331 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,minted}
+
+%% Variables definition
+\newcommand{\vSubject}{Object Oriented Programming}
+\newcommand{\vSubtitle}{Polymorphism}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        Which classes are derived from the class \texttt{Employee} ?
+
+        The \texttt{InternshipEmployee} and \texttt{PermanentEmployee} classes are derived from the \texttt{Employee} class.
+    }
+    \item {
+        Which classes implements the \texttt{Payable} interface ?
+
+        The \texttt{PermanentEmployee} and \texttt{ElectricityBill} classes implements the \texttt{Payable} interface.
+    }
+    \item {
+        Why can we assign \texttt{PermanentEmployee} and \texttt{InternshipEmployee} objects to the \texttt{Employee} variable ?
+
+        Because both classes inherit from the \texttt{Employee} class which makes it polymorphic.
+    }
+    \item {
+        Why can we assign \texttt{ElectricityBill} and \texttt{PermanentEmployee} objects to the \texttt{Payable} variable ?
+
+        Because both classes implement the \texttt{Payable} interface which makes it polymorphic.
+    }
+    \item {
+        Try adding these lines of code and explain why it throws an error
+
+        \begin{minted}[autogobble,fontsize=\small]{java}
+            p = iEmp;
+            e = eBill;
+        \end{minted}
+
+        Those are incorrect since we assign \texttt{InternshipEmployee} to a variable with type \texttt{Payable}, which \texttt{InternshipEmployee} does not implement the \texttt{Payable} interface.
+        The same goes for \texttt{ElectricityBill} and \texttt{Employee}. The \texttt{ElectricityBill} does not inherit from the \texttt{Employee} class.
+    }
+    \item {
+        Make a conclusion about polymorphism!
+
+        Polymorphism is a feature in OOP that allows us to use a class or interface as a data type. We can then assign any
+        object that inherits the class or inherit the interface to the variable.
+    }
+\end{enumerate}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        Why on line 8 and 10 gives the same result?
+
+        Because they're both refer to the same reference of the \texttt{PermanentEmployee} object.
+    }
+    \item {
+        Why calling a method from the \texttt{e.getEmployeeInfo()} considered as a virtual method invocation?
+
+        Because the \texttt{getEmployeeInfo()} method is overridden in the \texttt{PermanentEmployee} class.
+    }
+    \item {
+        What does it mean by virtual method invocation? Why is it called as virtual?
+
+        Virtual method invocation is a method call that is resolved at runtime. It is called virtual because the method
+        that is called is determined by the object that is referenced by the variable, not the variable itself.
+    }
+\end{enumerate}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        Why can we assign an object of \texttt{PermanentEmployee} and \texttt{InternshipEmployee} to a variable of \texttt{Employee} type?
+
+        Because both of them inherits from the \texttt{Employee} class which makes them polymorphic to the \texttt{Employee} class.
+    }
+    \item {
+        Why can we assign an object of \texttt{PermanentEmployee} and \texttt{ElectricityBill} to a variable of \texttt{Payable} type?
+
+        Because both of them implements the \texttt{Payable} interface which makes them polymorphic to the \texttt{Payable} interface.
+    }
+    \item {
+        Why is there an error when we try to assign everything to the \texttt{Employee} variable?
+
+        Because not every object inherits from the \texttt{Employee} class. The \texttt{ElectricityBill} class does not inherit from the \texttt{Employee} class.
+    }
+\end{enumerate}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        Why can we assign both \texttt{PermanentEmployee} and \texttt{ElectricityBill} objects to the \texttt{Payable} parameter? Moreover, both of them uses
+        different methods to calculate the payment.
+
+        Because both of them implements the \texttt{Payable} interface which makes them polymorphic to the \texttt{Payable} interface.
+        We determine the method to call using an if condition which checks using the \texttt{instanceof} operator.
+    }
+    \item {
+        What's the purpose of the \texttt{Payable} parameters on the method \texttt{pay()} from the class \texttt{Owner}?
+
+        Because we want the method to be able to accept any object that implements the \texttt{Payable} interface. It makes it polymorphic.
+    }
+    \item {
+        Why is there an error when we try to pay the \texttt{InternshipEmployee} class?
+
+        Because it doesn't implement the \texttt{Payable} interface.
+    }
+    \item {
+        Why do we need to cast the \texttt{ElectricityBill} object after passing it through the \texttt{Payable} parameter?
+
+        Because we want to access the \texttt{getBill()} method which is not available in the \texttt{Payable} interface but available on the \texttt{ElectricityBill} class.
+    }
+\end{enumerate}
+
+\section{Task}
+\begin{itemize}
+    \item {
+        Destroyable
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            package polymorphism;
+
+            public interface Destroyable {
+                void destroyed();
+            }
+        \end{minted}
+    }
+    \item {
+        Zombie
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            package polymorphism;
+
+            public class Zombie implements Destroyable {
+                protected int health;
+                protected int level;
+
+                public void heal() {
+                    if (level == 1) {
+                        health += health * 0.1;
+                    } else if (level == 2) {
+                        health += health * 0.2;
+                    } else if (level == 3) {
+                        health += health * 0.3;
+                    }
+                }
+
+                public void destroyed() {
+                    health -= health * 0.1;
+                }
+
+                public String getZombieInfo() {
+                    return "Zombie Data = \nHealth = " + health + "\nLevel = " + level + "\n";
+                }
+            }
+        \end{minted}
+    }
+    \pagebreak
+    \item {
+        WalkingZombie
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            package polymorphism;
+
+            public class WalkingZombie extends Zombie {
+                public WalkingZombie(int health, int level) {
+                    this.health = health;
+                    this.level = level;
+                }
+
+                public void heal() {
+                    if (level == 1) {
+                        health += health * 0.1;
+                    } else if (level == 2) {
+                        health += health * 0.2;
+                    } else if (level == 3) {
+                        health += health * 0.3;
+                    }
+                }
+
+                public void destroyed() {
+                    health -= (int)(health * 0.2);
+                }
+
+                public String getZombieInfo() {
+                    return "Walking Zombie Data = \nHealth = " + health + "\nLevel = " + level + "\n";
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        JumpingZombie
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            package polymorphism;
+
+            public class JumpingZombie extends Zombie {
+                public JumpingZombie(int health, int level) {
+                    this.health = health;
+                    this.level = level;
+                }
+
+                public void heal() {
+                    if (level == 1) {
+                        health += health * 0.3;
+                    } else if (level == 2) {
+                        health += health * 0.4;
+                    } else if (level == 3) {
+                        health += health * 0.5;
+                    }
+                }
+
+                public void destroyed() {
+                    health -= (int)(health * 0.1);
+                }
+
+                public String getZombieInfo() {
+                    return "Jumping Zombie Data = \nHealth = " + health + "\nLevel = " + level + "\n";
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        Barrier
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            package polymorphism;
+
+            public class Barrier implements Destroyable {
+                private int strength;
+
+                public Barrier(int strength) {
+                    this.strength = strength;
+                }
+
+                public void destroyed() {
+                    strength -= strength * 0.1;
+                }
+
+                public String getBarrierInfo() {
+                    return "Barrier Data = \nStrength = " + strength + "\n";
+                }
+            }
+        \end{minted}
+    }
+    \item {
+        Plant
+        \begin{minted}[autogobble,fontsize=\footnotesize]{java}
+            package polymorphism;
+
+            public class Plant {
+                public void doDestroy(Destroyable d) {
+                    wz.destroyed();
+                }
+            }
+        \end{minted}
+    }
+\end{itemize}
+
+\end{document}
+
