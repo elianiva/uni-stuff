@@ -1,0 +1,292 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Matematika 3}
+\newcommand{\vSubtitle}{Quiz 2}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section*{Quiz 2}
+\subsection*{Material 10}
+\begin{enumerate}
+    \item {
+        What is the difference between vectors and vector spaces?
+
+        Vectors is an entity that has magnitude or length and direction.
+        Vector space is a set of vectors that can be added and multiplied by a scalar.
+    }
+    \item {
+        Determine the size of the vector $\vec{PQ} = 5i + 8j + 3k$ and $\vec{RS} = 9i + 4j + 5k$
+
+        \begin{align*}
+            \vec{PQ} &= 5i + 8j +3k \\
+            |\vec{PQ}| &= \sqrt{5^2 + 8^2 + 3^2} \\
+            &= \sqrt{25 + 64 + 9} \\
+            &= \sqrt{98} \\
+            &= 7\sqrt2
+        \end{align*}
+
+        \begin{align*}
+            \vec{RS} &= 9i + 4j + 5k \\
+            |\vec{RS}| &= \sqrt{9^2 + 4^2 + 5^2} \\ 
+            &= \sqrt{81 + 16 + 25} \\
+            &= \sqrt{102}
+        \end{align*}
+    }
+    \item {
+        Known $\vec{u} = (1,2,3,5)$ and $\vec{v} = (4,7,6,2)$ determine the length of each vector
+
+        \begin{align*}
+            \vec{u} &= (1, 2, 3, 5) \\
+            ||\vec{u}|| &= \sqrt{1^2 + 2^2 + 3^2 + 5^2} \\ 
+            &= \sqrt{39}
+        \end{align*}
+
+        \begin{align*}
+            \vec{v} &= (4,7,6,2) \\ 
+            ||\vec{v}|| &= \sqrt{4^2 + 7^2 + 6^2 + 2^2} \\
+            &= \sqrt{105}
+        \end{align*}
+    }
+    \item {
+        Known $\vec{u} = (2,1,3,1)$ and $\vec{v} = (3,3,1,2)$ determine the distance between the two vectors.
+
+        \begin{align*}
+            \vec{u} &= (2,1,3,1) \\
+            \vec{v} &= (3,3,1,2) \\
+            ||\vec{u} - \vec{v}|| &= \sqrt{(2-3)^2 + (1-3)^2 + (3-1)^2 + (1-2)^2} \\
+            &= \sqrt{1 + 4 + 4 + 1} \\
+            &= \sqrt{10}
+        \end{align*}
+    }
+\end{enumerate}
+
+\subsection*{Material 12}
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item {
+        Determine the direction cosine $[l,m,n]$ from vector $\vec{r} = 2i - 2j + 7k$
+
+        \begin{align*}
+            r &= \sqrt{2^2 - 2^2 + 7^2} \\ 
+            &= \sqrt{4 + 4 + 49} \\ 
+            &= \sqrt{57}
+        \end{align*}
+
+        \begin{align*}
+            l &= \frac{2}{\sqrt{57}} \\
+            m &= \frac{-2}{\sqrt{57}} \\
+            n &= \frac{7}{\sqrt{57}}
+        \end{align*}
+    }
+    \item {
+        What is the scalar product of two vectors if a=3, b=5 and $ \theta = 45$?
+
+        \begin{align*}
+            \vec{a} &= 3 \\
+            \vec{b} &= 5 \\
+            \theta &= 45 \\
+            \vec{a} \cdot \vec{b} &= ab\cos\theta \\
+            &= 3 \times 5 \times \cos 45 \\
+            &= 15 \times \frac{\sqrt{2}}{2} \\
+            &= \frac{15\sqrt{2}}{2}
+        \end{align*}
+    }
+    \item {
+        What is the vector product of $p \times q = \left[ \begin{matrix}
+            i & j & k \\
+            3 & 4 & 2 \\
+            1 & 5 & 2
+        \end{matrix} \right] $
+
+        \begin{align*}
+            p \times q &= \left[ \begin{matrix}
+                i & j & k \\
+                3 & 4 & 2 \\
+                1 & 5 & 2
+            \end{matrix} \right] \\
+            &= i \left| \begin{matrix}
+                4 & 2 \\
+                5 & 2
+            \end{matrix} \right| - j \left| \begin{matrix}
+                3 & 2 \\
+                1 & 2
+            \end{matrix} \right| + k \left| \begin{matrix}
+                3 & 4 \\
+                1 & 5
+            \end{matrix} \right| \\
+            &= i(8 - 10) - j(6 - 2) + k(15 - 4) \\
+            &= -2i - 4j + 11k
+        \end{align*}
+    }
+    \item {
+        If a = 3i + 2j + 2k and b = 2i +1j + 4k. Determine
+        \begin{enumerate}
+            \item $a . b$
+            \item $a \times b$
+        \end{enumerate}
+
+        \begin{enumerate}
+            \item {
+                \begin{align*}
+                    a &= 3i + 2j + 2k \\
+                    b &= 2i + 1j + 4k \\
+                    a \cdot b &= (3 \times 2) + (2 \times 1) + (2 \times 4) \\
+                    &= 6 + 2 + 8 \\
+                    &= 16
+                \end{align*}
+            }
+            \item {
+                \begin{align*}
+                    a \times b &= \left[ \begin{matrix}
+                        i & j & k \\
+                        3 & 2 & 2 \\
+                        2 & 1 & 4
+                    \end{matrix} \right] \\
+                    &= i \left| \begin{matrix}
+                        2 & 2 \\
+                        1 & 4
+                    \end{matrix} \right| - j \left| \begin{matrix}
+                        3 & 2 \\
+                        2 & 4
+                    \end{matrix} \right| + k \left| \begin{matrix}
+                        3 & 2 \\
+                        2 & 1
+                    \end{matrix} \right| \\
+                    &= i(8 - 2) - j(12 - 4) + k(3 - 4) \\
+                    &= 6i - 8j - k
+                \end{align*}
+            }
+        \end{enumerate}
+    }
+\end{enumerate}
+
+\pagebreak
+
+\subsection*{Material 12}
+
+\begin{enumerate}
+    \setcounter{enumi}{8}
+    \item {
+        Determine the angle between vectors:
+        \begin{align*}
+            p &= 3i + 2j + 2k\\
+            q &= 3i - 2j + 2k
+        \end{align*}
+        \begin{enumerate}
+            \item {
+                First determine the direction cosine $[l, m, n]$ (for p) and $[l', m', n']$ (for q).
+                \begin{align*}
+                    p &= 3i + 2j + 2k \\
+                    ||p|| &= \sqrt{3^2 + 2^2 + 2^2} \\
+                    &= \sqrt{9 + 4 + 4} \\
+                    &= \sqrt{17} \\
+                    l &= \frac{3}{\sqrt{17}} \\
+                    m &= \frac{2}{\sqrt{17}} \\
+                    n &= \frac{2}{\sqrt{17}}
+                \end{align*}
+                \begin{align*}
+                    q &= 3i - 2j + 2k \\
+                    ||q|| &= \sqrt{3^2 + (-2)^2 + 2^2} \\
+                    &= \sqrt{9 + 4 + 4} \\
+                    &= \sqrt{17} \\
+                    l' &= \frac{3}{\sqrt{17}} \\
+                    m' &= \frac{-2}{\sqrt{17}} \\
+                    n' &= \frac{2}{\sqrt{17}}
+                \end{align*}
+            }
+            \item {
+                Then look for cos $\theta = l.l' + m.m' + n.n'$
+                \begin{align*}
+                    \cos\theta &= l.l' + m.m' + n.n' \\
+                    &= \frac{3}{\sqrt{17}} \times \frac{3}{\sqrt{17}} + \frac{2}{\sqrt{17}} \times \frac{-2}{\sqrt{17}} + \frac{2}{\sqrt{17}} \times \frac{2}{\sqrt{17}} \\
+                    &= \frac{9}{17} - \frac{4}{17} + \frac{4}{17} \\
+                    &= \frac{9}{17}
+                \end{align*}
+            }
+        \end{enumerate}
+    }
+    \item {
+        What is vector direction ratio?
+
+        Vector direction ratio is the ratio of the direction of a vector to the direction of the x, y, and z axes.
+    }
+\end{enumerate}
+
+\end{document}
+
