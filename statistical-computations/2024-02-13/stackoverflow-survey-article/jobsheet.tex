@@ -1,0 +1,208 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,color,soul}
+
+%% Variables definition
+\newcommand{\vSubject}{Statistical Computations}
+\newcommand{\vSubtitle}{Stackoverflow Survey Article}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Overview}
+Stackoverflow is a website that is used by programmers to ask questions and get answers from other people.
+Each year, Stackoverflow conducts a survey to get insights about the developer community. The survey
+covers a wide range of topics, including programming languages, tools, and technologies, as well as
+demographics and employment information. This article provide some analysis of the results from the
+2023 Stackoverflow survey and discuss some of the key findings. This article will not cover
+the full scope of the survey, but hopefully it should be enough to give the readers an idea
+of how the software engineering scene in general.
+
+\section{Methodology}
+The data that are used in this article are taken from the Stackoverflow survey results. The survey
+result can be found at \texttt{https://survey.stackoverflow.co/2023/}. The survey was conducted from
+8 May 2023 to 19 May 2023 with 89,184 software developers from 185 countries. Although, approximately 
+2.000 responses were not included in this analysis because they were deemed incomplete or other
+reasons.
+
+The median time spent on the survey for qualified responses was almost 18 minutes. Many questions
+were only shown to respondents based on their previous answers. The questions were organized into
+several blocks of questions, which were randomized in order.
+
+\section{Developer Profile and Demographics}
+
+\subsection{Education}
+Based on the survey results, the majority of developers have a bachelor's degree followed by having
+a master's degree. Only a small percentage of the respondents have a doctoral degree, even less
+than those who are still in secondary school.
+
+\subsection{Experience}
+Almost half of the respondents have been coding less than ten years. Most of the respondents have
+5-9 years of coding experience, around 26\% of the respondents. On average, Australia has the most
+years of coding experience, with 17.54 years, while India has the least, with 7.79 years. Most
+higher ups position such as C-suite, VP, etc have the most years of coding experience averaging
+around 17.43 years.
+
+\subsection{Age}
+\sethlcolor{cyan}
+43\% of Professional Developers are 25-34 years old. But more than half of the respondents
+learning to code are 18-24 years old.
+
+\subsection{Gender}
+Interestingly, Stackoverflow survey in 2023 didn't include the question for gender.
+This is probably due to fact that in recent years there has been a lot of controversy
+regarding gender identity and such.
+
+\subsection{Conclusion}
+Based on the survey, the majority of developers have a bachelor's degree and have been coding
+for less than ten years. \hl{The majority of professional developers are 25-34 years old}, and the
+survey didn't include the question for gender identity. \sethlcolor{yellow} \hl{We can conclude that the majority of
+developers are young and have a relatively short amount of experience.}
+
+\section{Technologies}
+\subsection{Languages}
+2023 continues JavaScript’s streak as its eleventh year in a row as the most commonly-used
+programming language having 63.61\% responses, followed by HTML/CSS as markup language.
+Python is the third most used language, overtake SQL which is the fourth most used language.
+The big mover, gaining seven spots since 2022 was Lua, an embeddable scripting language.
+
+Rust while only being the 14th most used language, is the most admired language, with 84.66\% of
+the respondents showed their admiration for the language. Compare this to the least admired 
+language: MATLAB. Less than 20\% of developers who used this language want to use it again next year.
+
+Zig is the highest-paid language to know this year (a new addition), while Clojure gets knocked
+from the top spot with a 10\% decrease from 2022. The correlation of the language with the highest
+average salary with it being popular is not very strong, as Zig is only the 41th most popular language.
+This is probably due to the fact that Zig is a relatively new language and not many developers know it
+or able to use it professionally.
+
+Do bare in mind that the percentages are not mutually exclusive, meaning that a respondent
+can choose multiple languages. This is why the percentages can add up to more than 100\%.
+
+\subsection{Databases}
+PostgresQL with 45.55\% has taken the top spot as the most popular database, overtaking 
+MySQL in previous years. MongoDB being the top NoSQL database, followed by Redis and Firebase.
+
+There doesn't seem to be a significant variant in the database usage based on the result
+of the survey. The top 10 databases are still the same as the previous years. The pattern
+observed is that most people prefer to use a stable and proven to be reliable databases over
+the ones that are still new and trying to make its way into the market.
+
+\sethlcolor{cyan}
+\hl{PostgreSQL, Redis, and Datomic are the most admired databases with 71.23\%, 69.92\%, and 70.49\%
+consequently.} \sethlcolor{yellow} \hl{Interestingly, Datomic have the least users among the three of them.
+That kind of admiration should push others to consider Datomic as a viable option.}
+
+\subsection{Cloud Platforms}
+AWS remains the most used cloud platform for all respondents. AWS handily makes it to the 
+top spot, almost doubling the percentange of the second most used cloud platform for all
+respondents, Azure, with them having 48.62\% and 26.03\% respectively.
+
+\sethlcolor{cyan}
+\hl{Despite that, cloud platform with the largest proportion that the respondents have used and want
+to continue using them are Hetzner and Vercel (69\%+);} more developers would choose to work with
+these two cloud platforms over those that would choose to and have worked with the top three
+(AWS, Azure, and Google Cloud). \sethlcolor{yellow} \hl{This is a very interesting result, as it shows that the top
+three cloud platforms are not necessarily the most preferred ones.}
+
+\section{Conclusion}
+Based on the survey, we can see that the trend of the respondents are mostly young and have
+a relatively short amount of experience. \hl{We can conclude that most of them are working
+for the web development industry, as the most used programming language is JavaScript and
+HTML/CSS being the second most used language.}
+
+This article only covers a small portion of the survey results and in no way represents the
+full scope of the survey. The purpose of the article is to provide the readers an idea
+on how the software engineering scene is in 2023. The full survey results can be
+found at \texttt{https://insights.stackoverflow.com/survey/2023}.
+
+\section{Author's Note}
+
+The reason why I bring up the topic is because the result of Stackoverflow survey always
+provides an interesting insight into the software engineering industry. It's always interesting
+to see how the industry changes from year to year and how the trends evolve. The survey
+results can be used to make informed decisions about the technologies and tools to learn
+and use in the future based on other people experiences.
+
+Also, note that some of the text in this article are highlighted with colours, cyan to indicate that
+it's a descriptive statistics and yellow to indicate that it's an inferential statistics. Although,
+only a few of them are marked so that the reading experience is not disrupted.
+
+(((This is only because I made this article for my statistics class assignment. Hence, I need to put
+the colours to indicate which part of the text is descriptive and which part is inferential.
+An actual article wouldn't have this kind of colouring.)))
+
+\end{document}
+
