@@ -1,0 +1,242 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Computer Networking}
+\newcommand{\vSubtitle}{How things work}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\tableofcontents
+
+\pagebreak
+
+\section{Introduction}
+
+The internet that we use everyday comprises of many different devices and technologies. Each of those
+devices communicate through different types of protocols, which have they're own purpose and use case.
+This article will explain how those devices communicate with each other through the aforementioned protocols.
+
+This article is in no way tries to be a comprehensive guide over these protocols. It should serve as an introduction
+to the topic and should be used as a starting point for further research. Some of the protocols
+that will be discussed in this article are:
+\begin{itemize}
+    \item DNS
+    \item HTTP
+    \item Email Services (SMTP / POP3 / IMAP)
+    \item FTP
+    \item DHCP
+    \item Telnet/SSH Services
+\end{itemize}
+
+\section{Domain Name System (DNS)}
+Domain Name System or commonly abbreviated as DNS is a system that translates domain names to IP addresses.
+Think of it like a phonebook where it converts a name to a phone number. This system is crucial for the internet
+to function as it is today. Without DNS, we would have to remember the IP address of every website we want to visit.
+
+In order to understand the process behind the DNS resolution, it’s important to learn about
+the different hardware components a DNS query must pass between. For the web browser, the DNS
+lookup occurs "behind the scenes" and requires no interaction from the user’s computer apart from
+the initial request.
+
+The process of resolving a domain name involves the following steps:
+\begin{enumerate}
+    \item {
+        A user types ‘example.com’ into a web browser and the query travels into the Internet and is received by a DNS recursive resolver.
+    }
+    \item {
+        The resolver then queries a DNS root nameserver (.).
+    }
+    \item {
+        The root server then responds to the resolver with the address of a Top Level Domain (TLD) DNS
+        server (such as .com or .net), which stores the information for its domains. When searching for
+        example.com, our request is pointed toward the .com TLD.
+    }
+    \item {
+        The resolver then makes a request to the .com TLD.
+    }
+    \item {
+        The TLD server then responds with the IP address of the domain’s nameserver, example.com.
+    }
+    \item {
+        Lastly, the recursive resolver sends a query to the domain’s nameserver.
+    }
+    \item {
+        The IP address for example.com is then returned to the resolver from the nameserver.
+    }
+    \item {
+        The DNS resolver then responds to the web browser with the IP address of the domain requested initially.
+    }
+\end{enumerate}
+
+Once the 8 steps of the DNS lookup have returned the IP address for example.com, the browser is able to make the request for the web page:
+
+\begin{enumerate}
+    \item {
+        The browser makes a HTTP request to the IP address.
+        }
+    \item {
+        The server at that IP returns the webpage to be rendered in the browser.
+    }
+\end{enumerate}
+
+All of these steps happen in a fraction of a second. The DNS system is a critical component of the Internet infrastructure, providing a way
+for your computer to look up the addresses of the servers where your requested pages are hosted.
+
+\section{Hypertext Transfer Protocol (HTTP)}
+
+Hypertext Transfer Protocol, more commonly known as HTTP is probably the most widely known protocol on the Internet. It's
+basically the foundation of World Wide Web, and is used to load webpages using hypertext links. It operates in the application layer protocol
+designed to transfer information between networked devices on top of other layers of network protocol stack.
+A typical flow of HTTP communication involves a client and server devices.
+
+HTTP follows a classical client-server model, with a client opening a connection to make a request,
+then waiting until it receives a response. HTTP is a stateless protocol, meaning that the server does not
+keep any data (state) between two requests.
+
+When we make a HTTP request to a server, it typically contains several things:
+\begin{enumerate}
+    \item {
+        \textbf{HTTP Version Type} - As of the time when this article was written, there are 3 versions of HTTP that are widely used.
+        Namely, HTTP/1.1, HTTP/2.0, and HTTP/3.0
+    }
+    \item {
+        \textbf{URL} - Uniform Resource Locator (URL) is an address to a resource on the Internet.
+        It can be  webpage, image, video, or any other file.
+    }
+    \item {
+        \textbf{HTTP Method} - Also known as HTTP verb. Each request that performs different action
+        carries different HTTP verb. The most common HTTP verbs are GET, POST, PUT, DELETE, and PATCH.
+    }
+    \item {
+        \textbf{HTTP Request Headers} - These are key-value pairs that are sent to the server along with the request.
+        This part functions as a way to send additional information to the server that acts like a metadata such as the user agent,
+        format of the data being sent, etc.
+    }
+    \item {
+        \textbf{HTTP Request Body (optional)} - This part is optional and is only used when the request method is POST, PUT, or PATH.
+        The body of an HTTP request contains any information being submitted to the web server, such as a username and password, or any other data entered into a form.
+    }
+\end{enumerate}
+
+After making a request, we usually get a HTTP response back from the server that consists of:
+\begin{enumerate}
+    \item {
+        \textbf{HTTP Status Code} - It's a 3 digit numbers used to indicate whether a HTTP request
+        is successful or not. They are broken into 5 blocks:
+        \begin{itemize}
+            \item \textbf{1xx} - Informational
+            \item \textbf{2xx} - Success
+            \item \textbf{3xx} - Redirection
+            \item \textbf{4xx} - Client Error
+            \item \textbf{5xx} - Server Error
+        \end{itemize}
+        The xx refers to different numbers between 00 - 99.
+    }
+    \item {
+        \textbf{HTTP Response Headers} - Much like its request counterparts, these are key-value pairs that are
+        sent from the server to the client and it serves pretty much the same purpose as the request headers.
+    }
+    \item {
+        \textbf{HTTP Response Body} - It contains the actual content that the server sends back to the client.
+        Most commonly it's a HTML file, but it can also be a JSON, XML, or any other format.
+    }
+\end{enumerate}
+
+\section{Email Services (SMTP / POP3 / IMAP)}
+
+\subsection{Simple Mail Transfer Protocol (SMTP)}
+
+SMTP stands for Simple Mail Transfer Protocol. It is a communication protocol used for sending
+and receiving email messages over the Internet. Mail servers and other message transfer agents (MTAs)
+use SMTP to send, receive and relay mail messages.
+
+As the “T” in its name indicates, SMTP is a transport protocol: All it does is move messages from point A to point B.
+
+Like many other Internet protocols, SMTP is intended to be used on top of the Transmission Control Protocol (TCP), which guarantees reliable delivery of the individual packets that make up a conversation.
+
+The use of IP means that we can depend on SMTP to eventually get the message contents to a server, but what happens to it after that is up to the server.
+
+Imagine what happens when a delivery driver leaves a package at your office on a Saturday. What happens to it after delivery isn’t his problem.
+
+Deliverability, monitoring, tracking, authentication, and encryption are all examples of services that SMTP doesn’t necessarily provide itself but that are still very valuable.
+
+\subsection{P}
+
+
+\end{document}
+
