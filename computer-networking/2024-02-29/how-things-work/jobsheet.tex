@@ -119,7 +119,7 @@ The process of resolving a domain name involves the following steps:
         A user types ‘example.com’ into a web browser and the query travels into the Internet and is received by a DNS recursive resolver.
     }
     \item {
-        The resolver then queries a DNS root nameserver (.).
+        The resolver then queries a DNS root nameserver
     }
     \item {
         The root server then responds to the resolver with the address of a Top Level Domain (TLD) DNS
@@ -225,18 +225,57 @@ SMTP stands for Simple Mail Transfer Protocol. It is a communication protocol us
 and receiving email messages over the Internet. Mail servers and other message transfer agents (MTAs)
 use SMTP to send, receive and relay mail messages.
 
-As the “T” in its name indicates, SMTP is a transport protocol: All it does is move messages from point A to point B.
+\subsection{Post Office Protocol version 3 (POP3)}
 
-Like many other Internet protocols, SMTP is intended to be used on top of the Transmission Control Protocol (TCP), which guarantees reliable delivery of the individual packets that make up a conversation.
+POP3 stands for Post Office Protocol version 3. It is a standard mail protocol used to receive emails from a remote server to a local email client. POP3 allows you to download
+email messages on your local computer and read them even when you are offline. This protocol works locally
+and is used to retrieve emails from the server. Since it is a one-way protocol, it doesn't allow syncronisation across multiple
+devices.
 
-The use of IP means that we can depend on SMTP to eventually get the message contents to a server, but what happens to it after that is up to the server.
+\subsection{Internet Message Access Protocol (IMAP)}
 
-Imagine what happens when a delivery driver leaves a package at your office on a Saturday. What happens to it after delivery isn’t his problem.
+IMAP stands for Internet Message Access Protocol. It is a standard protocol for accessing e-mail from your
+local server. IMAP is a two-way protocol that allows you to access your email from multiple devices and
+maintains the same state across all devices. This means that if you read an email on your phone, it will
+also be marked as read on your computer.
 
-Deliverability, monitoring, tracking, authentication, and encryption are all examples of services that SMTP doesn’t necessarily provide itself but that are still very valuable.
+\section{File Transfer Protocol (FTP)}
 
-\subsection{P}
+FTP stands for File Transfer Protocol. It is a standard network protocol used to transfer files from one host
+to another host over a TCP-based network, such as the Internet. FTP is built on a client-server architecture
+and uses separate control and data connections between the client and the server.
 
+FTP works by sending commands and receiving responses through the control connection. When a user requests
+a file, the server sends a file transfer request to the client. The client then opens a data connection to the
+server and the file is transferred using the data connection. Once the file transfer is complete, the data
+connection is closed and the control connection remains open.
+
+\section{Dynamic Host Configuration Protocol (DHCP)}
+
+DHCP stands for Dynamic Host Configuration Protocol. It is a network management protocol used to automate
+the process of configuring devices on IP networks. DHCP allows hosts to obtain required TCP/IP configuration information
+from a DHCP server. Usually this information includes IP address, subnet mask, default gateway, and DNS server
+addresses.
+
+\pagebreak
+
+\section{Telnet/SSH Services}
+
+Telnet and SSH are both network protocols that allow you to connect to a remote computer over a network.
+
+\subsection{Telnet}
+
+Telnet is a network protocol that allows a user to remotely access and control another computer over the Internet or local area network (LAN). It enables a user to establish a connection to a remote system and perform tasks as if they were sitting in front of that computer.
+
+It is a client-server protocol, which means that a client device initiates the connection to a server device. The client sends commands to the server, and the server responds with output, allowing the user to interact with the remote system’s command-line interface. It uses the Transmission Control Protocol (TCP) as its underlying transport protocol.
+
+\subsection{Secure Shell (SSH)}
+
+The Secure Shell (SSH) protocol is a method for securely sending commands to a computer over an
+unsecured network. SSH uses cryptography to authenticate and encrypt connections between devices.
+SSH also allows for tunneling, or port forwarding, which is when data packets are able to cross
+networks that they would not otherwise be able to cross. SSH is often used for controlling servers
+remotely, for managing infrastructure, and for transferring files.
 
 \end{document}
 
