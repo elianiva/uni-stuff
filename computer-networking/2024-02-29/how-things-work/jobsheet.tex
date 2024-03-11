@@ -1,6 +1,9 @@
 \documentclass[12pt,titlepage]{article}
 \usepackage[margin=1.25in]{geometry}
-\usepackage{graphicx,amsmath,blindtext}
+\usepackage{graphicx,amsmath}
+\usepackage[backend=bibtex,style=numeric]{biblatex}
+
+\addbibresource{references.bib}
 
 %% Variables definition
 \newcommand{\vSubject}{Computer Networking}
@@ -155,7 +158,7 @@ Once the 8 steps of the DNS lookup have returned the IP address for example.com,
 \end{enumerate}
 
 All of these steps happen in a fraction of a second. The DNS system is a critical component of the Internet infrastructure, providing a way
-for your computer to look up the addresses of the servers where your requested pages are hosted.
+for your computer to look up the addresses of the servers where your requested pages are hosted. \cite{cloudflare-dns}
 
 \section{Hypertext Transfer Protocol (HTTP)}
 
@@ -166,7 +169,7 @@ A typical flow of HTTP communication involves a client and server devices.
 
 HTTP follows a classical client-server model, with a client opening a connection to make a request,
 then waiting until it receives a response. HTTP is a stateless protocol, meaning that the server does not
-keep any data (state) between two requests.
+keep any data (state) between two requests. \cite{cloudflare-http}
 
 When we make a HTTP request to a server, it typically contains several things:
 \begin{enumerate}
@@ -223,21 +226,21 @@ After making a request, we usually get a HTTP response back from the server that
 
 SMTP stands for Simple Mail Transfer Protocol. It is a communication protocol used for sending
 and receiving email messages over the Internet. Mail servers and other message transfer agents (MTAs)
-use SMTP to send, receive and relay mail messages.
+use SMTP to send, receive and relay mail messages. \cite{aws-smtp}
 
 \subsection{Post Office Protocol version 3 (POP3)}
 
 POP3 stands for Post Office Protocol version 3. It is a standard mail protocol used to receive emails from a remote server to a local email client. POP3 allows you to download
 email messages on your local computer and read them even when you are offline. This protocol works locally
 and is used to retrieve emails from the server. Since it is a one-way protocol, it doesn't allow syncronisation across multiple
-devices.
+devices. \cite{microsoft-imap-pop3}
 
 \subsection{Internet Message Access Protocol (IMAP)}
 
 IMAP stands for Internet Message Access Protocol. It is a standard protocol for accessing e-mail from your
 local server. IMAP is a two-way protocol that allows you to access your email from multiple devices and
 maintains the same state across all devices. This means that if you read an email on your phone, it will
-also be marked as read on your computer.
+also be marked as read on your computer. \cite{microsoft-imap-pop3}
 
 \section{File Transfer Protocol (FTP)}
 
@@ -248,14 +251,14 @@ and uses separate control and data connections between the client and the server
 FTP works by sending commands and receiving responses through the control connection. When a user requests
 a file, the server sends a file transfer request to the client. The client then opens a data connection to the
 server and the file is transferred using the data connection. Once the file transfer is complete, the data
-connection is closed and the control connection remains open.
+connection is closed and the control connection remains open. \cite{hostinger-ftp}
 
 \section{Dynamic Host Configuration Protocol (DHCP)}
 
 DHCP stands for Dynamic Host Configuration Protocol. It is a network management protocol used to automate
 the process of configuring devices on IP networks. DHCP allows hosts to obtain required TCP/IP configuration information
 from a DHCP server. Usually this information includes IP address, subnet mask, default gateway, and DNS server
-addresses.
+addresses. \cite{microsoft-dhcp}
 
 \pagebreak
 
@@ -265,9 +268,15 @@ Telnet and SSH are both network protocols that allow you to connect to a remote 
 
 \subsection{Telnet}
 
-Telnet is a network protocol that allows a user to remotely access and control another computer over the Internet or local area network (LAN). It enables a user to establish a connection to a remote system and perform tasks as if they were sitting in front of that computer.
+Telnet is a network protocol that allows a user to remotely access and control
+another computer over the Internet or local area network (LAN). It enables a user
+to establish a connection to a remote system and perform tasks as if they were
+sitting in front of that computer.
 
-It is a client-server protocol, which means that a client device initiates the connection to a server device. The client sends commands to the server, and the server responds with output, allowing the user to interact with the remote system’s command-line interface. It uses the Transmission Control Protocol (TCP) as its underlying transport protocol.
+It is a client-server protocol, which means that a client device initiates the connection
+to a server device. The client sends commands to the server, and the server responds
+with output, allowing the user to interact with the remote system’s command-line interface.
+It uses the Transmission Control Protocol (TCP) as its underlying transport protocol. \cite{cloudns-telnet}
 
 \subsection{Secure Shell (SSH)}
 
@@ -275,7 +284,11 @@ The Secure Shell (SSH) protocol is a method for securely sending commands to a c
 unsecured network. SSH uses cryptography to authenticate and encrypt connections between devices.
 SSH also allows for tunneling, or port forwarding, which is when data packets are able to cross
 networks that they would not otherwise be able to cross. SSH is often used for controlling servers
-remotely, for managing infrastructure, and for transferring files.
+remotely, for managing infrastructure, and for transferring files. \cite{cloudflare-ssh}
+
+\pagebreak
+
+\printbibliography
 
 \end{document}
 
