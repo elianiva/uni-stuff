@@ -1,0 +1,155 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Advanced Web Programming}
+\newcommand{\vSubtitle}{Migration}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Questions}
+\begin{enumerate}
+    \item {
+        In \textbf{Practicum 1 - Step 5}, what is the function of the \texttt{APP\_KEY} in the Laravel \texttt{.env} setting file?
+
+        It is used to encrypt the session and other data in Laravel.
+    }
+    \item {
+        In \textbf{Practicum 1}, how do we generate value for \texttt{APP\_KEY}?
+
+        We can generate the value for \texttt{APP\_KEY} by using the command \texttt{php artisan key:generate}.
+    }
+    \item {
+        In \textbf{Practicum 2.1 - Step 1}, by default how many migration files does Laravel have? and what are the migration files for?
+
+        By default, Laravel has 4 migration files. The migration files are used to create users, password resets, failed jobs, and personal access tokens.
+    }
+    \item {
+        By default, the migration file contains the code \texttt{\$table->timestamps();}, what is the purpose/output of the function?
+
+        The function is used to create two columns, \texttt{created\_at} and \texttt{updated\_at}, which are used to store the date and time when the data was created and updated.
+    }
+    \item {
+        In the Migration File, there is a function \texttt{\$table->id();} What type of data does the function return?
+
+        The function returns an \texttt{unsigned big integer} data type.
+    }
+    \item {
+        What is the difference between the migration results in the \texttt{m\_level} table, between using \texttt{\$table->id();} by using \texttt{\$table->id('level\_id');}?
+
+        The difference is that the first one will create a column named \texttt{id} as the primary key, while the second one will create a column named \texttt{level\_id} as the primary key.
+    }
+    \item {
+        In migrations, what is the \texttt{->unique()} function used for?
+
+        The \texttt{->unique()} function is used to create a unique index on a column.
+    }
+    \item {
+        In \textbf{Practicum 2.2 - Step 2}, why does the \texttt{level\_id} column in the \texttt{m\_user} table use \texttt{\$table->unsignedBigInteger('level\_id')}, while the \texttt{level\_id} column in the \texttt{m\_level} table uses \texttt{\$table->id('level\_id')} ?
+
+        The \texttt{\$table->unsignedBigInteger('level\_id')} is used to create a column named \texttt{level\_id} as a foreign key, while the \texttt{\$table->id('level\_id')} is used to create a column named \texttt{level\_id} as the primary key.
+    }
+    \pagebreak
+    \item {
+        In \textbf{Practicum 3 - Step 6}, what is the purpose of the \texttt{Hash} Class? and what does the Hash program code mean \texttt{::make('1234');} ?
+
+        The \texttt{Hash} class is used to hash the password. The \texttt{::make('1234')} code is used to hash the string \texttt{1234}.
+    }
+    \item {
+        In \textbf{Practicum 4 - Step 3/5/7}, in the query builder there is a question mark (?), what is the use of the question mark (?) of these?
+
+        The question mark (?) is used as a placeholder for the value that will be passed to the query.
+    }
+    \item {
+        In \textbf{Practicum 6 - Step 3}, what is the purpose of writing protected code \texttt{\$table = 'm\_user';} and protected \texttt{\$primaryKey = 'user\_id';} ?
+
+        The \texttt{\$table} is used to define the table name, while the \texttt{\$primaryKey} is used to define the primary key of the table.
+    }
+    \item {
+        In your opinion, where is it easier to use in performing CRUD operations to the database (DB Façade / Query Builder / Eloquent ORM) ?
+
+        In my opinion, it is easier to use Eloquent ORM to perform CRUD operations to the database.
+        But, it depends on the situation and the needs of the application.
+        Most of the time I would much prefer the query builder because it's more maintainable in the long run and easier to debug.
+        It doesn't involve a lot of magic and it's easier to understand what's going on.
+    }
+\end{enumerate}
+
+The code can be found here: \texttt{https://github.com/elianiva/pwl\_pos}
+
+\end{document}
+
