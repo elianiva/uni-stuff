@@ -1,0 +1,221 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx,amsmath,blindtext}
+
+%% Variables definition
+\newcommand{\vSubject}{Advanced Web Programming}
+\newcommand{\vSubtitle}{Eloquent ORM}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{2i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\section{Practicum 1}
+\begin{enumerate}
+    \setcounter{enumi}{2}
+    \item {
+        It creates a new record in the database with the given data. We use the \textit{mass assignment} feature to insert the data into the database.
+    }
+    \setcounter{enumi}{5}
+    \item {
+        It throws an error because we do not include the \texttt{password} field into the \texttt{\$fillable} property in the \texttt{UserModel} model.
+    }
+\end{enumerate}
+
+\section{Practicum 2.1}
+\begin{enumerate}
+    \setcounter{enumi}{2}
+    \item {
+        It now returns the user with the \texttt{id} of 1 and display it in the browser.
+    }
+    \setcounter{enumi}{4}
+    \item {
+        It finds the user with the \texttt{level\_id} of 1 and fetch the first result from the database and return it to the view.
+    }
+    \setcounter{enumi}{6}
+    \item {
+        It uses an alternative way to find the user with the \texttt{level\_id} of 1 by using the \texttt{firstWhere} which is basically a combination
+        of \texttt{where} and \texttt{first} method.
+    }
+    \setcounter{enumi}{8}
+    \item {
+        It returns 404 page because it didn't find any user with the \texttt{username} or \texttt{nama} of \texttt{1}
+        so it returns a fallback view which we defined as 404 page by doing \texttt{abort(404)}.
+    }
+    \setcounter{enumi}{10}
+    \item {
+        It returns the same result as the previous one because it didn't find any user with the \texttt{username} or \texttt{nama} of \texttt{20}
+    }
+\end{enumerate}
+
+\section{Practicum 2.2}
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item {
+        It returns the first user with the ID of 1 and display it in the browser.
+    }
+    \setcounter{enumi}{3}
+    \item {
+        It returns a 404 page because we didn't find any user with the \texttt{username} of \texttt{manager9}
+    }
+\end{enumerate}
+
+\section{Lab Course 2.3}
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item {
+        It returns the debug output of the count result of the query.
+    }
+\end{enumerate}
+
+\section{Practicum 2.4}
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item {
+        It creates the user if it doesn't exist in the database, otherwise it will update the user with the given data.
+    }
+    \setcounter{enumi}{6}
+    \item {
+        It actually depends on the data that we have, it will return the user with the \texttt{username} of \texttt{manager} if it exists, otherwise it will create a new user with the given data.
+        Although, it will throw an error since we don't include the rest of the data
+    }
+    \setcounter{enumi}{8}
+    \item {
+        It will return the user if it already exists, otherwise it will create a new user with the data that we've provided but not persist it in the database.
+    }
+    \setcounter{enumi}{10}
+    \item {
+        It will return the user with the \texttt{username} of \texttt{manager} if it exists, otherwise it will create a new user with the given data and now it will persist it in the database.
+    }
+\end{enumerate}
+
+\section{Practicum 2.5}
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item {
+        It will return \texttt{true} to the browser since we modified the field.
+    }
+\end{enumerate}
+
+\section{Practicum 2.6}
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item {
+        It creates a route that will render the page filled with a table populated by the users
+        data from the database.
+    }
+    \setcounter{enumi}{7}
+    \item {
+        It will navigate to the add user page because we added the route for that and we set on the user list page
+        that the anchor tag will allow us to navigate to the add user page.
+    }
+    \setcounter{enumi}{10}
+    \item {
+        It will now create a user based on the data that we've given. After the data is created, we are redirected to the
+        \texttt{/user} route.
+    }
+    \setcounter{enumi}{13}
+    \item {
+        It will create a page with a form in which we can update the user data later on, but for now we haven't added the route handler for
+        updating the user data.
+    }
+    \setcounter{enumi}{16}
+    \item {
+        It will update the user data from the data that we've given using the find method and then changing its attribute,
+        and then finally persist the update to the database using the \texttt{save} method.
+    }
+    \setcounter{enumi}{18}
+    \item {
+        It will delete the user when clicked because we added the remove user route handler,
+        which wil use the delete method to delete the user from the database.
+    }
+\end{enumerate}
+
+\section{Practicum 2.7}
+\begin{enumerate}
+    \setcounter{enumi}{2}
+    \item {
+        It outputs the user along with its level since we defined the relation and include it in the query
+    }
+    \setcounter{enumi}{5}
+    \item {
+        It outputs a table filled with the user data along with its level data since we added them to the table.
+    }
+\end{enumerate}
+
+The code can be found in \texttt{https://github.com/elianiva/pwl\_pos}
+
+
+\end{document}
+
