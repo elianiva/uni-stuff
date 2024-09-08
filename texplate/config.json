@@ -2,13 +2,11 @@
     "personal_information": {
         "name": "Dicha Zelianivan Arkana",
         "nim": "2241720002",
-        "class": "2i",
+        "class": "3i",
         "department": "Information Technology",
         "study_program": "D4 Informatics Engineering"
     },
     "subjects": [
-        "Statistical Computations",
-        "Advanced Web Programming",
-        "Computer Networking"
+        "Computer Vision and Image Processing"
     ]
 }
