@@ -1,0 +1,302 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx,amsmath,array,colortbl,multirow,float,longtable}
+
+%% Variables definition
+\newcommand{\vSubject}{English for Work Preparation}
+\newcommand{\vSubtitle}{Job Ads}
+\newcommand{\vName}{Dicha Zelianivan Arkana}
+\newcommand{\vNIM}{2241720002}
+\newcommand{\vClass}{3i}
+\newcommand{\vDepartment}{Information Technology}
+\newcommand{\vStudyProgram}{D4 Informatics Engineering}
+
+%% [START] Tikz related stuff
+\usepackage{tikz}
+\usetikzlibrary{svg.path,calc,shapes.geometric,shapes.misc}
+\tikzstyle{terminator} = [rectangle, draw, text centered, rounded corners = 1em, minimum height=2em]
+\tikzstyle{preparation} = [chamfered rectangle, chamfered rectangle sep=0.75em, draw, text centered, minimum height = 2em]
+\tikzstyle{process} = [rectangle, draw, text centered, minimum height=2em]
+\tikzstyle{decision} = [diamond, aspect=2, draw, text centered, minimum height=2em]
+\tikzstyle{data}=[trapezium, draw, text centered, trapezium left angle=60, trapezium right angle=120, minimum height=2em]
+\tikzstyle{connector} = [line width=0.25mm,->]
+%% [END] Tikz related stuff
+
+%% [START] Fancy header related stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} % compensate fancyhdr style
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{\textit{\vSubject - \vSubtitle}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt, overline for footer
+%% [END] Fancy header related stuff
+
+%% [START] Custom tabular command related stuff
+\usepackage{tabularx}
+\newcommand{\details}[2]{
+    #1 & #2  \\
+}
+%% [END] Custom tabular command related stuff
+
+%% [START] Figure related stuff
+\newcommand{\image}[3][1]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[#1]{#2}
+        \caption{#3}
+        \label{#3}
+    \end{figure}
+}
+%% [END] Figure related stuff
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\LARGE
+        \vSubject\\
+        \vskip0.25cm
+        \vSubtitle
+    }
+    \vfill
+    \includegraphics[width=6cm]{images/polinema-logo.png}
+    \vfill
+    {
+        \textbf{Name}\\
+        \vName\\
+        \vskip0.5cm
+        \textbf{NIM}\\
+        \vNIM\\
+        \vskip0.5cm
+        \textbf{Class}\\
+        \vClass\\
+        \vskip0.5cm
+        \textbf{Department}\\
+        \vDepartment\\
+        \vskip0.5cm
+        \textbf{Study Program}\\
+        \vStudyProgram
+    }
+\end{titlepage}
+
+\tableofcontents
+
+\pagebreak
+
+\section{Exercise 1: Terms and abbreviations usually found in job advertisement}
+
+\textbf{Terms and meanings:}
+\begin{enumerate}
+    \item {
+        \textbf{Ads:} abbreviations for advertisements.
+    }
+    \item {
+        \textbf{Applicants:} people who apply for a job.
+    }
+    \item {
+        \textbf{Client:} a person or organization that uses the services of a professional person or company.
+    }
+    \item {
+        \textbf{Desirable:} worth having or seeking, but not essential or necessary.
+    }
+    \item {
+        \textbf{Experience:} practical contact with and observation of facts or events.
+    }
+    \item {
+        \textbf{Full-time:} employed for the full number of hours considered normal or standard.
+    }
+    \item {
+        \textbf{Job Description:} a formal account of an employee's responsibilities.
+    }
+    \item {
+        \textbf{Awards:} a prize or other mark of recognition given in honor of an achievement.
+    }
+    \item {
+        \textbf{Portofolio:} a large, thin, flat case for loose sheets of paper such as drawings or maps.
+    }
+    \item {
+        \textbf{Qualifier:} a person or thing that qualifies something.
+    }
+    \item {
+        \textbf{Recommendation:} a suggestion or proposal as to the best course of action, especially one put forward by an authoritative body.
+    }
+    \item {
+        \textbf{Requirement:} a thing that is needed or wanted.
+    }
+    \item {
+        \textbf{Shift Work:} a pattern of work in which one employee replaces another on the same job within a 24-hour period.
+    }
+    \item {
+        \textbf{Part Time:} for only part of the usual working day or week.
+    }
+    \item {
+        \textbf{Wages:} a fixed regular payment earned for work or services, typically paid on a daily or weekly basis.
+    }
+    \item {
+        \textbf{Candidate:} a person who applies for a job or is nominated for election.
+    }
+\end{enumerate}
+
+\pagebreak
+
+\section{Exercise 2: Match job advertisement}
+
+\begin{center}
+    \includegraphics*[width=.8\textwidth]{./images/classifieds.png}
+\end{center}
+
+\begin{enumerate}
+    \item Advert A - Looking after children
+    \item Advert B - Delivering newspapers
+    \item Advert C - Working in a shop
+    \item Advert D - Working in a small restaurant
+\end{enumerate}
+
+\section{Exercise 3: Which is the best job advert for these questions}
+
+\begin{enumerate}
+    \item In which job do you have to work after school? - \textbf{Advert A}
+    \item In which job do you have to start work before 8 a.m.? - \textbf{Advert B}
+    \item In which job do you only need to work on Saturdays? - \textbf{Advert D}
+    \item In which job do you need a bicycle? - \textbf{Advert B}
+    \item In which job do you need to speak a foreign language? - \textbf{Advert C}
+    \item In which job do you only work during the summer holidays? - \textbf{Advert C}
+    \item In which job do you have to work for 2 hours every day after school? - \textbf{Advert A}
+    \item In which job do you need to work from Tuesday to Saturday? - \textbf{Advert C}
+\end{enumerate}
+
+\section{Exercise 4: Indicate whether these following \\ sentences are True or False}
+
+\begin{enumerate}
+    \item In advert A, the babysitter can get more than £40 a week. - \textbf{False}
+    \item In advert D, you don't need to work in the evenings. - \textbf{True}
+    \item In advert B, the paper round should take about half an hour. - \textbf{True}
+    \item In advert C, you have to work five days a week. - \textbf{False}
+    \item In advert D, you should call Bella in the morning. - \textbf{False}
+    \item In advert B, you should contact the newspaper delivery boy for more information. - \textbf{False}
+    \item In advert D, you need to work full-time. - \textbf{False}
+    \item In advert C, you need to contact the museum by telephone. - \textbf{False}
+\end{enumerate}
+
+\pagebreak
+
+\section{Exercise 5: Job Advertisements Comparison}
+
+\begin{enumerate}
+    \item {
+        Kathreen is interested in serving people. She always gives her best
+        performance while helping people. In her daily life, she is obsessed
+        to resolving issues and technical problems in the society.\\
+        \textbf{Customer Service}
+    } 
+    \item {
+        Paulo loves anything about smartphones’ software. He usually
+        implements prototypes of new features and applications. In his
+        study, he is able to expand numerous apps and coding language
+        for a phone.\\
+        \textbf{Mobile Developer}
+    } 
+    \item {
+        Reynald thinks that he is born as a magnificent seller. He is aware of
+        customer behaviors and merchants’ needs. In addition, he is also
+        excellent in communication and negotiation skills in trading.\\
+        \textbf{Sales Executive}
+    }
+    \item {
+        Winston is a guy who live to build a meaningful product. In order
+        to create it, he spreads awareness on storytelling of a brand. To
+        drive people’s attention, he needs to do a campaign of how a
+        brand can improve value on one’s life.\\
+        \textbf{Brand Marketing}
+    }
+    \item {
+        Sandy likes to create animation for the website. She has experience
+        working in an IT company. She loves creative skill in designing and
+        developing easy user experience and user interface for the
+        community.\\
+        \textbf{Software Engineer}
+    }
+\end{enumerate}
+
+\pagebreak
+
+\section{Exercise 6: Job Advertisements Comparison}
+
+\begin{center}
+    \includegraphics*[width=.9\textwidth]{./images/jobdesc.png}
+\end{center}
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\pagebreak
+
+\section{Job Advertisements Comparison}
+
+\renewcommand{\arraystretch}{1.8}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{6cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\caption{Job Advertisements Comparison}\label{tab:job-ads} \\
+\hline
+\multirow{2}{*}{\textbf{Job Description Terms}} & \multicolumn{3}{c|}{\cellcolor{blue!20}\textbf{Job Advertisements (Ads)}} \\
+\cline{2-4}
+& \cellcolor{blue!20}\textbf{Ads 1} & \cellcolor{blue!20}\textbf{Ads 2} & \cellcolor{blue!20}\textbf{Ads 3} \\
+\cline{2-4}
+& \cellcolor{blue!10}\textbf{Frontend \newline Engineer} & \cellcolor{blue!10}\textbf{Fullstack\newline Web\newline Developer} & \cellcolor{blue!10}\textbf{Backend\newline Engineer} \\
+\hline
+Full time & \checkmark & \checkmark & \checkmark \\
+\hline
+Part Time & & & \\
+\hline
+Permanent & \checkmark & \checkmark & \checkmark \\
+\hline
+Contract & & & \\
+\hline
+Fixed Work Hours & \checkmark & \checkmark & \checkmark \\
+\hline
+Shift work & & & \\
+\hline
+Experience required & \checkmark & \checkmark & \checkmark \\
+\hline
+Qualification required & & & \\
+\hline
+No Experience required & & & \\
+\hline
+Interview & \checkmark & \checkmark & \checkmark \\
+\hline
+Apply in Writing: Letter & & & \\
+\hline
+Apply in Writing: & & & \\
+\hline
+Application form & \checkmark & \checkmark & \checkmark \\
+\hline
+\multirow{2}{*}{\parbox{3cm}{Contact by phone for an appointment}} & & & \\
+& & & \\
+\hline
+Contact employer directly & & & \\
+\hline
+Work as part of team & \checkmark & \checkmark & \checkmark \\
+\hline
+Work independently & & & \\
+\hline
+Work with supervision & & & \\
+\hline
+Work with little supervision & \checkmark & \checkmark & \checkmark \\
+\hline
+Opportunity for promotion & \checkmark & \checkmark & \checkmark \\
+\hline
+Other benefits available & \checkmark & \checkmark & \checkmark \\
+\hline
+\end{longtable}
+
+\pagebreak
+
+\section{Another Section}
+
+\end{document}
+
