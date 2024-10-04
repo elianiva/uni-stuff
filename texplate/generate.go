@@ -23,7 +23,7 @@ func generateTemplate(m model) tea.Cmd {
 		templateType := "jobsheet"
 		templatePath := filepath.Join(filepath.Dir(ex), "templates", templateType)
 
-		texFile, err := os.ReadFile(filepath.Join(templatePath, templateType+".tex"))
+		texFile, err := os.ReadFile(filepath.Join(templatePath, templateType+".typ"))
 		if err != nil {
 			return ErrorMsg(err)
 		}
@@ -53,7 +53,7 @@ func generateTemplate(m model) tea.Cmd {
 			return ErrorMsg(err)
 		}
 
-		os.WriteFile(filepath.Join(resultPath, templateType+".tex"), []byte(result), os.ModePerm)
+		os.WriteFile(filepath.Join(resultPath, templateType+".typ"), []byte(result), os.ModePerm)
 		dirCopy.Copy(filepath.Join(templatePath, "images"), filepath.Join(resultPath, "images"))
 
 		return TemplateGeneratedMsg("OK")
