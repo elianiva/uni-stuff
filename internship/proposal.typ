@@ -123,56 +123,8 @@
 
 #pagebreak()
 
-#align(center, heading(text(size: 12pt)[LEMBAR PERSETUJUAN])) \
-#tabed[
-  #t Yang bertanda tangan di bawah ini menyetujui rencana kegiatan yang akan dilaksanakan oleh mahasiswa Politeknik Negeri Malang, sebagaimana tersebut di bawah ini:
-]
-
-#tabed[
-  Nama kegiatan#t:  Magang Industri \
-  Tempat#t#t#t:  #companyName \
-  Alamat#t#t#t: Jalan Taman Kencana nomor 3, Babakan, Bogor Tengah, Bogor Jalan Taman Kencana nomor 3, Babakan, Bogor Tengah, Bogor\
-  Pelaksanaan#t#t: #startDate sampai #endtDate atau sesuai dengan kebijakan instansi asalkan tidak melebihi batas maksimal yang ditetapkan pihak kampus (minimal 5 bulan).\
-  Peserta#t#t#t: 1. #students.at(0).name \
-]
-
-\
-\
-
-Malang, Desember 2024 \
-Mengetahui dan Menyetujui,
-
-\
-\
-
-#align(
-  center,
-  stack(
-    table(
-      align: left,
-      stroke: none,
-      columns: (50%, 50%),
-      [
-        Ketua Program Studi \
-        D4 Teknik Informatika \ \ \ \ \
-        Dr. Ely Setyo Astuti, ST.,MT \
-        NIP. 197605152009122001
-      ],
-      [
-        Koordinator Magang \ \ \ \ \ \
-        Dika Rizky Yunianto, S.Kom., M.Kom. \
-        NIP. 199206062019031017
-      ]
-    ),
-    v(2em),
-    [
-      Ketua Jurusan \
-      Teknologi Informasi \ \ \ \ \
-      Dr. Eng. Rosa Andrie Asmara, ST., MT \
-      NIP. 198010102005011001
-    ],
-  )
-)
+// include svg
+#image("./dicha.svg", width: 100%, height: 100%)
 
 #pagebreak()
 
@@ -351,7 +303,8 @@ Mengetahui dan Menyetujui,
   #pad(left: 19em)[
     Malang, Desember 2024 \
     Hormat kami, \
-    #v(5em) \ #students.at(0).name,
+    #image("./signature.svg", width: 3cm, height: auto)
+    #students.at(0).name,
   ]
 ]
 
